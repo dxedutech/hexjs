@@ -64,3 +64,28 @@ hex.create = v => {
   
   return v.e;
 }
+
+hex.xml = {};
+hex.xml.svg = v => {
+  const { e } = v;
+  console.log(e);
+};
+
+hex.parseXML = (xml) => {
+  const a = xml.querySelectorAll('feed');
+  [].forEach.call(a, e => hex.xml[e.getAttribute('x')]({e : e}));
+};
+
+hex.loadXMLDoc = async (filename) => {
+  try {
+    const response = await fetch(filename);
+    if (!response.ok) { throw new Error('Network response was not ok'); }
+    const text = await response.text();
+
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(text, 'application/xml');
+    hex.parseXML(xmlDoc);
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+  }
+};

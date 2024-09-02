@@ -33,4 +33,5 @@
   v.e.setAttribute('width', '800');
   v.e.setAttribute('height', '800');
 
+  x.loadXMLDoc('/www/want/index.xml');
 })({ x: hex, p: ['bed', 'tangram'] })
