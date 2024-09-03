@@ -36,5 +36,5 @@
   x.loadXMLDoc('/www/want/index.xml');
 
   x.loadModule('/www/ware/tangram.js');
-  x.tangram.devu
+
 })({ x: hex, p: ['bed', 'tangram'] })

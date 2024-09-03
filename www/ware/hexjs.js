@@ -46,6 +46,8 @@ const hex = e => {
   return r;
 };
 
+hex.devu = () => '//\\v0.0.240903';
+
 /* <Creating an element with a class> */
 hex.create = v => {
   const { t, c, e, p } = v; //\ tag, class, element, parent
@@ -85,8 +87,9 @@ hex.loadXMLDoc = async (filename) => {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(text, 'application/xml');
     hex.parseXML(xmlDoc);
+
   } catch (e) {
-    e.error('There was a problem with the fetch operation:', e);
+    console.log('There was a problem with the fetch operation:', e);
   }
 };
 /* </Loading and parsing XML> */
@@ -94,9 +97,10 @@ hex.loadXMLDoc = async (filename) => {
 hex.loadModule = async (filename) => {
   try {
     const s = filename.match(/([^\/]+)\.[^\.]+$/)[1];
-    hex[filename] = await import(filename);
-    //hex[filename].yourFunction();
+    const m = await import(filename);
+    hex[s] = m.default;
+
   } catch (e) {
-    e.error('There was a problem with the import operation:', e);
+    console.log('There was a problem with the import operation:', e);
   }
 }
