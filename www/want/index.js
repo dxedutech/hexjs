@@ -5,7 +5,7 @@
   v.e = document.querySelector(`.${p.join('.')}`);
   if(v.e !== null) return;
 
-  v.p = x.create({ t: 'div', c: p[0], e:'TANGRAM', p: '' });
+  v.p = x.create({ t: 'div', c: p[0], e:'', p: '' });
   x.create({ t: 'div', c: '', e:'<span>TANGRAM</span>', p: v.p });
   x(v.p).addClass(p[1]);
   
@@ -34,4 +34,7 @@
   v.e.setAttribute('height', '800');
 
   x.loadXMLDoc('/www/want/index.xml');
+
+  x.loadModule('/www/ware/tangram.js');
+  x.tangram.devu
 })({ x: hex, p: ['bed', 'tangram'] })
