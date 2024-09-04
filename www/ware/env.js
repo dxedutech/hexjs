@@ -17,7 +17,9 @@ export default (() => {
       resolution: { w: window.screen.width, h: window.screen.height, r: window.devicePixelRatio }
     };
   }
-  r.info = info;
+  r.isMobile = info().isMobile;
+  r.isPortrait = info().isPortrait;
+  r.resolution = info().resolution;
   
   return r;
 })();
