@@ -32,9 +32,11 @@
   v.e = x.create({ t: 'svg', c: 'box', e:'<path d="M10 10 H 90 V 90 H 10 L 10 10" stroke="#fff" fill="transparent"/>', p: v.p });
   v.e.setAttribute('width', '800');
   v.e.setAttribute('height', '800');
+  
+  (async () => await x.loadXMLDoc('/www/want/index.xml'))();
 
-  x.loadXMLDoc('/www/want/index.xml');
+  (async () => await x.loadModule('/www/ware/tangram.js'))();
+  (async () => await x.loadModule('/www/ware/env.js'))();
 
-  x.loadModule('/www/ware/tangram.js');
-
+  x.env.info
 })({ x: hex, p: ['bed', 'tangram'] })
