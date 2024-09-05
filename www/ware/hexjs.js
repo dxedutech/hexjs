@@ -66,6 +66,21 @@ hex.create = v => {
 }
 /* </Creating an element with a class> */
 
+/* <Import the module.> */
+hex.loadModule = async (url) => {
+  try {
+    const s = url.match(/([^\/]+)\.[^\.]+$/)[1];
+    if(hex[s]) return;
+
+    const m = await import(url);
+    hex[s] = m.default;
+
+  } catch (e) {
+    console.log('There was a problem with the import operation:', e);
+  }
+}
+/* </Import the module.> */
+
 /* <Loading and parsing XML> */
 hex.xml = {};
 hex.xml.svg = v => {
@@ -78,9 +93,9 @@ hex.parseXML = (xml) => {
   [].forEach.call(a, e => hex.xml[e.getAttribute('x')]({e : e}));
 };
 
-hex.loadXMLDoc = async (filename) => {
+hex.loadXMLDoc = async (url) => {
   try {
-    const response = await fetch(filename);
+    const response = await fetch(url);
     if (!response.ok) { throw new Error('Network response was not ok'); }
     const text = await response.text();
 
@@ -94,13 +109,22 @@ hex.loadXMLDoc = async (filename) => {
 };
 /* </Loading and parsing XML> */
 
-hex.loadModule = async (filename) => {
+/* <Loading and parsing SVG> */
+hex.svgs = {};
+hex.loadSVG = async (url) => {
   try {
-    const s = filename.match(/([^\/]+)\.[^\.]+$/)[1];
-    const m = await import(filename);
-    hex[s] = m.default;
+    const s = url.match(/([^\/]+)\.[^\.]+$/)[1];
+    if(hex.svgs[s]) return;
+
+    const response = await fetch(url);
+    if (!response.ok) { throw new Error('Network response was not ok'); }
+
+    const text = await response.text();
+    hex.svgs[s] = text;
+    // document.querySelector('.sheet .svg').innerHTML = text;
 
   } catch (e) {
-    console.log('There was a problem with the import operation:', e);
+    console.error('Error loading SVG:', e);
   }
-}
+};
+/* </Loading and parsing SVG> */

@@ -36,6 +36,7 @@
     await x.loadXMLDoc('/www/want/index.xml');
     await x.loadModule('/www/ware/tangram.js');
     await x.loadModule('/www/ware/env.js');
-    console.log(x.env.isMobile);
+
+    x.env.resize({ w: 1080, h: 1080 });
   })();
 })({ x: hex, p: ['bed', 'tangram'] })
