@@ -52,6 +52,9 @@ hex.devu = () => '//\\v0.0.240903';
 hex.create = v => {
   const { t, c, e, p } = v; //\ tag, class, element, parent
 
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const gClone = document.createElementNS(svgNamespace, 'g');
+
   v.e = t.match(/svg/) ? document.createElementNS('http://www.w3.org/2000/svg', t) : document.createElement(t);
 
   if(c.length) v.e.classList.add(c);
@@ -63,6 +66,36 @@ hex.create = v => {
   else p.length ? document.querySelector(p).appendChild(v.e) : document.body.appendChild(v.e);
   
   return v.e;
+}
+/* </Creating an element with a class> */
+
+/* <Creating an element with a class> */
+hex.attach = v => {
+  const { t, c, e, p } = v; //\ tag, class, element, parent
+  console.log(e);
+  v.p = typeof p === 'object' ? p : p.length ? document.querySelector(p) : document.body;
+
+  if(typeof e === 'object') {
+    if(t.match(/svg|g/)) { 
+      v.c = document.createElementNS('http://www.w3.org/2000/svg', t);
+    } else { 
+      v.c = document.createElement(t)
+    }
+    if(c.length) v.c.classList.add(c);
+
+    [].forEach.call(e.children, e => {
+      v.c.appendChild(e.cloneNode(true));
+    });
+    console.log(v.p);
+    // while (e.firstChild) { v.c.appendChild(e.firstChild.cloneNode(true)); }
+    v.p.appendChild(v.c);
+
+  } else {
+    if(e.match(/^<.*>$/)) v.p.innerHTML = e;
+    else v.p.textContent = e;
+  }
+
+  return e;
 }
 /* </Creating an element with a class> */
 
@@ -120,8 +153,14 @@ hex.loadSVG = async (url) => {
     if (!response.ok) { throw new Error('Network response was not ok'); }
 
     const text = await response.text();
-    hex.svgs[s] = text;
-    // document.querySelector('.sheet .svg').innerHTML = text;
+
+    const parser = new DOMParser();
+    const svgDoc = parser.parseFromString(text, 'image/svg+xml');
+    // const e = svgDoc.querySelector('svg');
+    // document.body.appendChild(e);
+    // const g = svgDoc.querySelector('g');
+    // hex.svgs[s] = g;
+    // document.querySelector('.bgs svg').appendChild(g);
 
   } catch (e) {
     console.error('Error loading SVG:', e);

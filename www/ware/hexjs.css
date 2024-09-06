@@ -4,12 +4,13 @@
 html, body {
   position: relative; 
   display: flex;
-  width: 800px; height: 800px;
+  width: auto; height: auto;
   margin: 0; padding: 0;
   justify-content: center; /* 수평 가운데 정렬 */
   align-items: center; /* 수직 가운데 정렬 */
   overflow: hidden; /* 전체 스크롤 숨기기 */
   background: #222;
+  box-sizing: border-box;
 }
 
 body {
@@ -59,3 +60,15 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
+.sheet { /* bgs, fgs, uis... */
+  display: flex;
+  flex-direction: column;
+  width: 100%; height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg { color: #eda; }
+.fg { color: #dae; }
+.ui { color: #aed; }
