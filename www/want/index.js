@@ -14,7 +14,7 @@
   x(v.sheet).addClass('bgs');
 
   /* svg */
-  v.e = x.create({ t: 'svg', c: 'box', e: '<path d="M10 10 H 90 V 90 H 10 L 10 10" stroke="#fff" fill="transparent"/>', p: v.sheet });
+  v.e = x.create({ t: 'svg', c: 'box', e: '<g><path d="M10 10 H 90 V 90 H 10 L 10 10" stroke="#fff" fill="transparent"/></g>', p: v.sheet });
   v.e.setAttribute('width', '800');
   v.e.setAttribute('height', '800');
 
@@ -52,7 +52,7 @@
     x.env.resize({ w: wh.w, h: wh.h });
 
     await x.loadSVG('/www/wads/prop/tangram.svg');
-    // x.attach({ t: 'g', c: '', e: x.svgs.tangram, p: '.fgs>svg.prop' });
+    x.attach({ t: 'g', c: '', e: x.svgs.tangram, p: '.fgs>svg.prop' }); //\ need to append a path element to a g (group) element in SVG
 
   })();
 })({ x: hex, p: ['bed', 'tangram'], wh: { w: 1080, h: 1080 } })

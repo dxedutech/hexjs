@@ -52,58 +52,65 @@ hex.devu = () => '//\\v0.0.240903';
 hex.create = v => {
   const { t, c, e, p } = v; //\ tag, class, element, parent
 
-  const svgNamespace = "http://www.w3.org/2000/svg";
+  const svgNamespace = 'http://www.w3.org/2000/svg';
   const gClone = document.createElementNS(svgNamespace, 'g');
 
   v.e = t.match(/svg/) ? document.createElementNS('http://www.w3.org/2000/svg', t) : document.createElement(t);
 
-  if(c.length) v.e.classList.add(c);
+  if (c.length) v.e.classList.add(c);
 
-  if(e.match(/^<.*>$/)) v.e.innerHTML = e;
+  if (e.match(/^<.*>$/)) v.e.innerHTML = e;
   else v.e.textContent = e;
 
-  if(typeof p === 'object') p.appendChild(v.e);
+  if (typeof p === 'object') p.appendChild(v.e);
   else p.length ? document.querySelector(p).appendChild(v.e) : document.body.appendChild(v.e);
-  
+
   return v.e;
-}
+};
 /* </Creating an element with a class> */
 
 /* <Creating an element with a class> */
+hex.setatt = v => {
+  const { e, n, s } = v;
+
+  if (n.getAttribute(s)) e.setAttribute(s, n.getAttribute(s));
+};
 hex.attach = v => {
   const { t, c, e, p } = v; //\ tag, class, element, parent
-  console.log(e);
-  v.p = typeof p === 'object' ? p : p.length ? document.querySelector(p) : document.body;
 
-  if(typeof e === 'object') {
-    if(t.match(/svg|g/)) { 
+  v.p = typeof p === 'object' ? p : p.length ? document.querySelector(p) : document.body;
+  if (typeof e === 'object') {
+    if (t.match(/svg|g/)) {
       v.c = document.createElementNS('http://www.w3.org/2000/svg', t);
-    } else { 
+
+      [].forEach.call(e.children, e => {
+        v.ns = document.createElementNS('http://www.w3.org/2000/svg', e.nodeName);
+        [].forEach.call(e.attributes, e => v.ns.setAttribute(e.name, e.value));
+        v.c.appendChild(v.ns.cloneNode(true));
+      });
+
+    } else {
       v.c = document.createElement(t)
     }
-    if(c.length) v.c.classList.add(c);
 
-    [].forEach.call(e.children, e => {
-      v.c.appendChild(e.cloneNode(true));
-    });
-    console.log(v.p);
-    // while (e.firstChild) { v.c.appendChild(e.firstChild.cloneNode(true)); }
+    if (c.length) v.c.classList.add(c);
+
     v.p.appendChild(v.c);
 
   } else {
-    if(e.match(/^<.*>$/)) v.p.innerHTML = e;
+    if (e.match(/^<.*>$/)) v.p.innerHTML = e;
     else v.p.textContent = e;
   }
 
   return e;
-}
+};
 /* </Creating an element with a class> */
 
 /* <Import the module.> */
 hex.loadModule = async (url) => {
   try {
     const s = url.match(/([^\/]+)\.[^\.]+$/)[1];
-    if(hex[s]) return;
+    if (hex[s]) return;
 
     const m = await import(url);
     hex[s] = m.default;
@@ -111,7 +118,7 @@ hex.loadModule = async (url) => {
   } catch (e) {
     console.log('There was a problem with the import operation:', e);
   }
-}
+};
 /* </Import the module.> */
 
 /* <Loading and parsing XML> */
@@ -156,11 +163,8 @@ hex.loadSVG = async (url) => {
 
     const parser = new DOMParser();
     const svgDoc = parser.parseFromString(text, 'image/svg+xml');
-    // const e = svgDoc.querySelector('svg');
-    // document.body.appendChild(e);
-    // const g = svgDoc.querySelector('g');
-    // hex.svgs[s] = g;
-    // document.querySelector('.bgs svg').appendChild(g);
+
+    hex.svgs[s] = svgDoc.querySelector('g');
 
   } catch (e) {
     console.error('Error loading SVG:', e);
