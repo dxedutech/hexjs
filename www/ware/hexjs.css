@@ -37,11 +37,13 @@ span {
   font: 16px 'Dokdo', system-ui;
   user-select: none;
 }
-
-button {
-  width: max-content; height: auto;
+/* button */
+button { width: max-content; height: auto; user-select: none; }
+button:hover { border: 1px solid #fff; }
+button span {
   font: 16px 'Black Han Sans', sans-serif;
-  user-select: none;
+  -webkit-text-stroke: 1px #888;
+  text-stroke: 1px #888;
 }
 
 footer {

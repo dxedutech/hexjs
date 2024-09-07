@@ -35,14 +35,16 @@
   x(v.sheet).addClass('uis');
 
   /* button */
-  v.b = x.create({ t: 'button', c: '', e: 'TANGRAM', p: v.sheet });
-  x(v.b).style({
-    backgroundColor: x(v.b).primary,
-    color: '#fff', padding: '10px 20px',
-    border: 'none', borderRadius: '5px',
+  v.css = {
+    backgroundColor: x(v.b).g,
+    color: '#fff', padding: '4px 8px',
+    border: 'none', borderRadius: '6px',
     cursor: 'pointer'
-  });
-  x(v.b).addClass('color');
+  }
+  v.b = x.create({ t: 'button', c: 'btn', e: '<span>TANGENT</span>', p: v.sheet });
+  x(v.b).style(v.css);
+  v.b = x.create({ t: 'button', c: 'btn', e: '<span>TANGRAM</span>', p: v.sheet });
+  x(v.b).style(v.css);
   
   (async () => { 
     await x.loadXMLDoc('/www/want/index.xml');

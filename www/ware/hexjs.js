@@ -4,15 +4,13 @@ const hex = e => {
 
   /* <Store color values> */
   const colors = {
-    primary: '#007bff', // Example primary blue color
-    secondary: '#6c757d', // Example secondary gray color
-    success: '#28a745', // Example green color
-    danger: '#dc3545', // Example red color
+    r: '#dae',
+    g: '#aed',
+    y: '#eda'
   };
-  r.primary = colors.primary;
-  r.secondary = colors.secondary;
-  r.success = colors.success;
-  r.danger = colors.danger;
+  r.r = colors.r;
+  r.g = colors.g;
+  r.y = colors.y;
   /* </Store color values> */
 
   /* <Apply styles to elements> */
