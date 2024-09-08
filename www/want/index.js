@@ -1,60 +1,59 @@
-(v => {
-  const { x, p, wh } = v;
+(va => {
+  const { x, p, wh } = va;
 
-  v.e = document.querySelector(`.${p.join('.')}`);
-  if(v.e !== null) return;
+  va.e = document.querySelector(`.${p.join('.')}`);
+  if(va.e !== null) return;
 
   /* .bed */
-  v.bed = x.create({ t: 'div', c: p[0], e: '', p: '' });
-  // x(v.bed).style({ width: `${wh.w}px`, height: `${wh.h}px` });
-  x(v.bed).addClass(p[1]);  // Add a class to the button
+  va.bed = x.crtu({ t: 'div', c: p[0], e: '', p: '' });
+  // x(va.bed).style({ width: `${wh.w}px`, height: `${wh.h}px` });
+  x(va.bed).addClassu(p[1]);  // Add a class to the button
 
   /* sheet */
-  v.sheet = x.create({ t: 'div', c: 'sheet', e: '', p: v.bed });
-  x(v.sheet).addClass('bgs');
+  va.sheet = x.crtu({ t: 'div', c: 'sheet', e: '', p: va.bed });
+  x(va.sheet).addClassu('bgs');
 
   /* svg */
-  v.e = x.create({ t: 'svg', c: 'box', e: '<g><path d="M10 10 H 90 V 90 H 10 L 10 10" stroke="#fff" fill="transparent"/></g>', p: v.sheet });
-  v.e.setAttribute('width', '800');
-  v.e.setAttribute('height', '800');
+  va.e = x.crtu({ t: 'svg', c: 'box', e: '<g><path d="M10 10 H 90 V 90 H 10 L 10 10" stroke="#fff" fill="transparent"/></g>', p: va.sheet });
+  va.e.setAttribute('width', '800');
+  va.e.setAttribute('height', '800');
 
   /* sheet */
-  v.sheet = x.create({ t: 'div', c: 'sheet', e:'', p: v.bed });
-  x(v.sheet).addClass('fgs');
+  va.sheet = x.crtu({ t: 'div', c: 'sheet', e:'', p: va.bed });
+  x(va.sheet).addClassu('fgs');
 
-  x.create({ t: 'div', c: 'fg', e: '무궁화꽃이', p: v.sheet });
-  x.create({ t: 'div', c: 'fg', e: '피었습니다', p: v.sheet });
+  x.crtu({ t: 'div', c: 'fg', e: '무궁화꽃이', p: va.sheet });
+  x.crtu({ t: 'div', c: 'fg', e: '피었습니다', p: va.sheet });
 
   /* svg */
-  v.e = x.create({ t: 'svg', c: 'prop', e: '', p: v.sheet });
-  v.e.setAttribute('width', '800');
-  v.e.setAttribute('height', '800');
+  va.e = x.crtu({ t: 'svg', c: 'prop', e: '', p: va.sheet });
+  va.e.setAttribute('width', '800');
+  va.e.setAttribute('height', '800');
 
   /* sheet */
-  v.sheet = x.create({ t: 'div', c: 'sheet', e:'', p: v.bed });
-  x(v.sheet).addClass('uis');
+  va.sheet = x.crtu({ t: 'div', c: 'sheet', e:'', p: va.bed });
+  x(va.sheet).addClassu('uis');
 
   /* button */
-  v.css = {
-    backgroundColor: x(v.b).g,
-    color: '#fff', padding: '4px 8px',
-    border: 'none', borderRadius: '6px',
+  va.css = {
+    backgroundColor: x(va.b).g,
     cursor: 'pointer'
   }
-  v.b = x.create({ t: 'button', c: 'btn', e: '<span>TANGENT</span>', p: v.sheet });
-  x(v.b).style(v.css);
-  v.b = x.create({ t: 'button', c: 'btn', e: '<span>TANGRAM</span>', p: v.sheet });
-  x(v.b).style(v.css);
+  va.ba = x.crtu({ t: 'div', c: 'btns', e: '', p: va.sheet });
+  va.b = x.crtu({ t: 'button', c: 'btn', e: '<span>TANGENT</span>', p: va.ba });
+  x(va.b).cssu(va.css);
+  va.b = x.crtu({ t: 'button', c: 'btn', e: '<span>TANGRAM</span>', p: va.ba });
+  x(va.b).cssu(va.css);
   
   (async () => { 
-    await x.loadXMLDoc('/www/want/index.xml');
-    await x.loadModule('/www/ware/tangram.js');
-    await x.loadModule('/www/ware/env.js');
+    await x.loadxmlu('/www/want/index.xml');
+    await x.importmoduleu('/www/ware/tangram.js');
+    await x.importmoduleu('/www/ware/env.js');
   
-    x.env.resize({ w: wh.w, h: wh.h });
+    x.envm.resizeu({ w: wh.w, h: wh.h });
 
-    await x.loadSVG('/www/wads/prop/tangram.svg');
-    x.attach({ t: 'g', c: '', e: x.svgs.tangram, p: '.fgs>svg.prop' }); //\ need to append a path element to a g (group) element in SVG
+    await x.loadsvgu('/www/wads/prop/tangram.svg');
+    x.attu({ t: 'g', c: '', e: x.svgs.tangram, p: '.fgs>svg.prop' }); //\ need to append a path element to a g (group) element in SVG
 
   })();
 })({ x: hex, p: ['bed', 'tangram'], wh: { w: 1080, h: 1080 } })

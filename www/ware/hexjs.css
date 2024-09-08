@@ -38,12 +38,21 @@ span {
   user-select: none;
 }
 /* button */
-button { width: max-content; height: auto; user-select: none; }
-button:hover { border: 1px solid #fff; }
+button {
+  width: max-content;
+  height: auto;
+  margin: 0 4px; padding: 4px 8px;
+  border: none;
+  border-radius: 6px;
+  user-select: none;
+}
 button span {
+  color: #fff;
   font: 16px 'Black Han Sans', sans-serif;
-  -webkit-text-stroke: 1px #888;
-  text-stroke: 1px #888;
+  text-shadow: 0 -1px 2px #4444, 0 1px 2px #4444, -1px 0 2px #4444, 1px 0 2px #4444;
+}
+button:hover span {
+  color: #444;
 }
 
 footer {
