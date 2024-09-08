@@ -39,20 +39,20 @@ span {
 }
 /* button */
 button {
-  width: max-content;
-  height: auto;
-  margin: 0 4px; padding: 4px 8px;
-  border: none;
+  width: max-content; height: auto;
+  margin: 0 4px; padding: 6px 8px 4px 8px;
   border-radius: 6px;
   user-select: none;
 }
 button span {
-  color: #fff;
+  position: relative;
+  color: #444;
   font: 16px 'Black Han Sans', sans-serif;
   text-shadow: 0 -1px 2px #4444, 0 1px 2px #4444, -1px 0 2px #4444, 1px 0 2px #4444;
 }
 button:hover span {
-  color: #444;
+  top: -14px;
+  color: #fff;
 }
 
 footer {
