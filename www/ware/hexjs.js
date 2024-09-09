@@ -8,37 +8,16 @@ const hex = e => {
     g: '#aed',
     y: '#eda'
   };
-  r.r = clra.r;
-  r.g = clra.g;
-  r.y = clra.y;
+  [].forEach.call(Object.keys(clra), ei => r[ei] = clra[ei]);
   /* </Store color values> */
 
-  /* <add classes to elements> */
-  const addClassu = v => {
-    [].forEach.call(a, e => {
-      if (e) {
-        e.classList.add(v);
-      } else {
-        console.warn('//\\Element not found:', e);
-      }
-    });
-  };
-  r.addClassu = addClassu;
-  /* </Add classes to elements> */
+  /* <Add, Remove classes to elements> */
+  r.addclassu = v => [].forEach.call(a, ei => ei ? ei.classList.add(v) : void 0);
+  r.removeclassu = v => [].forEach.call(a, ei => ei ? ei.classList.remove(v) : void 0);
+  /* </Add, Remove classes to elements> */
 
   /* <Apply styles to elements> */
-  const cssu = v => {
-    [].forEach.call(a, e => {
-      if (e) {
-        for (const key in v) {
-          if (v.hasOwnProperty(key)) { e.style[key] = v[key];}
-        }
-      } else {
-        console.warn('//\\Element not found:', e);
-      }
-    });
-  };
-  r.cssu = cssu;
+  r.cssu = v => [].forEach.call(a, ei => ei ? [].forEach.call(Object.keys(v), eii => v.hasOwnProperty(eii) ? ei.style[eii] = v[eii] : void 0) : void 0);
   /* </Apply styles to elements> */
 
   return r;
@@ -55,7 +34,7 @@ hex.crtu = va => {
 
   va.e = t.match(/svg/) ? document.createElementNS('http://www.w3.org/2000/svg', t) : document.createElement(t);
 
-  if (c.length) va.e.classList.add(c);
+  c.length ? [].forEach.call(c.split(' '), ei => va.e.classList.add(ei)) : void 0;
 
   if (e.match(/^<.*>$/)) va.e.innerHTML = e;
   else va.e.textContent = e;
@@ -76,9 +55,9 @@ hex.attu = va => {
     if (t.match(/svg|g/)) {
       va.c = document.createElementNS('http://www.w3.org/2000/svg', t);
 
-      [].forEach.call(e.children, e => {
-        va.ns = document.createElementNS('http://www.w3.org/2000/svg', e.nodeName);
-        [].forEach.call(e.attributes, e => va.ns.setAttribute(e.name, e.value));
+      [].forEach.call(e.children, ei => {
+        va.ns = document.createElementNS('http://www.w3.org/2000/svg', ei.nodeName);
+        [].forEach.call(ei.attributes, eii => va.ns.setAttribute(eii.name, eii.value));
         va.c.appendChild(va.ns.cloneNode(true));
       });
 
@@ -86,7 +65,7 @@ hex.attu = va => {
       va.c = document.createElement(t)
     }
 
-    if (c.length) va.c.classList.add(c);
+    c.length ? [].forEach.call(c.split(' '), ei => va.c.classList.add(ei)) : void 0;
 
     va.p.appendChild(va.c);
 
@@ -118,12 +97,20 @@ hex.importmoduleu = async v => {
 hex.xml = {};
 hex.xml.svgu = va => {
   const { e } = va;
-  console.log(e);
+
+  va.a = e.attributes;
+  va.p = `${va.a.p.value}/${va.a.i.value}.${va.a.x.value}`;
+
+  (async () => {
+    await hex.loadsvgu(va.p);
+    hex.attu({ t: 'g', c: `${hex.svgs.cls} ${va.a.i.value}`, e: hex.svgs[va.a.i.value], p: '.fgs>svg.prop' }); //\ need to append a path element to a g (group) element in SVG
+  })();
 };
 
-hex.parsexmlu = v => {
-  const a = v.querySelectorAll('feed');
-  [].forEach.call(a, e => hex.xml[`${e.getAttribute('x') }u`]({e : e}));
+hex.parsexmlu = va => {
+  const { e, s } = va;
+  hex.svgs.cls = s;
+  [].forEach.call(e.querySelectorAll('prop'), ei => hex.xml[`${ei.getAttribute('x')}u`]({ e : ei }));
 };
 
 hex.loadxmlu = async v => {
@@ -134,7 +121,8 @@ hex.loadxmlu = async v => {
 
     const parser = new DOMParser();
     const doc = parser.parseFromString(text, 'application/xml');
-    hex.parsexmlu(doc);
+    const s = v.match(/([^\/]+)\.[^\.]+$/)[1];
+    hex.parsexmlu({ e: doc, s: s });
 
   } catch (e) {
     console.log('There was a problem with the fetch operation:', e);
@@ -158,7 +146,7 @@ hex.loadsvgu = async v => {
     const doc = parser.parseFromString(text, 'image/svg+xml');
 
     hex.svgs[s] = doc.querySelector('g');
-
+    
   } catch (e) {
     console.error('Error loading SVG:', e);
   }

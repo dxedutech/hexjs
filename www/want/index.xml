@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sheet>
-  <feed i="index-1-1" x="svg" p="www/wads/prop/index" xy="100,100" e='click'/>
-  <feed i="tangram" x="svg" p="www/wads/prop" xy="100,100" e='click'/>
-  <feed i="logo" x="svg" p="www/wads/prop" xy="100,100" e='click'/>
+  <prop i="index-1-1" x="svg" p="www/wads/prop/index" xy="100,100" e='click'/>
+  <prop i="tangram" x="svg" p="www/wads/prop" xy="100,100" e='click'/>
+  <prop i="logo" x="svg" p="www/wads/prop" xy="100,100" e='click'/>
 </sheet>

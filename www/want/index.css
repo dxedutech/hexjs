@@ -6,3 +6,19 @@
 .sheet {
   position: absolute;
 }
+
+.sheet>div, .sheet>svg {
+  position: absolute;
+}
+
+.sheet>div.title {
+  display: flex;
+  left: auto; top: 24px;
+}
+.sheet>div.title div {
+  margin: 0 4px;
+}
+
+.sheet>div.menui {
+  right: 24px; bottom: 24px;
+}
