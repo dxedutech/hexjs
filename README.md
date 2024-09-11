@@ -25,6 +25,10 @@ git config --global core.autocrlf
 git config --global core.autocrlf input
 
 
+git stash
+git merge origin
+git stash pop
+
 .gitattributes
 - * text=auto 
 

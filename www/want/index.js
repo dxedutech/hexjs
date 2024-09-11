@@ -30,7 +30,7 @@
 
   va.css = {
     backgroundColor: x(va.b).g,
-    cursor: 'pointer'
+    cursor: 'none'
   }
   va.ei = x.crtu({ t: 'div', c: 'btns menui', e: '', p: va.siii });
   va.eii = x.crtu({ t: 'button', c: 'btn', e: '<span>TANGENT</span>', p: va.ei });
