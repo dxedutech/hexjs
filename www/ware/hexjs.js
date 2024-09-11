@@ -29,10 +29,7 @@ hex.devu = () => '//\\v0.0.240903';
 hex.crtu = va => {
   const { t, c, e, p } = va; //\ tag, class, element, parent
 
-  va.ns = 'http://www.w3.org/2000/svg'; //\ Namespace
-  va.clone = document.createElementNS(va.ns, 'g');
-
-  va.e = t.match(/svg/) ? document.createElementNS('http://www.w3.org/2000/svg', t) : document.createElement(t);
+  va.e = t.match(/svg|g/) ? document.createElementNS('http://www.w3.org/2000/svg', t) : document.createElement(t);
 
   c.length ? [].forEach.call(c.split(' '), ei => va.e.classList.add(ei)) : void 0;
 
@@ -167,3 +164,28 @@ hex.loadsvgu = async v => {
   }
 };
 /* </Loading and parsing SVG> */
+
+/* <> */
+hex.loadfetchu = async va => { //\ url, parent
+  const { u, p } = va;
+
+  va.p = typeof p === 'object' ? p : p.length ? document.querySelector(p) : document.body;
+  va.s = u.match(/([^\/]+)\.[^\.]+$/)[1];
+
+  await fetch(u)
+    .then(e => { if(!e.ok) { throw new Error('Network response was not ok'); } return e.text(); })
+    .then(e => va.p.innerHTML = e)
+    .catch(e => console.error('There was a problem with the fetch operation:', e));
+};
+/* </> */
+
+/* <load a CSS> */
+hex.loadcssu = v => {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = v;
+
+  document.head.appendChild(link);
+};
+/* </load a CSS> */
