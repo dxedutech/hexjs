@@ -25,10 +25,6 @@ git config --global core.autocrlf
 git config --global core.autocrlf input
 
 
-git stash
-git merge origin
-git stash pop
-
 .gitattributes
 - * text=auto 
 
@@ -45,7 +41,6 @@ in the repository and convert them back to the appropriate format for the user's
 
 \\ Cross-Platform Compatibility:
 This setting helps maintain consistency in text files across different operating systems(window, mac...), reducing issues related to line endings when collaborating with others.
-
 
 
 
