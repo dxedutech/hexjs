@@ -1,3 +1,5 @@
+/* button span { font: 16px "baby_bb33", sans-serif; } */
+
 .bed {
   color: #666;
   background: #000;
@@ -11,14 +13,10 @@
   position: absolute;
 }
 
-.sheet>div.title {
-  display: flex;
-  left: auto; top: 24px;
-}
-.sheet>div.title div {
-  margin: 0 4px;
-}
+.sheet>div.title { display: flex; left: auto; top: 24px; }
+.sheet>div.title div { margin: 0 4px; font: 40px "PlayTangram", sans-serif; }
 
 .sheet>div.menui {
   right: 24px; bottom: 24px;
 }
+

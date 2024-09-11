@@ -53,11 +53,7 @@ button span {
 button:hover span {
   top: -18px;
   color: #fff;
-<<<<<<< Updated upstream
   text-shadow: 0 8px 2px #444c, 0 -1px 2px #4444, -1px 0 2px #4444, 1px 0 2px #4444;
-=======
-  text-shadow: 0 10px 4px #444, 0 -1px 2px #4444, -1px 0 2px #4444, 1px 0 2px #4444;
->>>>>>> Stashed changes
 }
 
 footer {

@@ -4,6 +4,14 @@
   va.e = document.querySelector(`.${c.replace(/ /g, '.')}`);
   if(va.e !== null) return;
 
+  (async () => { 
+    await x.loadfontu('/www/wads/fonts/baby_bb33.woff');
+    await x.loadfontu('/www/wads/fonts/PlayTangram.woff');
+    
+    await x.importmoduleu('/www/ware/env.js');
+    x.envm.resizeu({ w: wh.w, h: wh.h });
+  })();
+
   /* .bed bi */
   va.bi = x.crtu({ t: 'div', c: c, e: '', p: '' });
 
@@ -41,14 +49,10 @@
   /* load */
   (async () => { 
     await x.loadxmlu('/www/want/index.xml');
-    await x.importmoduleu('/www/ware/tangram.js');
-    await x.importmoduleu('/www/ware/env.js');
-  
-    x.envm.resizeu({ w: wh.w, h: wh.h });
-
     await x.loadsvgu('/www/wads/prop/tangram.svg');
-    x.attu({ t: 'g', c: 'tangram', e: x.svgs.tangram, p: '.fgs>svg.prop' }); //\ need to append a path element to a g (group) element in SVG
-
+    x.attu({ t: 'g', c: 'tangram', e: x.svga.tangram, p: '.fgs>svg.prop' }); //\ need to append a path element to a g (group) element in SVG
+    
+    await x.importmoduleu('/www/ware/tangram.js');
   })();
 })({ x: hex, c: 'bed tangram', wh: { w: 1080, h: 1080 } }) 
 //\ serves as an alias for, allowing you to reference the same object with a x.

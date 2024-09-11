@@ -93,6 +93,21 @@ hex.importmoduleu = async v => {
 };
 /* </Import the module.> */
 
+/* <Loading FONT> */
+hex.loadfontu = async v => {
+  try {
+    const s = v.match(/([^\/]+)\.[^\.]+$/)[1];
+    const font = new FontFace(s, `url(${v})`);
+
+    const loadedFont = await font.load();
+    document.fonts.add(loadedFont);
+    document.body.style.fontFamily = `${s}, sans-serif`;
+  } catch (e) {
+    console.log('Failed to load font:', e);
+  }
+}
+/* <Loading FONT> */
+
 /* <Loading and parsing XML> */
 hex.xml = {};
 hex.xml.svgu = va => {
@@ -103,13 +118,13 @@ hex.xml.svgu = va => {
 
   (async () => {
     await hex.loadsvgu(va.p);
-    hex.attu({ t: 'g', c: `${hex.svgs.cls} ${va.a.i.value}`, e: hex.svgs[va.a.i.value], p: '.fgs>svg.prop' }); //\ need to append a path element to a g (group) element in SVG
+    hex.attu({ t: 'g', c: `${hex.svga.cls} ${va.a.i.value}`, e: hex.svga[va.a.i.value], p: '.fgs>svg.prop' }); //\ need to append a path element to a g (group) element in SVG
   })();
 };
 
 hex.parsexmlu = va => {
   const { e, s } = va;
-  hex.svgs.cls = s;
+  hex.svga.cls = s;
   [].forEach.call(e.querySelectorAll('prop'), ei => hex.xml[`${ei.getAttribute('x')}u`]({ e : ei }));
 };
 
@@ -131,11 +146,11 @@ hex.loadxmlu = async v => {
 /* </Loading and parsing XML> */
 
 /* <Loading and parsing SVG> */
-hex.svgs = {};
+hex.svga = {};
 hex.loadsvgu = async v => {
   try {
     const s = v.match(/([^\/]+)\.[^\.]+$/)[1];
-    if(hex.svgs[s]) return;
+    if(hex.svga[s]) return;
 
     const response = await fetch(v);
     if (!response.ok) { throw new Error('Network response was not ok'); }
@@ -145,7 +160,7 @@ hex.loadsvgu = async v => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(text, 'image/svg+xml');
 
-    hex.svgs[s] = doc.querySelector('g');
+    hex.svga[s] = doc.querySelector('g');
     
   } catch (e) {
     console.error('Error loading SVG:', e);
