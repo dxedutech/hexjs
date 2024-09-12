@@ -65,6 +65,6 @@
 
     await x.importmoduleu('/www/ware/tangram.js');
   })();
-})({ x: hex, c: '.bed.tangram', wh: { w: 1080, h: 1080 } });
+})({ x: hex, c: 'bed tangram', wh: { w: 1080, h: 1080 } });
 //\ serves as an alias for, allowing you to reference the same object with a x.
 //\ sets element class name, width, height.
