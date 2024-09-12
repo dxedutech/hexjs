@@ -29,16 +29,16 @@ hex.devu = () => '//\\v0.0.240903';
 hex.crtu = va => {
   const { t, c, e, p } = va; //\ tag, class, element, parent
 
+  va.p = typeof p === 'object' ? p : p.length ? document.querySelector(p) : document.body;
   va.e = t.match(/svg|g/) ? document.createElementNS('http://www.w3.org/2000/svg', t) : document.createElement(t);
 
-  c.length ? [].forEach.call(c.split(' '), ei => va.e.classList.add(ei)) : void 0;
+  c.length ? [].forEach.call(c.split(' '), e => va.e.classList.add(e)) : void 0;
 
   if (e.match(/^<.*>$/)) va.e.innerHTML = e;
   else va.e.textContent = e;
 
-  if (typeof p === 'object') p.appendChild(va.e);
-  else p.length ? document.querySelector(p).appendChild(va.e) : document.body.appendChild(va.e);
-
+  va.p.appendChild(va.e);
+ 
   return va.e;
 };
 /* </Creating an element with a class> */
@@ -105,79 +105,77 @@ hex.loadfontu = async v => {
 }
 /* <Loading FONT> */
 
-/* <Loading and parsing XML> */
+/* <parsing XML> */
 hex.xml = {};
 hex.xml.svgu = va => {
-  const { e } = va;
+  const { e, c, p } = va;
 
   va.a = e.attributes;
-  va.p = `${va.a.p.value}/${va.a.i.value}.${va.a.x.value}`;
+  va.p = va.a.p.value.length ? va.a.p.value : p;
+  
+  if(va.a.u.value.length) {
+    va.u = `${va.a.u.value}/${va.a.i.value}.${va.a.x.value}`;
 
-  (async () => {
-    await hex.loadsvgu(va.p);
-    hex.attu({ t: 'g', c: `${hex.svga.cls} ${va.a.i.value}`, e: hex.svga[va.a.i.value], p: '.fgs>svg.prop' }); //\ need to append a path element to a g (group) element in SVG
-  })();
+    (async () => {
+      va.ei = hex.crtu({ t: 'g', c: `${c} ${va.a.i.value}`, e: '', p: va.p });
+      await hex.loadfetchu({ u: va.u, p: va.ei });
+    })();
+  } else {
+    va.ei = document.querySelector(`svg.${va.a.i.value}`);
+    if(!va.ei) { hex.crtu({ t: 'svg', c: va.a.i.value, e: '', p: va.p }); }
+  }
+};
+
+hex.xml.htmlu = va => {
+  const { e, c, p } = va;
+
+  va.a = e.attributes;
+  va.p = va.a.p.value.length ? va.a.p.value : p;
+
+  if(va.a.u.value.length) {
+    va.u = `${va.a.u.value}/${va.a.i.value}.${va.a.x.value}`;
+
+    (async () => {
+      va.ei = hex.crtu({ t: 'div', c: `${c} ${va.a.i.value}`, e: '', p: va.p });
+      await hex.loadfetchu({ u: va.u, p: va.ei });
+    })();
+  } else {
+    va.ei = document.querySelector(`${va.a.x.value}.${va.a.i.value}`);
+    if(!va.ei) { hex.crtu({ t: 'div', c: va.a.i.value, e: '', p: va.p }); }
+  }
 };
 
 hex.parsexmlu = va => {
-  const { e, s } = va;
-  hex.svga.cls = s;
-  [].forEach.call(e.querySelectorAll('prop'), ei => hex.xml[`${ei.getAttribute('x')}u`]({ e : ei }));
+  const { e, c, p } = va;
+
+  [].forEach.call(e.querySelectorAll('prop'), e => hex.xml[`${e.getAttribute('x')}u`]({ e: e, c: c, p: p }));
+};
+/* </parsing XML> */
+
+/* <asynchronously loads an HTML, XML or SVG file> */
+hex.htmlu = va => va.p.innerHTML = va.e;
+hex.svgu = va => va.p.innerHTML = va.e;
+hex.xmlu = va => {
+  const { e, c, p } = va;
+
+  va.p = new DOMParser();
+  va.d = va.p.parseFromString(e, 'application/xml');
+  hex.parsexmlu({ e: va.d, c: c, p: p });
 };
 
-hex.loadxmlu = async v => {
-  try {
-    const response = await fetch(v);
-    if (!response.ok) { throw new Error('Network response was not ok'); }
-    const text = await response.text();
-
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(text, 'application/xml');
-    const s = v.match(/([^\/]+)\.[^\.]+$/)[1];
-    hex.parsexmlu({ e: doc, s: s });
-
-  } catch (e) {
-    console.log('There was a problem with the fetch operation:', e);
-  }
-};
-/* </Loading and parsing XML> */
-
-/* <Loading and parsing SVG> */
-hex.svga = {};
-hex.loadsvgu = async v => {
-  try {
-    const s = v.match(/([^\/]+)\.[^\.]+$/)[1];
-    if(hex.svga[s]) return;
-
-    const response = await fetch(v);
-    if (!response.ok) { throw new Error('Network response was not ok'); }
-
-    const text = await response.text();
-
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(text, 'image/svg+xml');
-
-    hex.svga[s] = doc.querySelector('g');
-    
-  } catch (e) {
-    console.error('Error loading SVG:', e);
-  }
-};
-/* </Loading and parsing SVG> */
-
-/* <> */
 hex.loadfetchu = async va => { //\ url, parent
   const { u, p } = va;
 
   va.p = typeof p === 'object' ? p : p.length ? document.querySelector(p) : document.body;
-  va.s = u.match(/([^\/]+)\.[^\.]+$/)[1];
+  va.c = u.match(/([^\/]+)\.[^\.]+$/)[1];
+  va.e = u.match(/.*\.(\w+)$/)[1];
 
   await fetch(u)
     .then(e => { if(!e.ok) { throw new Error('Network response was not ok'); } return e.text(); })
-    .then(e => va.p.innerHTML = e)
+    .then(e => hex[`${va.e}u`]({ e: e, c: va.c, p: va.p }) )
     .catch(e => console.error('There was a problem with the fetch operation:', e));
 };
-/* </> */
+/* </asynchronously loads an HTML, XML or SVG file> */
 
 /* <load a CSS> */
 hex.loadcssu = v => {

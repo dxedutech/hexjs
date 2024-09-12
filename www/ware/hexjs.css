@@ -9,12 +9,12 @@ html, body {
   justify-content: center; /* 수평 가운데 정렬 */
   align-items: center; /* 수직 가운데 정렬 */
   overflow: hidden; /* 전체 스크롤 숨기기 */
-  background: #222;
+  background: #000;
   box-sizing: border-box;
 }
 
 body {
-  background-color: #000;
+  background: #000;
   -ms-overflow-style: none; /* 인터넷 익스플로러 */
   scrollbar-width: none; /* 파이어폭스 */
 
