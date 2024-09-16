@@ -190,3 +190,37 @@ GKE에서 서비스가 생성되면, 외부 IP를 통해 애플리케이션에 �
 
 kubectl get services
 이 과정을 통해 GKE에서 Go 언어와 MongoDB를 사용하는 서비스를 구축할 수 있습니다. 각 단계에서 발생할 수 있는 문제를 해결하기 위해 GCP 문서와 Kubernetes 문서를 참고하는 것이 좋습니다.
+
+
+
+
+
+
+
+
+~$ ssh user@hostname
+
+## no matching host key type found. Their offer: ssh-rsa
+## ssh 사용시 옵션으로 ssh-rsa 활성화한다.
+
+~$ ssh -o "HostKeyAlgorithms ssh-rsa" user@hostname
+
+## 새로운 SSH 키를 생성하기 전에  SSH 가 있는지 확인한다. 
+
+~$ cat ~/.ssh/id_rsa.pub
+~$ cat: /.../.ssh/id_rsa.pub: No such file or directory
+
+## 위와 같이 나오면 SSH 키가 없으므로 SSH 키를 생성한다.
+
+~$ 직접 ~/.ssh 디렉토리에서  확인할 수 있다.
+~$ cd ~/.ssh
+~$ ls
+
+## SSH 키를 생성한다.
+~$ ssh-keygen
+
+## 디폴트 값인 is_rsa 이다. (GitLab 관련 이슈)
+## 비밀번호는 입력하지 않아도 된다.
+
+## 맥에서 다음과 같이 공개키를 복사할 수 있다
+~$ pbcopy < ~/.ssh/id_rsa.pub
