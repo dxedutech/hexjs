@@ -8,43 +8,43 @@
     await x.loadfontu('/www/wads/fonts/baby_bb33.woff');
     await x.loadfontu('/www/wads/fonts/PlayTangram.woff');
     
-    await x.importmoduleu('/www/ware/env.js');
+    await x.importmoduleu({ m: '/www/ware/env.js' }); //\ module, index
     x.envm.resizeu({ w: wh.w, h: wh.h });
   })();
 
-  /* .bed bi */
-  v.bi = x.crtu({ t: 'div', c: c, e: '', p: '' });
+  /* .bed //\ */
+  v.bed = x.crtu({ t: 'div', c: c, e: '', p: '' });
 
-  /* sheet si */
-  v.si = x.crtu({ t: 'div', c: 'sheet bgs', e: '', p: v.bi });
+  /* .sheet.bgs //\ background */
+  v.bgs = x.crtu({ t: 'div', c: 'sheet bgs', e: '', p: v.bed });
 
-  v.ei = x.crtu({ t: 'svg', c: 'bg proc', e: '<g class="box"><path d="M0 0 H1080 V1080 H0 L0 0" stroke="#fff4" fill="transparent"/></g>', p: v.si });
+  v.ei = x.crtu({ t: 'svg', c: 'bg proc', e: '<g class="box"><path d="M0 0 H1080 V1080 H0 L0 0" stroke="#fff4" fill="transparent"/></g>', p: v.bgs });
   v.ei.setAttribute('width', '1080');
   v.ei.setAttribute('height', '1080');
 
-  /* sheet sj */
-  v.sj = x.crtu({ t: 'div', c: 'sheet fgs', e:'', p: v.bi });
+  /* .sheet.fgs //\ foreground */
+  v.fgs = x.crtu({ t: 'div', c: 'sheet fgs', e:'', p: v.bed });
 
-  v.ei = x.crtu({ t: 'div', c: 'fg title', e: '', p: v.sj });
+  v.ei = x.crtu({ t: 'div', c: 'fg title', e: '', p: v.fgs });
   x.crtu({ t: 'div', c: '', e: '무궁화꽃이', p: v.ei });
   x.crtu({ t: 'div', c: '', e: '피었습니다', p: v.ei });
 
-  v.ei = x.crtu({ t: 'svg', c: 'fg prop', e: '', p: v.sj });
+  v.ei = x.crtu({ t: 'svg', c: 'fg prop', e: '', p: v.fgs });
   v.ei.setAttribute('width', '1080');
   v.ei.setAttribute('height', '1080');
 
-  /* sheet sk */
-  v.sk = x.crtu({ t: 'div', c: 'sheet uis', e:'', p: v.bi });
+  /* .sheet.uis //\ user-interface */
+  v.uis = x.crtu({ t: 'div', c: 'sheet uis', e:'', p: v.bed });
 
   v.css = {
     backgroundColor: x(v.b).g,
     cursor: 'none'
   }
-  v.ei = x.crtu({ t: 'div', c: 'btns menui', e: '', p: v.sk });
-  v.ej = x.crtu({ t: 'button', c: 'btn', e: '<span>TANGENT</span>', p: v.ei });
-  x(v.ej).cssu(v.css);
-  v.ej = x.crtu({ t: 'button', c: 'btn', e: '<span>TANGRAM</span>', p: v.ei });
-  x(v.ej).cssu(v.css);
+  v.ei = x.crtu({ t: 'div', c: 'btns menui', e: '', p: v.uis });
+  v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>TANGENT</span>', p: v.ei });
+  x(v.eii).cssu(v.css);
+  v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>TANGRAM</span>', p: v.ei });
+  x(v.eii).cssu(v.css);
   
   /* load */
   (async () => { 
@@ -63,8 +63,12 @@
     v.ei = x.crtu({ t: 'g', c: 'prop index-3-3', e: '', p: '.sheet.fgs>svg.prop' });
     await x.loadfetchu({ u: '/www/wads/prop/index/index-3-3.svg', p: v.ei });
 
-    await x.importmoduleu('/www/ware/tangram.js');
+    await x.importmoduleu({ m: '/www/ware/btn.js' }); //\ module, index
+    // await x.importmoduleu({ m: '/www/want/tangent.js', i: 'tgt' }); //\ module, index
+    // await x.importmoduleu({ m: '/www/want/tangram.js', i: 'tgm' }); //\ module, index
+
+    console.log(x.btnm);
   })();
-})({ x: hex, c: 'bed tangram', wh: { w: 1080, h: 1080 } });
+})({ x: hex, c: 'hex', wh: { w: 1080, h: 1080 } });
 //\ serves as an alias for, allowing you to reference the same object with a x.
 //\ sets element class name, width, height.

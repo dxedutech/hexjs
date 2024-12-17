@@ -1,11 +1,9 @@
 const supportsTouch = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 const isMobileDevice = () => (window.innerWidth <= 768 && window.devicePixelRatio || 1 > 1) || window.innerWidth < 480;
 
-export default (() => {
-  const r = {};
-
+export default (v => {
   const devu = () => '//\\v0.0.240923';
-  r.devu = devu;
+  v.devu = devu;
 
   const infou = () => {
     const isMobile = supportsTouch() || isMobileDevice();
@@ -17,9 +15,9 @@ export default (() => {
       resolution: { w: window.screen.width, h: window.screen.height, r: window.devicePixelRatio }
     };
   }
-  r.isMobile = infou().isMobile;
-  r.isPortrait = infou().isPortrait;
-  r.resolution = infou().resolution;
+  v.isMobile = infou().isMobile;
+  v.isPortrait = infou().isPortrait;
+  v.resolution = infou().resolution;
   
   const resizeu = v => {
     const { w, h } = v;
@@ -44,7 +42,7 @@ export default (() => {
     window.addEventListener('resize', resizebodyu);
     resizebodyu();
   }
-  r.resizeu = resizeu;
+  v.resizeu = resizeu;
 
-  return r;
-})();
+  return v;
+})({});

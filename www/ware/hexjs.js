@@ -2,30 +2,29 @@ const hex = e => {
   const a = e === undefined ? [] : typeof e === 'string' ? document.querySelectorAll(e) : Array.isArray(e) ? e : [e];
   const r = {};
 
-  /* <Store color values> */
+  /* <store color values> //\ */
   const clra = {
     r: '#dae',
     g: '#aed',
     y: '#eda'
   };
   [].forEach.call(Object.keys(clra), ei => r[ei] = clra[ei]);
-  /* </Store color values> */
+  /* </Store color values> //\ */
 
-  /* <Add, Remove classes to elements> */
+  /* <Add, Remove classes to elements> //\ */
   r.addclassu = v => [].forEach.call(a, ei => ei ? ei.classList.add(v) : void 0);
   r.removeclassu = v => [].forEach.call(a, ei => ei ? ei.classList.remove(v) : void 0);
-  /* </Add, Remove classes to elements> */
+  /* </Add, Remove classes to elements> //\ */
 
-  /* <Apply styles to elements> */
+  /* <Apply styles to elements> //\ */
   r.cssu = v => [].forEach.call(a, ei => ei ? [].forEach.call(Object.keys(v), eii => v.hasOwnProperty(eii) ? ei.style[eii] = v[eii] : void 0) : void 0);
-  /* </Apply styles to elements> */
+  /* </Apply styles to elements> //\ */
 
   return r;
 };
-
 hex.devu = () => '//\\v0.0.240903';
 
-/* <Creating an element with a class> */
+/* <create an element with a Element> //\ */
 hex.crtu = v => {
   const { t, c, e, p } = v; //\ tag, class, element, parent
 
@@ -41,9 +40,9 @@ hex.crtu = v => {
  
   return v.e;
 };
-/* </Creating an element with a class> */
+/* </create an element with a Element> //\ */
 
-/* <Creating an element with a class> */
+/* <create an element with a Class> //\ */
 hex.attu = v => {
   const { t, c, e, p } = v; //\ tag, class, element, parent
 
@@ -73,24 +72,27 @@ hex.attu = v => {
 
   return e;
 };
-/* </Creating an element with a class> */
+/* </create an element with a Class> //\ */
 
-/* <Import the module.> */
+/* <import the Module.> //\ */
 hex.importmoduleu = async v => {
+  const { m , i } = v; //\ module, index
+
   try {
-    const s = v.match(/([^\/]+)\.[^\.]+$/)[1];
+    const s = i || m.match(/([^\/]+)\.[^\.]+$/)[1];
     if (hex[s]) return;
 
-    const m = await import(v);
-    hex[`${s}m`] = m.default;
+    v.m = await import(m);
+    hex[`${s}m`] = v.m.default;
+    console.log('//\ add default module', `${s}m`);
 
   } catch (e) {
     console.log('There was a problem with the import operation:', e);
   }
 };
-/* </Import the module.> */
+/* </import the Module.> //\ */
 
-/* <Loading FONT> */
+/* <load FONT> //\ */
 hex.loadfontu = async v => {
   try {
     const s = v.match(/([^\/]+)\.[^\.]+$/)[1];
@@ -103,9 +105,9 @@ hex.loadfontu = async v => {
     console.log('Failed to load font:', e);
   }
 }
-/* <Loading FONT> */
+/* <load FONT> //\ */
 
-/* <parsing XML> */
+/* <parsing XML> //\ */
 hex.xml = {};
 hex.xml.svgu = v => {
   const { e, c, p } = v;
@@ -150,9 +152,9 @@ hex.parsexmlu = v => {
 
   [].forEach.call(e.querySelectorAll('prop'), e => hex.xml[`${e.getAttribute('x')}u`]({ e: e, c: c, p: p }));
 };
-/* </parsing XML> */
+/* </parsing XML> //\ */
 
-/* <asynchronously loads an HTML, XML or SVG file> */
+/* <asynchronously loads an HTML, XML or SVG file> //\ */
 hex.htmlu = v => v.p.innerHTML = v.e;
 hex.svgu = v => v.p.innerHTML = v.e;
 hex.xmlu = v => {
@@ -175,9 +177,9 @@ hex.loadfetchu = async v => { //\ url, parent
     .then(e => hex[`${v.e}u`]({ e: e, c: v.c, p: v.p }) )
     .catch(e => console.error('There was a problem with the fetch operation:', e));
 };
-/* </asynchronously loads an HTML, XML or SVG file> */
+/* </asynchronously loads an HTML, XML or SVG file> //\ */
 
-/* <load a CSS> */
+/* <load a CSS> //\ */
 hex.loadcssu = v => {
   const link = document.createElement('link');
   link.rel = 'stylesheet';
@@ -186,4 +188,22 @@ hex.loadcssu = v => {
 
   document.head.appendChild(link);
 };
-/* </load a CSS> */
+/* </load a CSS> //\ */
+
+/* <load a Page> //\ */
+hex.loadpageu = async v => {
+  const { u } = v;
+
+  try {
+    v.r = await fetch(`${u}`); //\ /want/tangram
+    v.d = await v.r.json();
+    
+    // 받은 데이터를 화면에 표시
+    // document.getElementById('message').innerText = v.d.message;
+    console.log(v.d.message);
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+/* </load a Page> //\ */

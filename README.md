@@ -12,7 +12,7 @@ git push origin main
 git pull
 
 git reset
-\\This undoes the last commit and keeps the changes in the working directory, but unstages them.
+\\ This undoes the last commit and keeps the changes in the working directory, but unstages them.
 
 git init
 git config --global user.name "Your Name"
