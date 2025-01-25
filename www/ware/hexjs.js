@@ -24,6 +24,7 @@ const hex = e => {
 };
 hex.devu = () => '//\\v0.0.240903';
 
+
 /* <create an element with a Element> //\ */
 hex.crtu = v => {
   const { t, c, e, p } = v; //\ tag, class, element, parent

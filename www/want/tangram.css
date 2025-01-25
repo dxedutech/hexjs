@@ -1,13 +1,6 @@
-#svg-container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+html, body { display: flex; width: 100%; height: 100%; margin: 0;  padding: 0; background: #222; justify-content: center; align-items: center; overflow: hidden; }
+body>div, .scene { width: 100%; height: 100%; }
+.seg { position: absolute; }
 
-svg {
-  max-width: 100%;
-  max-height: 100%;
-}
-
+.seg.xv { width: 100%; height: 100%; }
+.seg.xvi { pointer-events: none; }

@@ -1,9 +1,9 @@
 (v => {
   const { x, c, wh } = v;
 
-  v.e = document.querySelector(c); //\`.${c.replace(/ /g, '.')}`
-  if(v.e !== null) return;
-
+  // v.e = document.querySelector(c); //\`.${c.replace(/ /g, '.')}`
+  // if(v.e !== null) return;
+  console.log(c);
   (async () => { 
     await x.loadfontu('/www/wads/fonts/baby_bb33.woff');
     await x.loadfontu('/www/wads/fonts/PlayTangram.woff');
@@ -13,14 +13,14 @@
   })();
 
   /* .bed //\ */
-  v.bed = x.crtu({ t: 'div', c: c, e: '', p: '' });
+  v.bed = x.crtu({ t: 'div', c: c, e: '', p: document.querySelector('body>div:nth-child(1)') });
 
   /* .sheet.bgs //\ background */
   v.bgs = x.crtu({ t: 'div', c: 'sheet bgs', e: '', p: v.bed });
 
-  v.ei = x.crtu({ t: 'svg', c: 'bg proc', e: '<g class="box"><path d="M0 0 H1080 V1080 H0 L0 0" stroke="#fff4" fill="transparent"/></g>', p: v.bgs });
-  v.ei.setAttribute('width', '1080');
-  v.ei.setAttribute('height', '1080');
+  v.ei = x.crtu({ t: 'svg', c: 'bg proc', e: `<g class="box"><path d="M0 0 H${wh.w} V${wh.h} H0 L0 0" stroke="#fff4" fill="transparent"/></g>`, p: v.bgs });
+  v.ei.setAttribute('width', `${wh.w}`);
+  v.ei.setAttribute('height', `${wh.h}`);
 
   /* .sheet.fgs //\ foreground */
   v.fgs = x.crtu({ t: 'div', c: 'sheet fgs', e:'', p: v.bed });
@@ -30,8 +30,8 @@
   x.crtu({ t: 'div', c: '', e: '피었습니다', p: v.ei });
 
   v.ei = x.crtu({ t: 'svg', c: 'fg prop', e: '', p: v.fgs });
-  v.ei.setAttribute('width', '1080');
-  v.ei.setAttribute('height', '1080');
+  v.ei.setAttribute('width', `${wh.w}`);
+  v.ei.setAttribute('height', `${wh.h}`);
 
   /* .sheet.uis //\ user-interface */
   v.uis = x.crtu({ t: 'div', c: 'sheet uis', e:'', p: v.bed });
@@ -69,6 +69,6 @@
 
     console.log(x.btnm);
   })();
-})({ x: hex, c: 'hex', wh: { w: 1080, h: 1080 } });
+})({ x: hex, c: 'hex', wh: { w: 1280, h: 1280 } });
 //\ serves as an alias for, allowing you to reference the same object with a x.
 //\ sets element class name, width, height.

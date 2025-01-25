@@ -1,15 +1,67 @@
 {{define "title"}}Tangram{{end}}
 {{define "css"}}<link rel="stylesheet" href="/www/want/tangram.css">{{end}}
-<div class="seg ct"> <!-- Segment Content -->
-  <svg viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid meet">
-    <g>
-      <path id="triangle1" d="M440 376 L504 504 L376 504 Z" fill="black" />
-      <path id="triangle2" d="M640 576 L704 704 L576 704 Z" fill="black" />
-    </g>
-  </svg>
-</div>
-<div class="seg tt"> <!-- Segment Title -->
-  <div class="xtt"></div>
-</div>
+
 {{define "js"}}<script src="/www/want/tangram.js" defer></script>{{end}}
+{{define "contents"}}
+<div class="scene">
+  <div>
+    <div class="seg xv">
+      <svg width="1280" height="1280" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <g class="tans xi">
+          <path class="tan xi" d="M0,0 L256,0 L128,128 Z" fill="#ee743f" /> 
+          <path class="tan xii" d="M0,256 L128,128 L0,0 Z" fill="#e62d8b" />
+          <path class="tan xiii" d="M128,256 L64,192 L0,256 Z" fill="#2d91b7" />
+          <path class="tan xiv" d="M192,192 L128,128 L64,192 L128,256 Z" fill="#45537b" />
+          <path class="tan xv" d="M256,256 L256,128 L128,256 Z" fill="#e71223" />
+          <path class="tan xvi" d="M256,0 L192,64 L192,192 L256,128 Z" fill="#e9d226" />
+          <path class="tan xvii" d="M128,128 L192,192 L192,64 Z" fill="#7caa2a" />
+        </g>
+        <g class="tans xii">
+          <path class="tan xxi" d="M0,0 L256,0 L128,128 Z" fill="#ee743f" /> 
+          <path class="tan xxii" d="M0,256 L128,128 L0,0 Z" fill="#e62d8b" />
+          <path class="tan xxiii" d="M128,256 L64,192 L0,256 Z" fill="#2d91b7" />
+          <path class="tan xxiv" d="M192,192 L128,128 L64,192 L128,256 Z" fill="#45537b" />
+          <path class="tan xxv" d="M256,256 L256,128 L128,256 Z" fill="#e71223" />
+          <path class="tan xxvi" d="M256,0 L192,64 L192,192 L256,128 Z" fill="#e9d226" />
+          <path class="tan xxvii" d="M128,128 L192,192 L192,64 Z" fill="#7caa2a" />
+        </g>
+      </svg>
+    </div>
+    <div class="seg xvi">
+      <svg width="1280" height="1280" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <g stroke="#dae" stroke-width="1" stroke-dasharray="8 120">
+          <path d="M0,128 L1280,128 Z" />
+          <path d="M0,256 L1280,256 Z" />
+          <path d="M0,384 L1280,384 Z" />
+          <path d="M0,512 L1280,512 Z" />
+          <path d="M0,640 L1280,640 Z" />
+          <path d="M0,768 L1280,768 Z" />
+          <path d="M0,896 L1280,896 Z" />
+          <path d="M0,1024 L1280,1024 Z" />
+          <path d="M0,1152 L1280,1152 Z" />
+          <path d="M128,0 L128,1280 Z" />
+          <path d="M256,0 L256,1280 Z" />
+          <path d="M384,0 L384,1280 Z" />
+          <path d="M512,0 L512,1280 Z" />
+          <path d="M640,0 L640,1280 Z" />
+          <path d="M768,0 L768,1280 Z" />
+          <path d="M896,0 L896,1280 Z" />
+          <path d="M1024,0 L1024,1280 Z" />
+          <path d="M1152,0 L1152,1280 Z" />
+        </g>
+      </svg>
+    </div>
+    <div class="seg xx">
+      <div>
+        <div class="btn pluse"></div> <!-- pluse -->
+        <div class="btn reset"></div> <!-- Reset -->
+        <div class="btn magnetic"></div> <!-- Magnetic Sort -->
+        <div class="btn gride"></div> <!-- Gride -->
+        <div class="btn save"></div> <!-- Save -->
+        <div class="btn youtube"></div> <!-- youtube -->
+      </div>
+    </div>
+  </div>
+</div>
+{{end}}
 {{define "footer"}}Made with Hexjs{{end}}
