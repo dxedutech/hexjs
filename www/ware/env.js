@@ -6,7 +6,6 @@ export default (r => {
   r.wh = { w: 0, h: 0 };
   r.hv = { h: 0, v: 0 };
   r.isMobile = supportsTouch() || isMobileDevice();
-  r.isPortrait = window.matchMedia("(orientation: portrait)").matches ? 'portrait' : 'landscape';
   r.resolution = { w: window.screen.width, h: window.screen.height, r: window.devicePixelRatio };
 
   const resizeu = v => {
@@ -14,25 +13,28 @@ export default (r => {
 
     r.wh.w = w || 800;
     r.wh.h = h || 800;
+    r.isPortrait = window.matchMedia("(orientation: portrait)").matches ? 'portrait' : 'landscape';
 
     const resizebodyu = () => {
-      v.b = document.body;
-      r.r = Math.min(window.innerWidth / r.wh.w, window.innerHeight / r.wh.h);
-      v.b.style.transform = `scale(${r.r})`;
-      v.b.style.transformOrigin = 'left top';
-      v.b.style.left = `${window.innerWidth*0.5 - r.wh.w*r.r*0.5}px`;
-      v.b.style.top = `${window.innerHeight*0.5 - r.wh.h*r.r*0.5}px`;
+      v.d = document.body.children[0];
 
-      v.r = v.b.children[0].getBoundingClientRect();
-      r.hv.h = v.r.left;
-      r.hv.v = v.r.top ;
+      r.r = Math.min(window.innerWidth / r.wh.w, window.innerHeight / r.wh.h);
+      v.d.style.transform = `scale(${r.r})`;
+
+      v.d.style.width = `${r.wh.w}px`;
+      v.d.style.height = `${r.wh.h}px`;
+
+      r.hv.h = window.innerWidth*0.5 - r.wh.w*r.r*0.5;
+      r.hv.v = window.innerHeight*0.5 - r.wh.h*r.r*0.5;
+
+      v.e = v.d.querySelector('.sheet.uis');
+      if(v.e){
+        v.e.classList.remove('horizontal');
+        v.e.classList.remove('vertical');
+        v.e.classList.add(window.innerWidth>window.innerHeight ? 'horizontal' : 'vertical');
+      };
     }
   
-    document.documentElement.style.width = `${r.wh.w}px`;
-    document.documentElement.style.height = `${r.wh.h}px`;
-    document.body.style.width = `${r.wh.w}px`;
-    document.body.style.height = `${r.wh.h}px`;
-
     window.addEventListener('resize', resizebodyu);
     resizebodyu();
   }

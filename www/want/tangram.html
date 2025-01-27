@@ -4,8 +4,9 @@
 {{define "js"}}<script src="/www/want/tangram.js" defer></script>{{end}}
 {{define "contents"}}
 <div class="scene">
-  <div>
-    <div class="seg xv">
+  <div class="sheet bgs"></div>
+  <div class="sheet fgs">
+    <div class="seg tangram">
       <svg width="1280" height="1280" xmlns="http://www.w3.org/2000/svg" version="1.1">
         <g class="tans xi">
           <path class="tan xi" d="M0,0 L256,0 L128,128 Z" fill="#ee743f" /> 
@@ -27,7 +28,9 @@
         </g>
       </svg>
     </div>
-    <div class="seg xvi">
+  </div>
+  <div class="sheet uis">
+    <div class="seg gride">
       <svg width="1280" height="1280" xmlns="http://www.w3.org/2000/svg" version="1.1">
         <g stroke="#dae" stroke-width="1" stroke-dasharray="8 120">
           <path d="M0,128 L1280,128 Z" />
@@ -51,14 +54,15 @@
         </g>
       </svg>
     </div>
-    <div class="seg xx">
+    <div class="seg btns">
       <div>
-        <div class="btn pluse"></div> <!-- pluse -->
-        <div class="btn reset"></div> <!-- Reset -->
-        <div class="btn magnetic"></div> <!-- Magnetic Sort -->
-        <div class="btn gride"></div> <!-- Gride -->
-        <div class="btn save"></div> <!-- Save -->
-        <div class="btn youtube"></div> <!-- youtube -->
+        <div class="btn color" js="'fn': ''"><span></span></div> <!-- color -->
+        <div class="btn pluse" js="'fn': ''"><span></span></div> <!-- pluse -->
+        <div class="btn reset" js="'url': 'tangram'"><span></span></div> <!-- Reset -->
+        <div class="btn magnetic" js="'fn': ''"><span></span></div> <!-- Magnetic Sort -->
+        <div class="btn gride" js="'fn': ''"><span></span></div> <!-- Gride -->
+        <div class="btn save" js="'fn': ''"><span></span></div> <!-- Save -->
+        <div class="btn youtube" js="'fn': ''"><span></span></div> <!-- youtube -->
       </div>
     </div>
   </div>

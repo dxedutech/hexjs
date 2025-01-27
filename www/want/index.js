@@ -1,9 +1,6 @@
 (v => {
   const { x, c, wh } = v;
 
-  // v.e = document.querySelector(c); //\`.${c.replace(/ /g, '.')}`
-  // if(v.e !== null) return;
-  console.log(c);
   (async () => { 
     await x.loadfontu('/www/wads/fonts/baby_bb33.woff');
     await x.loadfontu('/www/wads/fonts/PlayTangram.woff');
@@ -40,10 +37,12 @@
     backgroundColor: x(v.b).g,
     cursor: 'none'
   }
-  v.ei = x.crtu({ t: 'div', c: 'btns menui', e: '', p: v.uis });
+  v.ei = x.crtu({ t: 'div', c: 'seg btns', e: '', p: v.uis });
   v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>TANGENT</span>', p: v.ei });
+  v.eii.setAttribute('js', '\'url\': \'tangent\', \'type\': \'replace\'');
   x(v.eii).cssu(v.css);
   v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>TANGRAM</span>', p: v.ei });
+  v.eii.setAttribute('js', '\'url\': \'tangram\', \'type\': \'replace\'');
   x(v.eii).cssu(v.css);
   
   /* load */
@@ -64,11 +63,7 @@
     await x.loadfetchu({ u: '/www/wads/prop/index/index-3-3.svg', p: v.ei });
 
     await x.importmoduleu({ m: '/www/ware/btn.js' }); //\ module, index
-    // await x.importmoduleu({ m: '/www/want/tangent.js', i: 'tgt' }); //\ module, index
-    // await x.importmoduleu({ m: '/www/want/tangram.js', i: 'tgm' }); //\ module, index
-
-    console.log(x.btnm);
   })();
-})({ x: hex, c: 'hex', wh: { w: 1280, h: 1280 } });
+})({ x: hex, c: 'scene', wh: { w: 1280, h: 1280 } });
 //\ serves as an alias for, allowing you to reference the same object with a x.
 //\ sets element class name, width, height.

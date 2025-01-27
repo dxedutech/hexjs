@@ -24,6 +24,9 @@ const hex = e => {
 };
 hex.devu = () => '//\\v0.0.240903';
 
+/* <parse json(attribute js) //\ > */
+hex.parseattu = v => JSON.parse(`{ ${v.e.attributes['js'].value.replace(/'/g, '"')} }`);
+/* </parse js(attribute json) //\ > */
 
 /* <create an element with a Element> //\ */
 hex.crtu = v => {
@@ -208,3 +211,11 @@ hex.loadpageu = async v => {
   }
 }
 /* </load a Page> //\ */
+
+/* <location a Page> //\ */
+hex.location = {
+  href: v => location.href=v.u,
+  replace: v => location.replace(v.u),
+  open: v => window.open(v.u)
+}
+/* </location a Page> //\ */

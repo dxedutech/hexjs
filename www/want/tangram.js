@@ -52,13 +52,16 @@ const rotateu = v =>  {
     await x.importmoduleu({ m: '/www/ware/env.js' }); //\ module, index
     x.envm.resizeu({ w: w.wh.w, h: w.wh.h });
 
-    w.r = x.envm.r;
-    w.hv = x.envm.hv;
+    // w.r = x.envm.r;
+    // w.hv = x.envm.hv;
 
     const drag = {
       startu: e => {
         e.preventDefault();
         
+        w.r = x.envm.r;
+        w.hv = x.envm.hv;
+
         i.c = `.${e.target.classList.value.replace(/\s/, '.')}`;
         [].forEach.call(Object.keys(o[i.c]), e => i[e] = o[i.c][e]);
   
@@ -212,6 +215,7 @@ const rotateu = v =>  {
     document.addEventListener('mouseup', drag.endu);
     document.addEventListener('touchend', drag.endu);
 
+    await x.importmoduleu({ m: '/www/ware/btn.js' }); //\ module, index
   })();
 })({ x: hex, a: document.querySelectorAll('.tan'), o: {}, i: {}, w:{ r: 1, wh: { w: 1280, h: 1280 }} });
 // a: document.querySelectorAll('.tan'), o: {}, i: {}, w: { r: window.xr, wh: window.xwh }

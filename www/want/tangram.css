@@ -1,6 +1,19 @@
 html, body { display: flex; width: 100%; height: 100%; margin: 0;  padding: 0; background: #222; justify-content: center; align-items: center; overflow: hidden; }
-body>div, .scene { width: 100%; height: 100%; }
-.seg { position: absolute; }
+body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 
-.seg.xv { width: 100%; height: 100%; }
-.seg.xvi { pointer-events: none; }
+.seg { position: absolute; }
+.seg.tangram { width: 100%; height: 100%; }
+.seg.gride { pointer-events: none; }
+
+.sheet.uis .seg.btns { left: calc(100% + 8px); top: 50%; }
+.sheet.uis.vertical .seg.btns { left: 50%; top: calc(100% + 8px); }
+.sheet.uis.vertical .seg.btns>div { display: flex; }
+
+.sheet.uis .seg.btns .btn { width: 64px; height: 64px; margin: 8px; background: #dae; }
+.sheet.uis .seg.btns .btn.color span {}
+.sheet.uis .seg.btns .btn.pluse span {}
+.sheet.uis .seg.btns .btn.reset span {}
+.sheet.uis .seg.btns .btn.magnetic span {}
+.sheet.uis .seg.btns .btn.gride span {}
+.sheet.uis .seg.btns .btn.save span {}
+.sheet.uis .seg.btns .btn.youtube span {}

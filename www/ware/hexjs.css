@@ -4,7 +4,7 @@
 html, body {
   position: relative; 
   display: flex;
-  width: auto; height: auto;
+  width: 100%; height: 100%;
   margin: 0; padding: 0;
   justify-content: center; /* 수평 가운데 정렬 */
   align-items: center; /* 수직 가운데 정렬 */
@@ -14,6 +14,8 @@ html, body {
 }
 
 body {
+  --w: 1280px ;
+  --h: 1280px ;
   background: #000;
   -ms-overflow-style: none; /* 인터넷 익스플로러 */
   scrollbar-width: none; /* 파이어폭스 */
@@ -65,7 +67,7 @@ footer {
   text-align: center;
 }
 
-.hex {
+.scene {
   display: flex;
   flex-direction: column;
   width: 100%; height: 100%;
@@ -74,12 +76,17 @@ footer {
 }
 
 .sheet { /* bgs, fgs, uis... */
+  position: absolute;
   display: flex;
   flex-direction: column;
   width: 100%; height: 100%;
   justify-content: center;
   align-items: center;
 }
+
+.sheet.uis { pointer-events: none; }
+.sheet.uis .seg.btns { pointer-events: fill; }
+.sheet.uis .seg.btns span { pointer-events: none; }
 
 .bg { color: #eda; }
 .fg { color: #dae; }
