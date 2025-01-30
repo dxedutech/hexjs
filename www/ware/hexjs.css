@@ -39,23 +39,27 @@ span {
   font: 16px 'Dokdo', system-ui;
   user-select: none;
 }
+
 /* button */
 button {
-  width: max-content; height: auto;
+  width: auto; height: auto;
   margin: 0 4px; padding: 6px 8px 4px 8px;
+  background: none;
   border-radius: 6px;
-  user-select: none;
+  pointer-events: fill;
 }
 button span {
   position: relative;
   color: #444;
   font: 16px 'Black Han Sans', sans-serif;
   text-shadow: 0 1px 2px #4444, 0 -1px 2px #4444, -1px 0 2px #4444, 1px 0 2px #4444;
+  user-select: none;
+  pointer-events: none;
 }
 button:hover span {
-  top: -18px;
   color: #fff;
   text-shadow: 0 8px 2px #444c, 0 -1px 2px #4444, -1px 0 2px #4444, 1px 0 2px #4444;
+  pointer-events: none;
 }
 
 footer {
@@ -85,8 +89,7 @@ footer {
 }
 
 .sheet.uis { pointer-events: none; }
-.sheet.uis .seg.btns { pointer-events: fill; }
-.sheet.uis .seg.btns span { pointer-events: none; }
+.sheet.uis .seg.btns, .sheet.uis .seg.btns>div { width: auto; height: auto; }
 
 .bg { color: #eda; }
 .fg { color: #dae; }

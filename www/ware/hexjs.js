@@ -8,25 +8,31 @@ const hex = e => {
     g: '#aed',
     y: '#eda'
   };
-  [].forEach.call(Object.keys(clra), ei => r[ei] = clra[ei]);
+  [].forEach.call(Object.keys(clra), k => r[k] = clra[k]);
   /* </Store color values> //\ */
 
   /* <Add, Remove classes to elements> //\ */
-  r.addclassu = v => [].forEach.call(a, ei => ei ? ei.classList.add(v) : void 0);
-  r.removeclassu = v => [].forEach.call(a, ei => ei ? ei.classList.remove(v) : void 0);
+  r.addclassu = v => [].forEach.call(a, e => e ? e.classList.add(v) : void 0);
+  r.removeclassu = v => [].forEach.call(a, e => e ? e.classList.remove(v) : void 0);
   /* </Add, Remove classes to elements> //\ */
 
   /* <Apply styles to elements> //\ */
-  r.cssu = v => [].forEach.call(a, ei => ei ? [].forEach.call(Object.keys(v), eii => v.hasOwnProperty(eii) ? ei.style[eii] = v[eii] : void 0) : void 0);
+  r.cssu = v => [].forEach.call(a, e => e ? [].forEach.call(Object.keys(v), k => v.hasOwnProperty(k) ? e.style[k] = v[k] : void 0) : void 0);
   /* </Apply styles to elements> //\ */
 
   return r;
 };
 hex.devu = () => '//\\v0.0.240903';
 
-/* <parse json(attribute js) //\ > */
+/* <parse json //\ > */
 hex.parseattu = v => JSON.parse(`{ ${v.e.attributes['js'].value.replace(/'/g, '"')} }`);
-/* </parse js(attribute json) //\ > */
+hex.parsecssu = v => {
+  const { e, s } = v;
+  
+  v.j = JSON.parse(`{ ${s.replace(/'/g, '"')} }`);
+  [].forEach.call(Object.keys(v.j), k => e.style[k] = v.j[k]);
+}
+/* </parse js //\ > */
 
 /* <create an element with a Element> //\ */
 hex.crtu = v => {
@@ -118,7 +124,7 @@ hex.xml.svgu = v => {
 
   v.a = e.attributes;
   v.p = v.a.p.value.length ? v.a.p.value : p;
-  
+
   if(v.a.u.value.length) {
     v.u = `${v.a.u.value}/${v.a.i.value}.${v.a.x.value}`;
 
@@ -127,28 +133,35 @@ hex.xml.svgu = v => {
       await hex.loadfetchu({ u: v.u, p: v.ei });
     })();
   } else {
-    v.ei = document.querySelector(`svg.${v.a.i.value}`);
-    if(!v.ei) { hex.crtu({ t: 'svg', c: v.a.i.value, e: '', p: v.p }); }
+
+    v.ei = v.a.i.value ? document.querySelector(`${v.a.x.value}.${v.a.i.value}`) : void 0;
+    if(!v.ei) { v.ei = hex.crtu({ t: 'svg', c: v.a.i.value, e: '', p: v.p }); }
   }
+
+  hex.parsecssu({ e: v.ei, s: v.a.css.value });
 };
 
-hex.xml.htmlu = v => {
+hex.xml.divu = v => {
   const { e, c, p } = v;
 
   v.a = e.attributes;
   v.p = v.a.p.value.length ? v.a.p.value : p;
-
+ 
   if(v.a.u.value.length) {
     v.u = `${v.a.u.value}/${v.a.i.value}.${v.a.x.value}`;
 
     (async () => {
       v.ei = hex.crtu({ t: 'div', c: `${c} ${v.a.i.value}`, e: '', p: v.p });
+
       await hex.loadfetchu({ u: v.u, p: v.ei });
     })();
   } else {
-    v.ei = document.querySelector(`${v.a.x.value}.${v.a.i.value}`);
-    if(!v.ei) { hex.crtu({ t: 'div', c: v.a.i.value, e: '', p: v.p }); }
+    
+    v.ei = v.a.i.value ? document.querySelector(`${v.a.x.value}.${v.a.i.value}`) : void 0;
+    if(!v.ei) { v.ei = hex.crtu({ t: 'div', c: v.a.i.value, e: '', p: v.p }); }
   }
+
+  hex.parsecssu({ e: v.ei, s: v.a.css.value });
 };
 
 hex.parsexmlu = v => {
@@ -173,7 +186,7 @@ hex.loadfetchu = async v => { //\ url, parent
   const { u, p } = v;
 
   v.p = typeof p === 'object' ? p : p.length ? document.querySelector(p) : document.body;
-  v.c = u.match(/([^\/]+)\.[^\.]+$/)[1];
+  v.c = u.match(/([^\/]+)\.[^\.]+$/)[1]; //\ Content location index, tangam..., add class list
   v.e = u.match(/.*\.(\w+)$/)[1];
 
   await fetch(u)
@@ -214,7 +227,7 @@ hex.loadpageu = async v => {
 
 /* <location a Page> //\ */
 hex.location = {
-  href: v => location.href=v.u,
+  href: v => location.href = v.u,
   replace: v => location.replace(v.u),
   open: v => window.open(v.u)
 }

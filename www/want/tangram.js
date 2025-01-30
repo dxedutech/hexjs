@@ -52,6 +52,9 @@ const rotateu = v =>  {
     await x.importmoduleu({ m: '/www/ware/env.js' }); //\ module, index
     x.envm.resizeu({ w: w.wh.w, h: w.wh.h });
 
+    await x.loadfetchu({ u: '/www/want/tangram.xml', p: '.sheet.bgs' });
+
+
     // w.r = x.envm.r;
     // w.hv = x.envm.hv;
 
@@ -63,7 +66,7 @@ const rotateu = v =>  {
         w.hv = x.envm.hv;
 
         i.c = `.${e.target.classList.value.replace(/\s/, '.')}`;
-        [].forEach.call(Object.keys(o[i.c]), e => i[e] = o[i.c][e]);
+        [].forEach.call(Object.keys(o[i.c]), k => i[k] = o[i.c][k]);
   
         i.t.s = Date.now(); /* Time.Start */
         i.is.d = true; /* IS.Drag */
@@ -100,7 +103,7 @@ const rotateu = v =>  {
         i.e.removeAttribute('stroke');
         i.e.removeAttribute('stroke-width');
   
-        [].forEach.call(Object.keys(i), e => delete i[e]);
+        [].forEach.call(Object.keys(i), k => delete i[k]);
       }
     };
   
