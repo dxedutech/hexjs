@@ -2,7 +2,7 @@ html, body { display: flex; width: 100%; height: 100%; margin: 0;  padding: 0; b
 body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 
 .seg { position: absolute; }
-.seg.index { width: 100%; height: 100%; }
+.seg.myramyun { width: 100%; height: 100%; }
 .seg.gride { pointer-events: none; }
 
 .sheet.uis .seg.btns { left: calc(100% + 8px); top: 50%; }
@@ -18,8 +18,8 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 
 /* .sheet>div, .sheet>svg { position: absolute; } */
 
-.sheet.fgs .fg.title { display: flex; left: auto; top: 24px; }
-.sheet.fgs .fg.title div { margin: 0 4px; font: 180px "PlayTangram", sans-serif; }
+/* .sheet.fgs .fg.title { display: flex; left: auto; top: 24px; }
+.sheet.fgs .fg.title div { margin: 0 4px; font: 180px "PlayTangram", sans-serif; } */
 
 /* .sheet.uis { width: 100%; height: 100%; } */
 /* .sheet.uis .seg.btns { right: 24px; bottom: 24px; } */

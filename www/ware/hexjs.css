@@ -69,6 +69,7 @@ footer {
   color: #dae2;
   font: 16px 'Gowun Dodum', sans-serif;
   text-align: center;
+  pointer-events: none;
 }
 
 .scene {
