@@ -1,19 +1,23 @@
 export default (v => {
   const { x, b } = v;
 
+  const evt = {};
+
   const clicku = v => {
     const { e } = v;
-    console.log(e.target);
+
     // x.loadpageu({ u: '/want/tangent' }); 
     v.j = x.parseattu({ e: e.target }); /* to json */
 
     if (v.j.hasOwnProperty('url')) {
-      console.log(v.j.url);
+      console.log('//\ ', v.j.url);
       location.replace(`./${v.j.url}`);
     }
 
     if (v.j.hasOwnProperty('fn')) {
-      console.log(v.j.fn);
+      evt.o = v.j.obj;
+      evt.s = v.j.fn;
+      evt.e = e.target;
     }
   };
 
@@ -25,6 +29,7 @@ export default (v => {
       return false;
     });
   });
+  v.evt = evt;
 
   const devu = () => '//\ v0.0.240923';
   v.devu = devu;

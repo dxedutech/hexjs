@@ -42,6 +42,57 @@ const rotateu = v =>  {
   return [v.x, v.y];
 };
 
+const btnstangram = {
+  coloru: v => {
+    const { e, o, w } = v;
+
+    v.c = e.className.match(/on/) ? '#000' : void 0;
+    [].forEach.call(Object.keys(o), k => o[k].e.setAttribute('fill', v.c || o[k].fill ));
+    e.classList.toggle('on');
+  },
+  addu: v => {
+    const { e, o, w } = v;
+
+    v.c = e.className.match(/on/) ? 'none' : 'block';
+    v.e = document.querySelector('.sheet.fgs .seg.tangram .tans.xi');
+    v.e.style.display = v.c;
+
+    e.classList.toggle('on');
+  },
+  resetu: v => {
+    const { e, o, w } = v;
+
+    [].forEach.call(Object.keys(o), k => o[k].e.setAttribute('d', o[k].d));
+  },
+  magneticu: v => {
+    const { e, o, w } = v;
+
+    [].forEach.call(Object.keys(o), k => {
+      // console.log(o[k].pa);
+      v.pa = o[k].pa.map(e => [e[0] + 480/w.r,  e[1] + 480/w.r]);
+      v.r = pathdu({ pa: v.pa });
+  
+      o[k].e.setAttribute('d', v.r.d);
+    });
+  },
+  grideu: v => {
+    const { e, o, w } = v;
+
+    v.c = e.className.match(/on/) ? 'none' : 'block';
+    v.e = document.querySelector('.sheet.uis .seg.gride');
+    v.e.style.display = v.c;
+    v.e = document.querySelector('.sheet.bgs .bg-title');
+    v.e.style.display = v.c;
+
+    e.classList.toggle('on');
+  },
+  saveu: v => {
+    const { e, o, w } = v;
+
+  }
+};
+
+
 (v => {
   const { x, a, o, i, w } = v;
 
@@ -53,7 +104,6 @@ const rotateu = v =>  {
     x.envm.resizeu({ w: w.wh.w, h: w.wh.h });
 
     await x.loadfetchu({ u: '/www/want/tangram.xml', p: '.sheet.bgs' });
-
 
     // w.r = x.envm.r;
     // w.hv = x.envm.hv;
@@ -167,10 +217,22 @@ const rotateu = v =>  {
         }
       }
       
+      if(x.btnm) {
+        if(Object.keys(x.btnm.evt).length){
+          if(x.btnm.evt.o === 'btnstangram'){
+            // console.log('//\ ', x.btnm.evt.o, x.btnm.evt.s, x.btnm.evt.e.className);
+            btnstangram[x.btnm.evt.s]({ e: x.btnm.evt.e, o: o, w: w });
+            delete x.btnm.evt.o;
+            delete x.btnm.evt.s;
+            delete x.btnm.evt.e;
+          }
+        }
+        // [`${v.s}u`]({e: v.e});
+      }
+
       requestAnimationFrame(() => frameu({}));
     };
     frameu({});
-  
   
     const btnsvgu = v => {
       const {} = v;
@@ -195,21 +257,23 @@ const rotateu = v =>  {
       URL.revokeObjectURL(v.url);
     }
   
-  
     [].forEach.call(a, e => {
       e.addEventListener('mousedown', drag.startu);
       e.addEventListener('touchstart', drag.startu);
   
+      v.d = e.getAttribute('d');
+      v.f = e.getAttribute('fill');
+
       v.xy = { sx: 0, sy: 0, cx: 0, cy: 0, dx: 0, dy: 0 }; /* position: start, current, delta */
       v.t = { s: 0, c: 0 } /* time: start, current */
       v.is = { d: false, m: false, r: false  }; /* is: Dragging, Moving, Rotating */
       v.i = `.${e.classList.value.replace(/\s/, '.')}`;
-      v.r = pathparseu({ d: e.getAttribute('d') });
+      v.r = pathparseu({ d: v.d });
   
       v.b = e.getBBox();
       v.wh = { w: v.b.width, h: v.b.height };
   
-      o[`${v.i}`] = { e: e, xy: v.xy, wh: v.wh, t: v.t, is: v.is, pa: v.r.pa, r: 15 };
+      o[`${v.i}`] = { e: e, xy: v.xy, wh: v.wh, t: v.t, is: v.is, pa: v.r.pa, r: 15, d: v.d, fill: v.f };
     });
   
     document.addEventListener('mousemove', drag.moveu);
@@ -219,6 +283,9 @@ const rotateu = v =>  {
     document.addEventListener('touchend', drag.endu);
 
     await x.importmoduleu({ m: '/www/ware/btn.js' }); //\ module, index
+
+    v.e = document.querySelector('.sheet.fgs .seg.tangram .tans.xi');
+    v.e.style.display = 'none';
   })();
 })({ x: hex, a: document.querySelectorAll('.tan'), o: {}, i: {}, w:{ r: 1, wh: { w: 1280, h: 1280 }} });
 // a: document.querySelectorAll('.tan'), o: {}, i: {}, w: { r: window.xr, wh: window.xwh }
