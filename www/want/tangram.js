@@ -42,6 +42,27 @@ const rotateu = v =>  {
   return [v.x, v.y];
 };
 
+const closepointu = v => {
+  const { a, b } = v;
+
+  v.o = { x: 0, y: 0, d: void 0 }; //\\offset
+  for (v.a of a) {
+    for (v.b of b) {
+      v.x = v.a[0] - v.b[0];
+      v.y = v.a[1] - v.b[1];
+      v.d = Math.sqrt(Math.pow(v.x, 2) + Math.pow(v.y, 2));
+      if (v.d < 11) {
+        v.o.x = v.x;
+        v.o.y = v.y;
+        v.o.d = v.d;
+        break;
+      }
+    }
+  }
+
+  return v.o;
+};
+
 const btnstangram = {
   coloru: v => {
     const { e, o, w } = v;
@@ -56,7 +77,6 @@ const btnstangram = {
     v.c = e.className.match(/on/) ? 'none' : 'block';
     v.e = document.querySelector('.sheet.fgs .seg.tangram .tans.xi');
     v.e.style.display = v.c;
-
     e.classList.toggle('on');
   },
   resetu: v => {
@@ -67,13 +87,64 @@ const btnstangram = {
   magneticu: v => {
     const { e, o, w } = v;
 
-    [].forEach.call(Object.keys(o), k => {
-      // console.log(o[k].pa);
-      v.pa = o[k].pa.map(e => [e[0] + 480/w.r,  e[1] + 480/w.r]);
-      v.r = pathdu({ pa: v.pa });
-  
-      o[k].e.setAttribute('d', v.r.d);
+    v.n = []; //\\ gride point [[0,0], [128,0]... [1280,1280]]
+    for(i = 0; i < 121; i++){
+      v.x = (i%11);
+      v.y = parseInt(i/11);
+      
+      if ((v.x%10)*(v.y%10)) { v.n.push([v.x*128, v.y*128 - 2]); }
+    }
+
+    v.a = [[], []];
+    [].forEach.call(Object.keys(o), k => { //\\ gride alignment
+      v.d = o[k].e.getAttribute('d');
+      if (v.d !== o[k].d) { //\\ o[k].d is init position
+        v.o = closepointu({ a: v.n, b: o[k].pa });
+
+        if (v.o.d) {
+          if (v.o.d !== 0) {
+            v.pa = o[k].pa.map(e => [e[0] + v.o.x,  e[1] + v.o.y]);
+            v.r = pathdu({ pa: v.pa });
+            o[k].pa = v.pa;
+            o[k].e.setAttribute('d', v.r.d);
+          }
+          if (v.a[0].indexOf(k) < 0) v.a[0].push(k);
+
+        } else {
+          if (v.o.d === 0) { if (v.a[0].indexOf(k) < 0) v.a[0].push(k); }
+          else { if (v.a[1].indexOf(k) < 0) v.a[1].unshift(k); }
+        }
+      }
     });
+    
+    v.l = document.querySelector('.sheet.fgs .seg.tangram .tans.xi').style.display === 'none' ? 7 : 14;
+    for (let i = 0; i < v.l; i++) {
+      v.a.push([]);
+      [].forEach.call(v.a[i + 1], k => {
+        [].forEach.call(v.a[0], s => { //\\ tan-by-tan alignment
+          if (k !== s) {
+            v.o = closepointu({ a: o[s].pa, b: o[k].pa });
+  
+            if (v.o.d) {
+              if (v.o.d !== 0) {
+                v.pa = o[k].pa.map(e => [e[0] + v.o.x,  e[1] + v.o.y]);
+                v.r = pathdu({ pa: v.pa });
+                o[k].pa = v.pa;
+                o[k].e.setAttribute('d', v.r.d);             
+              }
+              if (v.a[0].indexOf(k) < 0) v.a[0].push(k);
+  
+            } else {
+              if (v.o.d === 0) { if (v.a[0].indexOf(k) < 0) v.a[0].push(k); }
+              else { if (v.a[i + 2].indexOf(k) < 0) v.a[i + 2].unshift(k); }
+            }
+          }
+        });
+      });
+
+      if(v.a[0].length === v.l) break;
+    }
+    // console.log(v.a);
   },
   grideu: v => {
     const { e, o, w } = v;
@@ -164,7 +235,8 @@ const btnstangram = {
   
         v.pa = i.pa.map(e => [e[0] + i.xy.dx/w.r,  e[1] + i.xy.dy/w.r]);
         v.r = pathdu({ pa: v.pa });
-  
+        o[i.c].pa = v.pa;
+
         i.e.setAttribute('d', v.r.d);
       },
       rotateu: v => {
@@ -177,7 +249,8 @@ const btnstangram = {
         v.a = (Math.round((v.d/w.r)/16)*i.r)%360;
         v.pa = i.pa.map(e => rotateu({ ox: i.xy.ox, oy: i.xy.oy, x: e[0], y: e[1], a: v.a }));
         v.r = pathdu({ pa: v.pa });
-  
+        o[i.c].pa = v.pa;
+
         i.e.setAttribute('d', v.r.d);
       }
     };
