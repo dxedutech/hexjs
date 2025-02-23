@@ -1,27 +1,120 @@
 html, body { display: flex; width: 100%; height: 100%; margin: 0;  padding: 0; background: #222; justify-content: center; align-items: center; overflow: hidden; }
 body>div, .scene, .sheet { width: var(--w); height: var(--h); }
-
 .seg { position: absolute; }
-.seg.tangram { width: 100%; height: 100%; }
-.seg.gride { pointer-events: none; }
+
+/* >.seg.tangram, .seg.gride, .seg.btns //\\ */
+.sheet.fgs .seg.tangram { width: 100%; height: 100%; }
+
+.sheet.uis .seg.gride { pointer-events: none; }
 
 .sheet.uis .seg.btns { left: calc(100% + 8px); top: 50%; }
-.sheet.uis.vertical .seg.btns { left: 50%; top: calc(100% + 8px); }
-.sheet.uis.vertical .seg.btns>div { display: flex; }
+.sheet.uis.vertical .seg.btns { display: flex; left: 50%; top: calc(100% + 8px); }
 
-.sheet.uis .seg.btns .btn { width: 64px; height: 64px; margin: 8px; border:1px solid #dae2; }
-.sheet.uis .seg.btns .btn:hover { background: #dae6; }
-.sheet.uis .seg.btns .btn.on { background: #dae6; }
+.sheet.uis .seg.btns .btn { display:flex; width: 64px; height: 64px; border:1px solid #dae2; justify-content: left; align-items: center; }
+.sheet.uis.vertical .seg.btns .btn { justify-content: right; }
 
-.sheet.uis .seg.btns .btn span { display: flex; width: 100%; height: 100%; font-size: 0; white-space : nowrap; justify-content: left; }
-.sheet.uis.vertical .seg.btns .btn span { justify-content: right; }
+.sheet.uis .seg.btns .btn span { display: block; left: calc(100% + 8px); font-size: 0px; white-space : nowrap; }
+.sheet.uis.vertical .seg.btns .btn span { left: auto; top: calc(100% + 8px); }
 .sheet.uis .seg.btns .btn:hover span { font-size: 24px; }
 
-.sheet.uis .seg.btns .btn.color span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-color.svg); }
-.sheet.uis .seg.btns .btn.add span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-add.svg); }
-.sheet.uis .seg.btns .btn.reset span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-reset.svg); }
-.sheet.uis .seg.btns .btn.magnetic span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-magnetic.svg); }
-.sheet.uis .seg.btns .btn.gride span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-gride.svg); }
-.sheet.uis .seg.btns .btn.save span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-save.svg); }
-.sheet.uis .seg.btns .btn.youtube span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-youtube.svg); }
-.sheet.uis .seg.btns .btn.home span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-home.svg); }
+.sheet.uis .seg.btns .btn.color { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tancolor.svg); }
+.sheet.uis .seg.btns .btn.pluse { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanpluse.svg); }
+.sheet.uis .seg.btns .btn.reset { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanreset.svg); }
+.sheet.uis .seg.btns .btn.magnetic { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanmagnetic.svg); }
+.sheet.uis .seg.btns .btn.grid { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tangrid.svg); }
+.sheet.uis .seg.btns .btn.save { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tansave.svg); }
+.sheet.uis .seg.btns .btn.help { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanhelp.svg); }
+.sheet.uis .seg.btns .btn.home { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanhome.svg); }
+
+.sheet.uis .seg.btns .btn:hover { background-color: #dae6; }
+.sheet.uis .seg.btns .btn.on { background-color: #dae6; }
+/* >.seg.tangram, .seg.gride, .seg.btns //\\ */
+
+
+/* <.seg.cards //\\ */
+:root { --thumb-nail: 128px; --thumb-margin: 8px; }
+.sheet.uis .seg.cards { left: calc(var(--thumb-nail) * -1 - 32px); top: 0; }
+.sheet.uis.vertical .seg.cards { left: 0px; top: calc(var(--thumb-nail) * -1 - 32px); }
+
+.sheet.uis .seg.cards .thumbs {
+  width: fit-content;
+  height: calc((var(--thumb-nail) + var(--thumb-margin)) * 8 + (var(--thumb-margin) * 3)); /* 8개 아이템의 높이에 맞게 설정 */
+  overflow-x: auto; /* 가로 스크롤 가능 */
+  overflow-y: scroll; /* 세로 스크롤 가능 */
+ 
+}
+.sheet.uis.vertical .seg.cards .thumbs {
+  width: calc((var(--thumb-nail) + var(--thumb-margin)) * 8 + (var(--thumb-margin) * 3)); /* 8개 아이템의 높이에 맞게 설정 */
+  height: fit-content;
+  overflow-x: scroll; /* 가로 스크롤 가능 */
+  overflow-y: auto; /* 세로 스크롤 가능 */
+}
+.sheet.uis .seg.cards .thumbs::-webkit-scrollbar {
+  width: 4px; /* 스크롤바의 폭 너비 */
+  height: auto;
+}
+.sheet.uis.vertical .seg.cards .thumbs::-webkit-scrollbar {
+  width: auto; /* 스크롤바의 폭 너비 */
+  height: 4px;
+}
+
+
+.sheet.uis .seg.cards .thumbs::-webkit-scrollbar-thumb {
+  background: #dae; /* 스크롤바 색상 */
+  border-radius: 0; /* 스크롤바 둥근 테두리 */
+}
+.sheet.uis .seg.cards .thumbs::-webkit-scrollbar-track {
+  background: #dae8; /* 스크롤바 배경 색상 */
+  border-radius: 0; /* 스크롤바 배경 테두리 */
+}
+.sheet.uis .seg.cards .thumbs ul, .sheet.uis .seg.cards .thumbs li { padding: 0; margin: 0; }
+.sheet.uis.vertical .seg.cards .thumbs ul { display: flex; width: fit-content; }
+
+.sheet.uis .seg.cards .thumbs li {
+  position: relative;
+  width: var(--thumb-nail);
+  height: var(--thumb-nail);
+  margin: var(--thumb-margin);
+  list-style: none;
+  border: 1px solid #dae;
+  color: #888;
+  pointer-events: fill;
+}
+.sheet.uis .seg.cards .thumbs li.on { background: #dae6; }
+
+.sheet.uis .seg.cards .thumbs li>div { font: 14px "Black Han Sans", sans-serif;; pointer-events: none; user-select: none; }
+.sheet.uis .seg.cards .thumbs li .sec { position: absolute; right: 0; width: 16px; height: 16px; background: #dae; color: #000; font-size: 14px; line-height: 14px; text-align: center; border-radius: 8px 0 8px 8px; }
+.sheet.uis .seg.cards .thumbs li .thumb { position: absolute; display: flex; width: 100%; height: 100%; color: #fff; font-size: 16px; font-weight: bold; justify-content: center; align-items: center; }
+
+
+.sheet.uis .seg.cards .btns { position: absolute; display: block; width: calc(var(--thumb-nail) * 0.5); height: fit-content;  left: calc(var(--thumb-nail) * -0.5 - 8px); top: 0; }
+.sheet.uis.vertical .seg.cards .btns { display: flex; width: fit-content; height: calc(var(--thumb-nail) * 0.5); left: 0;  top: calc(var(--thumb-nail) * -0.5 - 8px); }
+
+.sheet.uis .seg.cards .btns .btn { display: flex; width: calc(var(--thumb-nail) * 0.5); height: calc(var(--thumb-nail) * 0.5);
+  border: 1px solid #dae2; justify-content: right; align-items: center;
+}
+.sheet.uis.vertical .seg.cards .btns .btn { justify-content: left; }
+.sheet.uis .seg.cards .btns .btn span { display: block; left: calc(-100% - 8px); font-size: 0px; white-space : nowrap; }
+.sheet.uis.vertical .seg.cards .btns .btn span { left: auto; top: -100%; }
+.sheet.uis .seg.cards .btns .btn:hover span { font-size: 24px; }
+
+.sheet.uis .seg.cards .btns .btn.moveprev { background: no-repeat 0 0 / 100% url(../wads/ico/ico-moveprev.svg); }
+.sheet.uis .seg.cards .btns .btn.movenext { background: no-repeat 0 0 / 100% url(../wads/ico/ico-movenext.svg); }
+.sheet.uis .seg.cards .btns .btn.addprev { background: no-repeat 0 0 / 100% url(../wads/ico/ico-addprev.svg); }
+.sheet.uis .seg.cards .btns .btn.addsec { background: no-repeat 0 0 / 100% url(../wads/ico/ico-addsec.svg); }
+.sheet.uis .seg.cards .btns .btn.addnext { background: no-repeat 0 0 / 100% url(../wads/ico/ico-addnext.svg); }
+.sheet.uis .seg.cards .btns .btn.remove { background: no-repeat 0 0 / 100% url(../wads/ico/ico-remove.svg); }
+.sheet.uis .seg.cards .btns .btn.playonce { background: no-repeat 0 0 / 100% url(../wads/ico/ico-playonce.svg); }
+.sheet.uis .seg.cards .btns .btn.playstop { background: no-repeat 0 0 / 100% url(../wads/ico/ico-playstop.svg); }
+.sheet.uis .seg.cards .btns .btn.playloop { background: no-repeat 0 0 / 100% url(../wads/ico/ico-playloop.svg); }
+
+.sheet.uis .seg.cards .btns .btn:hover { background-color: #dae6; }
+.sheet.uis .seg.cards .btns .btn.on { background-color: #dae6; }
+/* >.seg.cards //\\ */
+
+
+
+/* <.seg.skiaorama //\\ */
+.sheet.fgs .seg.skiaorama.on { position: absolute; width: 100%; height: 100%; background: #000; }
+
+/* >.seg.skiaorama //\\ */

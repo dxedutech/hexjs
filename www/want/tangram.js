@@ -71,7 +71,7 @@ const btnstangram = {
     [].forEach.call(Object.keys(o), k => o[k].e.setAttribute('fill', v.c || o[k].fill ));
     e.classList.toggle('on');
   },
-  addu: v => {
+  pluseu: v => {
     const { e, o, w } = v;
 
     v.c = e.className.match(/on/) ? 'none' : 'block';
@@ -146,7 +146,7 @@ const btnstangram = {
     }
     // console.log(v.a);
   },
-  grideu: v => {
+  gridu: v => {
     const { e, o, w } = v;
 
     v.c = e.className.match(/on/) ? 'none' : 'block';
@@ -164,6 +164,162 @@ const btnstangram = {
 };
 
 
+
+/* <.seg.cards //\\ */
+const thumbscard = { time: 0, thumb: [] };
+
+const cardu = v => {
+  const { x, t, b, w } = v;
+  
+  const scrollu = v => {
+    const { e } = v;
+    
+    w.r = x.envm.r;
+    w.hv = x.envm.hv;
+
+    v.f = t.getBoundingClientRect();
+    v.r = e.getBoundingClientRect();
+
+    if (v.r.top < v.f.top) {
+      t.scrollTop -= ((v.f.top + 8) - v.r.top)/w.r; //\\ margin: 8px;
+    } else if (v.r.bottom > v.f.bottom) {
+      t.scrollTop += ((v.r.bottom + 8) - v.f.bottom)/w.r;
+    }
+  }
+  
+  const skiaoramau = v => {
+    const { e, n } = v;
+
+    v.a = e.parentNode.children;
+    v.e = document.querySelector('.sheet.fgs .seg.skiaorama');
+    thumbscard.time = n;
+    thumbscard.tick = 0;
+    thumbscard.thumb = [];
+    thumbscard.current = 0;
+
+    if(n > 0){
+      v.e.classList.add('on');
+      [].forEach.call(v.a, (e, i) => {
+        v.c = e.children[1];
+        v.t = ['¼','½','¾','1'].indexOf(e.children[0].innerText);
+        v.q = [15, 30, 45, 60][v.t];
+        if(v.c.innerText !== 'THUMB' && v.c.innerText !== 'NEW') thumbscard.thumb.push([i, v.q]);
+      });
+      if(!thumbscard.thumb.length) thumbscard.time = 0;
+
+    } else {
+      v.e.innerHTML ='';
+      v.e.classList.remove('on');
+    }
+  };
+
+  const btnscard = {
+    moveprevu: v => {
+      const { e } = v;
+
+      if (e && e.previousElementSibling) {
+        t.querySelector('ul').insertBefore(e, e.previousElementSibling);
+        scrollu({ e: e });
+      }
+    },
+    movenextu: v => {
+      const { e } = v;
+
+      if (e && e.nextElementSibling) {
+        t.querySelector('ul').insertBefore(e.nextElementSibling, e);
+        scrollu({ e: e });
+      }
+    },
+    addprevu: v => {
+       const { e } = v;
+
+      if (e) {
+        e.classList.remove('on');
+        
+        v.e = document.createElement('li');
+        v.e.classList.add('on');
+        v.e.innerHTML = '<div class="sec">½</div><div class="thumb">NEW</div>';
+        t.querySelector('ul').insertBefore(v.e, e);
+        
+        v.e.addEventListener('click', e => {
+          [].forEach.call(t.querySelectorAll('li') , e => e.classList.remove('on'));
+          e.target.classList.add('on');
+        });
+        
+        scrollu({ e: v.e });
+      }
+    },
+    addnextu: v => {
+      const { e } = v;
+
+      if (e) {
+        e.classList.remove('on');
+        
+        v.e = document.createElement('li');
+        v.e.classList.add('on');
+        v.e.innerHTML = '<div class="sec">½</div><div class="thumb">NEW</div>';
+        t.querySelector('ul').insertBefore(v.e, e.nextElementSibling);
+        
+        v.e.addEventListener('click', e => {
+          [].forEach.call(t.querySelectorAll('li') , e => e.classList.remove('on'));
+          e.target.classList.add('on');
+        });
+        
+        scrollu({ e: v.e });
+      }
+    },
+    addsecu: v => {
+      const { e } = v;
+
+      if (e) {
+        v.a = ['¼','½','¾','1'];
+        v.e = e.children[1];
+        v.s = v.e.innerText;
+
+        if(v.s === 'THUMB' || v.s === 'NEW') {
+          v.h = document.querySelector('.sheet.fgs .seg.tangram').innerHTML;
+          v.e.innerHTML = v.h;
+          v.e.querySelector('svg').setAttribute('viewBox', '0 0 1280 1280');
+
+        } else {
+          v.r = e.querySelector('.sec').innerText; //
+          v.n = v.a.indexOf(v.r);
+          v.i = (v.n + 1)%v.a.length;
+          e.querySelector('.sec').innerText = v.a[v.i];
+        }
+      }
+    },
+    removeu: v => {
+      const { e } = v;
+      
+      if (e) {
+        v.e = e.nextElementSibling ? e.nextElementSibling : e.previousElementSibling ? e.previousElementSibling : void 0;
+        if(v.e) { 
+          t.querySelector('ul').removeChild(e);
+          v.e.classList.add('on');
+          scrollu({ e: v.e }); 
+        }
+      }
+    },
+    playonceu: v => skiaoramau({ e: v.e, n: 1}),
+    playstopu: v => skiaoramau({ e: v.e, n: 0}),
+    playloopu: v => skiaoramau({ e: v.e, n: 3})
+  };
+
+  [].forEach.call(t.querySelectorAll('li'), e => {
+    e.addEventListener('click', e => {
+      [].forEach.call(t.querySelectorAll('li') , e => e.classList.remove('on'));
+      e.target.classList.add('on');
+    });
+  });
+  
+  return btnscard;
+}
+/* >.seg.cards //\\ */
+
+
+
+/* <.seg.tangram, .seg.gride, .seg.btns //\\ */
 (v => {
   const { x, a, o, i, w } = v;
 
@@ -254,7 +410,10 @@ const btnstangram = {
         i.e.setAttribute('d', v.r.d);
       }
     };
-  
+
+    /* .seg.cards //\\ */
+    const btnscard = cardu({ x: x, t: document.querySelector('.sheet.uis .seg.cards .thumbs'), b: document.querySelector('.sheet.uis .seg.cards .btns'), w: w });
+
     const frameu = v => {
       const {} = v;
   
@@ -292,9 +451,13 @@ const btnstangram = {
       
       if(x.btnm) {
         if(Object.keys(x.btnm.evt).length){
-          if(x.btnm.evt.o === 'btnstangram'){
-            // console.log('//\ ', x.btnm.evt.o, x.btnm.evt.s, x.btnm.evt.e.className);
-            btnstangram[x.btnm.evt.s]({ e: x.btnm.evt.e, o: o, w: w });
+          if(x.btnm.evt.s) {
+            if(x.btnm.evt.o === 'btnstangram') btnstangram[x.btnm.evt.s]({ e: x.btnm.evt.e, o: o, w: w });
+            if(x.btnm.evt.o === 'btnscard') { 
+              v.t = document.querySelector('.sheet.uis .seg.cards .thumbs');
+              btnscard[x.btnm.evt.s]({ e: v.t.querySelector('li.on') });
+            }
+
             delete x.btnm.evt.o;
             delete x.btnm.evt.s;
             delete x.btnm.evt.e;
@@ -303,6 +466,39 @@ const btnstangram = {
         // [`${v.s}u`]({e: v.e});
       }
 
+      if(thumbscard.time > 0) { //\\stop or loop, play
+        v.l = thumbscard.thumb.length
+        if(v.l){
+          v.c = thumbscard.thumb[thumbscard.current];
+          
+          if(thumbscard.tick < v.c[1]) {
+            if(!thumbscard.tick) {
+              // console.log(thumbscard.tick, v.c); //\\0 [0, 30]
+              v.a = document.querySelectorAll('.thumbs li');
+              v.h = v.a[v.c[0]].querySelector('.thumb').innerHTML;
+              document.querySelector('.sheet.fgs .seg.skiaorama').innerHTML = v.h;
+            }
+            ++thumbscard.tick;
+
+          } else {
+            thumbscard.tick = 0;
+            if(thumbscard.current < v.l - 1){
+              ++thumbscard.current;
+
+            } else {
+              --thumbscard.time;
+              if(thumbscard.time > 0) {
+                thumbscard.current = 0;
+
+              } else {
+                thumbscard.thumb = [];
+                thumbscard.current = 0;
+              }
+            }
+          }
+        }
+      }
+      
       requestAnimationFrame(() => frameu({}));
     };
     frameu({});
@@ -359,9 +555,11 @@ const btnstangram = {
 
     v.e = document.querySelector('.sheet.fgs .seg.tangram .tans.xi');
     v.e.style.display = 'none';
+
+    /* .seg.cards //\\ */
+    //cardu({ x: x, t: document.querySelector('.sheet.uis .seg.cards .thumbs'), b: document.querySelector('.sheet.uis .seg.cards .btns'), w: w });
   })();
-})({ x: hex, a: document.querySelectorAll('.tan'), o: {}, i: {}, w:{ r: 1, wh: { w: 1280, h: 1280 }} });
-// a: document.querySelectorAll('.tan'), o: {}, i: {}, w: { r: window.xr, wh: window.xwh }
-//\ serves as an alias for, allowing you to reference the same object with a x.
-//\ sets element class name, width, height.
+})({ x: hex, a: document.querySelectorAll('.tan'), o: {}, i: {}, w: { r: 1, wh: { w: 1280, h: 1280 }} });
+/* >.seg.tangram, .seg.gride, .seg.btns //\\ */
+
 

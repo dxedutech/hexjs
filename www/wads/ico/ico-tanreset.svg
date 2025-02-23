@@ -1,0 +1,11 @@
+<svg width="100%" height="100%" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g transform="matrix(0.5,0,0,0.5,0,0)" style="fill:none;stroke:#dae6;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;">
+        <path d="M16,16L48,16" />
+        <path d="M32,32L16,16L16,48" />
+        <path d="M32,48L16,48L24,40L32,48Z" />
+        <path d="M32,32L24,40" />
+        <path d="M40,24L32,32L40,40" />
+        <path d="M48,32L48,16L40,24L40,40" />
+        <path d="M48,48L48,32L32,48L48,48Z" />
+    </g>
+</svg>

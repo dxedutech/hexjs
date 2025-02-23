@@ -29,21 +29,12 @@ body::-webkit-scrollbar {
   display: none; /* 크롬, 오페라, 사파리 */
 }
 
-div, svg {
-  width: max-content; height: auto;
-  font: 16px 'Black Han Sans', sans-serif;
-  user-select: none;
-}
 
-span {
-  font: 16px 'Dokdo', system-ui;
-  user-select: none;
-}
 
-/* button */
+/* <button */
 button {
   width: auto; height: auto;
-  margin: 0 4px; padding: 6px 8px 4px 8px;
+  margin: 2px; padding: 0;
   background: none;
   border-radius: 6px;
   pointer-events: fill;
@@ -52,15 +43,16 @@ button span {
   position: relative;
   color: #444;
   font: 16px 'Black Han Sans', sans-serif;
-  text-shadow: 0 1px 2px #4444, 0 -1px 2px #4444, -1px 0 2px #4444, 1px 0 2px #4444;
   user-select: none;
   pointer-events: none;
 }
 button:hover span {
   color: #fff;
-  text-shadow: 0 8px 2px #444c, 0 -1px 2px #4444, -1px 0 2px #4444, 1px 0 2px #4444;
   pointer-events: none;
 }
+/* >button */
+
+
 
 footer {
   position: absolute;
