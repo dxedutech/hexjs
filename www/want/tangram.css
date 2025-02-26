@@ -22,7 +22,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis .seg.btns .btn.reset { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanreset.svg); }
 .sheet.uis .seg.btns .btn.magnetic { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanmagnetic.svg); }
 .sheet.uis .seg.btns .btn.grid { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tangrid.svg); }
-.sheet.uis .seg.btns .btn.save { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tansave.svg); }
+.sheet.uis .seg.btns .btn.printdownload { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tansave.svg); }
 .sheet.uis .seg.btns .btn.help { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanhelp.svg); }
 .sheet.uis .seg.btns .btn.home { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanhome.svg); }
 
@@ -39,34 +39,20 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis .seg.cards .thumbs {
   width: fit-content;
   height: calc((var(--thumb-nail) + var(--thumb-margin)) * 8 + (var(--thumb-margin) * 3)); /* 8개 아이템의 높이에 맞게 설정 */
-  overflow-x: auto; /* 가로 스크롤 가능 */
-  overflow-y: scroll; /* 세로 스크롤 가능 */
- 
+  overflow-x: auto;
+  overflow-y: scroll;
 }
 .sheet.uis.vertical .seg.cards .thumbs {
   width: calc((var(--thumb-nail) + var(--thumb-margin)) * 8 + (var(--thumb-margin) * 3)); /* 8개 아이템의 높이에 맞게 설정 */
   height: fit-content;
-  overflow-x: scroll; /* 가로 스크롤 가능 */
-  overflow-y: auto; /* 세로 스크롤 가능 */
+  overflow-x: scroll;
+  overflow-y: auto;
 }
-.sheet.uis .seg.cards .thumbs::-webkit-scrollbar {
-  width: 4px; /* 스크롤바의 폭 너비 */
-  height: auto;
-}
-.sheet.uis.vertical .seg.cards .thumbs::-webkit-scrollbar {
-  width: auto; /* 스크롤바의 폭 너비 */
-  height: 4px;
-}
+.sheet.uis .seg.cards .thumbs::-webkit-scrollbar { width: 4px; height: auto; }
+.sheet.uis.vertical .seg.cards .thumbs::-webkit-scrollbar { width: auto; height: 4px; }
 
-
-.sheet.uis .seg.cards .thumbs::-webkit-scrollbar-thumb {
-  background: #dae; /* 스크롤바 색상 */
-  border-radius: 0; /* 스크롤바 둥근 테두리 */
-}
-.sheet.uis .seg.cards .thumbs::-webkit-scrollbar-track {
-  background: #dae8; /* 스크롤바 배경 색상 */
-  border-radius: 0; /* 스크롤바 배경 테두리 */
-}
+.sheet.uis .seg.cards .thumbs::-webkit-scrollbar-thumb { background: #dae; border-radius: 0; }
+.sheet.uis .seg.cards .thumbs::-webkit-scrollbar-track { background: #dae8; border-radius: 0; }
 .sheet.uis .seg.cards .thumbs ul, .sheet.uis .seg.cards .thumbs li { padding: 0; margin: 0; }
 .sheet.uis.vertical .seg.cards .thumbs ul { display: flex; width: fit-content; }
 
@@ -82,7 +68,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 }
 .sheet.uis .seg.cards .thumbs li.on { background: #dae6; }
 
-.sheet.uis .seg.cards .thumbs li>div { font: 14px "Black Han Sans", sans-serif;; pointer-events: none; user-select: none; }
+.sheet.uis .seg.cards .thumbs li>div { font: 14px "Black Han Sans", sans-serif; pointer-events: none; user-select: none; }
 .sheet.uis .seg.cards .thumbs li .sec { position: absolute; right: 0; width: 16px; height: 16px; background: #dae; color: #000; font-size: 14px; line-height: 14px; text-align: center; border-radius: 8px 0 8px 8px; }
 .sheet.uis .seg.cards .thumbs li .thumb { position: absolute; display: flex; width: 100%; height: 100%; color: #fff; font-size: 16px; font-weight: bold; justify-content: center; align-items: center; }
 
@@ -101,9 +87,10 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis .seg.cards .btns .btn.moveprev { background: no-repeat 0 0 / 100% url(../wads/ico/ico-moveprev.svg); }
 .sheet.uis .seg.cards .btns .btn.movenext { background: no-repeat 0 0 / 100% url(../wads/ico/ico-movenext.svg); }
 .sheet.uis .seg.cards .btns .btn.addprev { background: no-repeat 0 0 / 100% url(../wads/ico/ico-addprev.svg); }
-.sheet.uis .seg.cards .btns .btn.addsec { background: no-repeat 0 0 / 100% url(../wads/ico/ico-addsec.svg); }
 .sheet.uis .seg.cards .btns .btn.addnext { background: no-repeat 0 0 / 100% url(../wads/ico/ico-addnext.svg); }
 .sheet.uis .seg.cards .btns .btn.remove { background: no-repeat 0 0 / 100% url(../wads/ico/ico-remove.svg); }
+.sheet.uis .seg.cards .btns .btn.import { background: no-repeat 0 0 / 100% url(../wads/ico/ico-import.svg); }
+.sheet.uis .seg.cards .btns .btn.export { background: no-repeat 0 0 / 100% url(../wads/ico/ico-export.svg); }
 .sheet.uis .seg.cards .btns .btn.playonce { background: no-repeat 0 0 / 100% url(../wads/ico/ico-playonce.svg); }
 .sheet.uis .seg.cards .btns .btn.playstop { background: no-repeat 0 0 / 100% url(../wads/ico/ico-playstop.svg); }
 .sheet.uis .seg.cards .btns .btn.playloop { background: no-repeat 0 0 / 100% url(../wads/ico/ico-playloop.svg); }
@@ -118,3 +105,35 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.fgs .seg.skiaorama.on { position: absolute; width: 100%; height: 100%; background: #000; }
 
 /* >.seg.skiaorama //\\ */
+
+
+
+/* <.seg.modal //\\ */
+.sheet.uis .seg.modal.on { position: absolute; width: 100%; height: 100%; }
+.sheet.uis .seg.modal.on .msgs { width: 100%; height: 100%; background: #fff; pointer-events: fill; }
+
+.sheet.uis .seg.modal .btns { display: none; }
+.sheet.uis .seg.modal.on .btns { position: absolute; display: inline-flex; right: 24px; bottom: 24px; }
+.sheet.uis .seg.modal.on .btns .btn { padding: 4px 24px; background: #dae6; border: none; }
+.sheet.uis .seg.modal.on .btns .btn span { color: #dae; font: 16px "Black Han Sans", sans-serif; }
+.sheet.uis .seg.modal.on .btns .btn:hover span { color: #fff; }
+.sheet.uis .seg.modal.on .btns textarea { width: 256px; height: 18px; margin: 2px 0 0 4px; padding: 4px; background: #dae6; color:#666; font: 24px "Gowun Dodum", sans-serif; line-height: 18px; border-radius: 6px; border: 1px solid #dae; resize: none; pointer-events: fill; white-space: nowrap; overflow:hidden }
+.sheet.uis .seg.modal.on .btns textarea:focus { outline: none; }
+/* >.seg.modal //\\ */
+
+
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  iframe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    flex-wrap: wrap;
+  }
+}

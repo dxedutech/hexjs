@@ -28,9 +28,7 @@
         </g>
       </svg>
     </div>
-    <div class="seg skiaorama">
-
-    </div>
+    <div class="seg skiaorama"></div>
   </div>
   <div class="sheet uis">
     <div class="seg gride">
@@ -63,11 +61,11 @@
       <button class="btn reset" js="'obj': 'btnstangram', 'fn': 'resetu'"><span>RESET</span></button> <!-- Reset -->
       <button class="btn magnetic" js="'obj': 'btnstangram', 'fn': 'magneticu'"><span>MAGNETIC</span></button> <!-- Magnetic -->
       <button class="btn grid on" js="'obj': 'btnstangram', 'fn': 'gridu'"><span>GRID</span></button> <!-- Grid -->
-      <button class="btn save" js="'obj': 'btnstangram', 'fn': 'saveu'"><span>PRINT & SAVE</span></button> <!-- Save -->
+      <button class="btn printdownload" js="'obj': 'btnstangram', 'fn': 'printdownloadu'"><span>PRINT &</br>DOWNLOAD</span></button> <!-- Save -->
       <button class="btn help" js="'url': ''"><span>HELP</span></button> <!-- help -->
       <button class="btn home" js="'url': ''"><span>HOME</span></button> <!-- home -->
     </div>
-    <div class='seg cards'>
+    <div class="seg cards">
       <div class="thumbs">
         <ul>
           <li class="on"><div class="sec">½</div><div class="thumb">THUMB</div></li>
@@ -81,12 +79,21 @@
         <button class="btn moveprev" js="'obj': 'btnscard', 'fn': 'moveprevu'"><span>MOVE PREV</span></button>
         <button class="btn movenext" js="'obj': 'btnscard', 'fn': 'movenextu'"><span>MOVE NEXT</span></button>
         <button class="btn addprev" js="'obj': 'btnscard', 'fn': 'addprevu'"><span>ADD PREV</span></button>
-        <button class="btn addsec" js="'obj': 'btnscard', 'fn': 'addsecu'"><span>ADD</span></button>
         <button class="btn addnext" js="'obj': 'btnscard', 'fn': 'addnextu'"><span>ADD NEXT</span></button>
         <button class="btn remove" js="'obj': 'btnscard', 'fn': 'removeu'"><span>REMOVE</span></button>
+        <button class="btn import" js="'obj': 'btnscard', 'fn': 'importu'"><span>IMPORT &</br>DURATION</span></button>
+        <button class="btn export" js="'obj': 'btnscard', 'fn': 'exportu'"><span>EXPORT</span></button>
         <button class="btn playonce" js="'obj': 'btnscard', 'fn': 'playonceu'"><span>PLAY</span></button>
         <button class="btn playstop" js="'obj': 'btnscard', 'fn': 'playstopu'"><span>STOP</span></button>
         <button class="btn playloop" js="'obj': 'btnscard', 'fn': 'playloopu'"><span>LOOP</span></button>
+      </div>
+    </div>
+    <div class="seg modal">
+      <div class="msgs"></div>
+      <div class="btns">
+        <button class="btn print" js="'obj': 'btnstangram', 'fn': 'printu'"><span>PRINT</span></button>
+        <button class="btn download" js="'obj': 'btnstangram', 'fn': 'downloadu'"><span>DOWNLOAD</span></button>
+        <textarea rows="1" maxlength="24" placeholder="A-Za-z0-9-_#@." oninput="this.value = /[^A-Za-z0-9-_#@.]/ig.test(this.value) ? '' : this.value;"></textarea>
       </div>
     </div>
   </div>

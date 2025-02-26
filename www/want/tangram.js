@@ -157,9 +157,75 @@ const btnstangram = {
 
     e.classList.toggle('on');
   },
-  saveu: v => {
+  printdownloadu: v => {
     const { e, o, w } = v;
 
+    v.e = document.querySelector('.sheet.uis .seg.modal');
+    if(v.e.className.match(/on/)) {
+      v.e.classList.remove('on');
+      v.e.querySelector('.msgs').innerHTML = '';
+
+    } else {
+      v.e.classList.add('on');
+      v.s = '<svg width="1280" height="1280" viewbox="0 0 1280 1280" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+      // [].forEach.call(Object.keys(o), e => {
+      //   if(o[e].e.parentNode.style.display !== 'none') v.s += o[e].e.outerHTML;
+      // });
+      v.s += document.querySelector('.sheet.fgs .seg.tangram svg').innerHTML;
+      v.s += '</svg>';
+      v.e.querySelector('.msgs').innerHTML = v.s;
+    }
+    e.classList.toggle('on');
+  },
+  printu: v => {
+    const { e, o, w } = v;
+    
+    console.log(e);
+
+    v.i = document.createElement('iframe');
+    v.i.style.position = 'absolute';
+    v.i.style.width = '0px';
+    v.i.style.height = '0px';
+    v.i.style.border = 'none';
+ 
+    document.body.appendChild(v.i);
+ 
+    v.e = v.i.contentWindow.document;
+    v.e.open();
+    v.e.write('<html><head><title>Tangram</title>');
+    v.e.write('<style>');
+    v.e.write(`
+      @page { size: A4; margin: 0; @bottom-center { content: "Footer for first page"; } }
+      body { margin: 0; padding: 0; }
+      svg { display: flex; justify-content: center; align-items: center; height: 100vh; flex-wrap: wrap; }
+    `);
+    v.e.write('</style>');
+    //  v.e.write('<style>body { font-family: Arial, sans-serif; }</style>'); // Optional CSS styles
+    v.e.write('</head><body>');
+    v.e.write(document.querySelector('.seg.modal .msgs').innerHTML);  // Copy content from the specific element
+    v.e.write('</body></html>');
+    v.e.close();
+ 
+    v.i.contentWindow.print();
+ 
+    document.body.removeChild(v.i);
+  },
+  downloadu: v => {
+    const { e, o, w } = v;
+
+    v.n = e.parentNode.querySelector('textarea').value;
+    v.n = v.n.length ? `${v.n}.svg` : '';
+
+    v.s = o['.tan.xi'].e.parentNode.parentNode;
+    v.d = new XMLSerializer().serializeToString(v.s);
+    v.b = new Blob([v.d], { type: 'image/svg+xml' });
+
+    v.l = document.createElement('a');
+    v.l.href = URL.createObjectURL(v.b);
+    v.l.download = v.n || 'tan.svg';
+    v.l.click();
+
+    URL.revokeObjectURL(v.l.href);
   }
 };
 
@@ -268,7 +334,19 @@ const cardu = v => {
         scrollu({ e: v.e });
       }
     },
-    addsecu: v => {
+    removeu: v => {
+      const { e } = v;
+      
+      if (e) {
+        v.e = e.nextElementSibling ? e.nextElementSibling : e.previousElementSibling ? e.previousElementSibling : void 0;
+        if(v.e) { 
+          t.querySelector('ul').removeChild(e);
+          v.e.classList.add('on');
+          scrollu({ e: v.e }); 
+        }
+      }
+    },
+    importu: v => {
       const { e } = v;
 
       if (e) {
@@ -289,21 +367,22 @@ const cardu = v => {
         }
       }
     },
-    removeu: v => {
+    exportu: v => {
       const { e } = v;
-      
+
       if (e) {
-        v.e = e.nextElementSibling ? e.nextElementSibling : e.previousElementSibling ? e.previousElementSibling : void 0;
-        if(v.e) { 
-          t.querySelector('ul').removeChild(e);
-          v.e.classList.add('on');
-          scrollu({ e: v.e }); 
-        }
+        v.e = e.children[1];
+        v.a = v.e.querySelectorAll('path');
+        [].forEach.call(v.a, e => {
+          v.s = e.className.baseVal.replace(/\s+/g, '.');
+          v.d = e.getAttribute('d');
+          document.querySelector(`.${v.s}`).setAttribute('d', v.d);
+        });
       }
     },
     playonceu: v => skiaoramau({ e: v.e, n: 1}),
     playstopu: v => skiaoramau({ e: v.e, n: 0}),
-    playloopu: v => skiaoramau({ e: v.e, n: 3})
+    playloopu: v => skiaoramau({ e: v.e, n: 99})
   };
 
   [].forEach.call(t.querySelectorAll('li'), e => {

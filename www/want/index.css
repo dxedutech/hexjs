@@ -9,11 +9,11 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis.vertical .seg.btns { left: 50%; top: calc(100% + 8px); }
 .sheet.uis.vertical .seg.btns>div { display: flex; }
 
-.sheet.uis .seg.btns button { display: flex; width: 64px; height: 64px; justify-content: left; }
+.sheet.uis .seg.btns button { display: flex; width: 64px; height: 64px; justify-content: left; align-items: center; }
 /* .sheet.uis.vertical .seg.btns button { margin: 8px; } */
-.sheet.uis .seg.btns button span { left: 100%; margin: 8px; }
-
-
+.sheet.uis .seg.btns button span { left: 100%; margin: 8px; font-size: 0; }
+.sheet.uis.vertical .seg.btns button span { left: auto; top: 100%; margin: 8px; }
+.sheet.uis .seg.btns button:hover span { font-size: 24px; }
 
 
 /* .sheet>div, .sheet>svg { position: absolute; } */
