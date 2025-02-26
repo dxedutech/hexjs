@@ -197,7 +197,7 @@ const btnstangram = {
     v.e.write(`
       @page { size: A4; margin: 0; @bottom-center { content: "Footer for first page"; } }
       body { margin: 0; padding: 0; }
-      svg { display: flex; justify-content: center; align-items: center; height: 100vh; flex-wrap: wrap; }
+      svg { display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; flex-wrap: wrap; }
     `);
     v.e.write('</style>');
     //  v.e.write('<style>body { font-family: Arial, sans-serif; }</style>'); // Optional CSS styles
