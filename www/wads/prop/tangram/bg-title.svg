@@ -1,4 +1,4 @@
 <text dominant-baseline="middle" text-anchor="middle">
-  <tspan fill="#4444" font-size="128" font-family ="PlayTangram" x="50%" y="50%" rotate="0, 4, 8, -8, -4, -20, -24" letter-spacing="10">TANGRAM</tspan>
-  <tspan fill="#4444" font-size="96" font-family ="Dokdo" x="50%" y="50%" dy="128" rotate="0, 8, -4">탱그램</tspan>
+  <tspan fill="#4444" font-size="128" font-family ="PlayTangram" x="50%" y="50%" rotate="0, 4, 8, -8, -4, -20, -24" letter-spacing="10">ODDGRAM</tspan>
+  <tspan fill="#4444" font-size="96" font-family ="Dokdo" x="50%" y="50%" dy="128">oddgram.com</tspan>
 </text>

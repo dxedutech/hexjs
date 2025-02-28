@@ -63,6 +63,16 @@ const closepointu = v => {
   return v.o;
 };
 
+const parsexmlu = v => {
+  const { s, t } = v;
+
+  v.p = new DOMParser();
+  v.d = v.p.parseFromString(s, 'application/xml');
+  v.e = v.d.getElementsByTagName(`${t}`); // 실제 XML 태그명 ul, li ...
+
+  return t ? v.e : v.d;
+}
+
 const btnstangram = {
   coloru: v => {
     const { e, o, w } = v;
@@ -346,7 +356,7 @@ const cardu = v => {
         }
       }
     },
-    importu: v => {
+    drawu: v => {
       const { e } = v;
 
       if (e) {
@@ -367,7 +377,7 @@ const cardu = v => {
         }
       }
     },
-    exportu: v => {
+    laydownu: v => {
       const { e } = v;
 
       if (e) {
@@ -382,7 +392,30 @@ const cardu = v => {
     },
     playonceu: v => skiaoramau({ e: v.e, n: 1}),
     playstopu: v => skiaoramau({ e: v.e, n: 0}),
-    playloopu: v => skiaoramau({ e: v.e, n: 99})
+    playloopu: v => skiaoramau({ e: v.e, n: 99}),
+    importu: v => {
+      const { e } = v;
+
+      document.querySelector('.seg.cards .fileimport').click();
+    },
+    exportu: v => {
+      const { e } = v;
+
+      // v.n = e.parentNode.querySelector('textarea').value;
+      // v.n = v.n.length ? `${v.n}.svg` : '';
+      v.n = '';
+
+      v.s = document.querySelector('.seg.cards .thumbs');
+      v.d = new XMLSerializer().serializeToString(v.s);
+      v.b = new Blob([v.d], { type: 'application/xml' });
+  
+      v.l = document.createElement('a');
+      v.l.href = URL.createObjectURL(v.b);
+      v.l.download = v.n || 'cards.xml';
+      v.l.click();
+  
+      URL.revokeObjectURL(v.l.href);
+    }
   };
 
   [].forEach.call(t.querySelectorAll('li'), e => {
@@ -390,6 +423,31 @@ const cardu = v => {
       [].forEach.call(t.querySelectorAll('li') , e => e.classList.remove('on'));
       e.target.classList.add('on');
     });
+  });
+
+  document.querySelector('.seg.cards .fileimport').addEventListener('change', e => {
+    v.f = e.target.files[0];
+    if (v.f) {
+      v.r = new FileReader();
+        
+      v.r.onload = function(e) {
+        v.s = e.target.result;
+        v.t = parsexmlu({ s: v.s, t: 'li'});
+
+        [].forEach.call(v.t, e => {
+          v.h = e.querySelector('.thumb').innerHTML;
+          if(v.h.match(/<svg/)) {
+            btnscard.addnextu({ e: document.querySelector('.seg.cards .thumbs .on') });
+            v.e = document.querySelector('.seg.cards .thumbs .on');
+            v.h = e.querySelector('.thumb').innerHTML;
+            v.e.querySelector('.thumb').innerHTML = e.querySelector('.thumb').innerHTML;
+          }
+        });
+      };
+
+      v.r.readAsText(v.f);
+    }
+    e.target.value = ''; // 동일한 파일을 다시 선택할 수 있도록 값 초기화
   });
   
   return btnscard;

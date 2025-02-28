@@ -89,11 +89,13 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis .seg.cards .btns .btn.addprev { background: no-repeat 0 0 / 100% url(../wads/ico/ico-addprev.svg); }
 .sheet.uis .seg.cards .btns .btn.addnext { background: no-repeat 0 0 / 100% url(../wads/ico/ico-addnext.svg); }
 .sheet.uis .seg.cards .btns .btn.remove { background: no-repeat 0 0 / 100% url(../wads/ico/ico-remove.svg); }
-.sheet.uis .seg.cards .btns .btn.import { background: no-repeat 0 0 / 100% url(../wads/ico/ico-import.svg); }
-.sheet.uis .seg.cards .btns .btn.export { background: no-repeat 0 0 / 100% url(../wads/ico/ico-export.svg); }
+.sheet.uis .seg.cards .btns .btn.draw { background: no-repeat 0 0 / 100% url(../wads/ico/ico-draw.svg); }
+.sheet.uis .seg.cards .btns .btn.laydown { background: no-repeat 0 0 / 100% url(../wads/ico/ico-laydown.svg); }
 .sheet.uis .seg.cards .btns .btn.playonce { background: no-repeat 0 0 / 100% url(../wads/ico/ico-playonce.svg); }
 .sheet.uis .seg.cards .btns .btn.playstop { background: no-repeat 0 0 / 100% url(../wads/ico/ico-playstop.svg); }
 .sheet.uis .seg.cards .btns .btn.playloop { background: no-repeat 0 0 / 100% url(../wads/ico/ico-playloop.svg); }
+.sheet.uis .seg.cards .btns .btn.import { background: no-repeat 0 0 / 100% url(../wads/ico/ico-import.svg); }
+.sheet.uis .seg.cards .btns .btn.export { background: no-repeat 0 0 / 100% url(../wads/ico/ico-export.svg); }
 
 .sheet.uis .seg.cards .btns .btn:hover { background-color: #dae6; }
 .sheet.uis .seg.cards .btns .btn.on { background-color: #dae6; }
