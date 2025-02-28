@@ -89,6 +89,7 @@
         <button class="btn import" js="'obj': 'btnscard', 'fn': 'importu'"><span>IMPORT</span></button>
         <button class="btn export" js="'obj': 'btnscard', 'fn': 'exportu'"><span>EXPORT</span></button>
       </div>
+      <textarea rows="1" maxlength="24" placeholder="A-Za-z0-9-_#@." oninput="this.value = /[^A-Za-z0-9-_#@.]/ig.test(this.value) ? '' : this.value;"></textarea>
       <input class="fileimport" type="file" style="display:none" accept=".xml">
     </div>
     <div class="seg modal">

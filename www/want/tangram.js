@@ -232,7 +232,7 @@ const btnstangram = {
 
     v.l = document.createElement('a');
     v.l.href = URL.createObjectURL(v.b);
-    v.l.download = v.n || 'tan.svg';
+    v.l.download = v.n || 'oddgram.svg';
     v.l.click();
 
     URL.revokeObjectURL(v.l.href);
@@ -401,17 +401,17 @@ const cardu = v => {
     exportu: v => {
       const { e } = v;
 
-      // v.n = e.parentNode.querySelector('textarea').value;
-      // v.n = v.n.length ? `${v.n}.svg` : '';
-      v.n = '';
-
+      v.p = e.parentNode.parentNode.parentNode;
+      v.n = v.p.querySelector('textarea').value;
+      v.n = v.n.length ? `${v.n}.xml` : '';
+    
       v.s = document.querySelector('.seg.cards .thumbs');
       v.d = new XMLSerializer().serializeToString(v.s);
       v.b = new Blob([v.d], { type: 'application/xml' });
   
       v.l = document.createElement('a');
       v.l.href = URL.createObjectURL(v.b);
-      v.l.download = v.n || 'cards.xml';
+      v.l.download = v.n || 'oddgram.xml';
       v.l.click();
   
       URL.revokeObjectURL(v.l.href);
