@@ -101,6 +101,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis .seg.cards .btns .btn.on { background-color: #dae6; }
 
 .sheet.uis .seg.cards textarea { position: absolute; width: 240px; height: 18px; left: 158px; top: 8px; margin: 2px 0 0 4px; padding: 4px; background: #dae6; color:#666; font: 24px "Gowun Dodum", sans-serif; line-height: 18px; border-radius: 6px; border: 1px solid #dae; resize: none; pointer-events: fill; white-space: nowrap; overflow:hidden }
+.sheet.uis.vertical .seg.cards textarea { left: 0px; top: 168px; }
 .sheet.uis .seg.cards textarea:focus { outline: none; }
 /* >.seg.cards //\\ */
 
