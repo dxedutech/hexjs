@@ -2,11 +2,57 @@ html, body { display: flex; width: 100%; height: 100%; margin: 0;  padding: 0; b
 body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .seg { position: absolute; }
 
-/* >.seg.tangram, .seg.gride, .seg.btns //\\ */
+
+/* <.sheet.fgs ////////////////////////////////////////////////// */
+/* <.seg.tangram */
 .sheet.fgs .seg.tangram { width: 100%; height: 100%; }
+.sheet.fgs .seg.tangram svg g text { user-select: none; }
+/* >.seg.tangram */
 
+/* <.seg.textctrl */
+.sheet.fgs .seg.txtctrls { position: absolute; display: none; bottom: 4px; right: 4px;  }
+.sheet.fgs .seg.txtctrls.on { display: block;  pointer-events: fill; }
+.sheet.fgs .seg.txtctrls>div { padding: 8px; background: #3A343D; border: 1px solid #dae2; border-radius: 6px; }
+.sheet.fgs .seg.txtctrls label { color:#fff; font: 24px "Black Han Sans", sans-serif; margin: 5px; }
+.sheet.fgs .seg.txtctrls input, .sheet.fgs .seg.txtctrls select { color:#444; font: 24px "Gowun Dodum", sans-serif; margin: 5px; }
+.sheet.fgs .seg.txtctrls select option { color:#444; font: 16px "Gowun Dodum", sans-serif; }
+
+.sheet.fgs .seg.txtctrls .btns { display: flex; height: 48px; }
+.sheet.fgs .seg.txtctrls .btns>div { display: flex; padding: 0 8px; }
+.sheet.fgs .seg.txtctrls .btns>div:nth-child(1) { border: 0 solid #dae6; border-width: 0 1px 0 0; }
+
+.sheet.fgs .seg.txtctrls .btns .add { background: no-repeat 0 0 / 100% url(../wads/ico/ico-create.svg); }
+.sheet.fgs .seg.txtctrls .btns .remove { background: no-repeat 0 0 / 100% url(../wads/ico/ico-remove.svg); }
+.sheet.fgs .seg.txtctrls .btns .edit { background: no-repeat 0 0 / 100% url(../wads/ico/ico-create.svg); }
+.sheet.fgs .seg.txtctrls .btns .fixtxt { background: no-repeat 0 0 / 100% url(../wads/ico/ico-remove.svg); }
+.sheet.fgs .seg.txtctrls .btns>div:nth-child(2) .fixtxt { display: none; }
+.sheet.fgs .seg.txtctrls .btns>div:nth-child(2) .fixtxt.off { display: block; }
+.sheet.fgs .seg.txtctrls .btns>div:nth-child(2) .fixtxt.on { display: block; border: 1px solid #dae; }
+.sheet.fgs .seg.txtctrls .btns .btn { width: 40px; height: 40px; border: 1px solid #dae2; }
+.sheet.fgs .seg.txtctrls .btns .btn:hover { background-color: #dae6; }
+
+.sheet.fgs .seg.txtctrls .txt {}
+.sheet.fgs .seg.txtctrls .txt input { width: 386px; }
+
+.sheet.fgs .seg.txtctrls .xys { display: flex; }
+
+.sheet.fgs .seg.txtctrls .font {}
+/* >.seg.textctrl */
+
+/* <.seg.skiaorama */
+.sheet.fgs .seg.skiaorama.on { position: absolute; width: 100%; height: 100%; background: #000; }
+/* >.seg.skiaorama */
+/* >.sheet.fgs ////////////////////////////////////////////////// */
+
+
+
+
+/* <.seg.uis ////////////////////////////////////////////////// */
+/* <.seg.gride */
 .sheet.uis .seg.gride { pointer-events: none; }
+/* >.seg.gride */
 
+/* <.seg.btns */
 .sheet.uis .seg.btns { left: calc(100% + 8px); top: 50%; }
 .sheet.uis.vertical .seg.btns { display: flex; left: 50%; top: calc(100% + 8px); }
 
@@ -17,6 +63,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis.vertical .seg.btns .btn span { left: auto; top: calc(100% + 8px); }
 .sheet.uis .seg.btns .btn:hover span { font-size: 24px; }
 
+.sheet.uis .seg.btns .btn.text { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tancolor.svg); }
 .sheet.uis .seg.btns .btn.color { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tancolor.svg); }
 .sheet.uis .seg.btns .btn.pluse { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanpluse.svg); }
 .sheet.uis .seg.btns .btn.reset { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanreset.svg); }
@@ -28,22 +75,21 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 
 .sheet.uis .seg.btns .btn:hover { background-color: #dae6; }
 .sheet.uis .seg.btns .btn.on { background-color: #dae6; }
-/* >.seg.tangram, .seg.gride, .seg.btns //\\ */
+/* >.seg.btns */
 
-
-/* <.seg.cards //\\ */
+/* <.seg.cards */
 :root { --thumb-nail: 128px; --thumb-margin: 8px; }
 .sheet.uis .seg.cards { left: calc(var(--thumb-nail) * -1 - 32px); top: 0; }
 .sheet.uis.vertical .seg.cards { left: 0px; top: calc(var(--thumb-nail) * -1 - 32px); }
 
 .sheet.uis .seg.cards .thumbs {
   width: fit-content;
-  height: calc((var(--thumb-nail) + var(--thumb-margin)) * 8 + (var(--thumb-margin) * 3)); /* 8개 아이템의 높이에 맞게 설정 */
+  height: calc((var(--thumb-nail) + var(--thumb-margin)) * 8 + (var(--thumb-margin) * 3));
   overflow-x: auto;
   overflow-y: scroll;
 }
 .sheet.uis.vertical .seg.cards .thumbs {
-  width: calc((var(--thumb-nail) + var(--thumb-margin)) * 8 + (var(--thumb-margin) * 3)); /* 8개 아이템의 높이에 맞게 설정 */
+  width: calc((var(--thumb-nail) + var(--thumb-margin)) * 8 + (var(--thumb-margin) * 3)); 
   height: fit-content;
   overflow-x: scroll;
   overflow-y: auto;
@@ -72,13 +118,10 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis .seg.cards .thumbs li .sec { position: absolute; right: 0; width: 16px; height: 16px; background: #dae; color: #000; font-size: 14px; line-height: 14px; text-align: center; border-radius: 8px 0 8px 8px; }
 .sheet.uis .seg.cards .thumbs li .thumb { position: absolute; display: flex; width: 100%; height: 100%; color: #fff; font-size: 16px; font-weight: bold; justify-content: center; align-items: center; }
 
-
 .sheet.uis .seg.cards .btns { position: absolute; display: block; width: calc(var(--thumb-nail) * 0.5); height: fit-content;  left: calc(var(--thumb-nail) * -0.5 - 8px); top: 0; }
 .sheet.uis.vertical .seg.cards .btns { display: flex; width: fit-content; height: calc(var(--thumb-nail) * 0.5); left: 0;  top: calc(var(--thumb-nail) * -0.5 - 8px); }
 
-.sheet.uis .seg.cards .btns .btn { display: flex; width: calc(var(--thumb-nail) * 0.5); height: calc(var(--thumb-nail) * 0.5);
-  border: 1px solid #dae2; justify-content: right; align-items: center;
-}
+.sheet.uis .seg.cards .btns .btn { display: flex; width: calc(var(--thumb-nail) * 0.5); height: calc(var(--thumb-nail) * 0.5); border: 1px solid #dae2; justify-content: right; align-items: center; }
 .sheet.uis.vertical .seg.cards .btns .btn { justify-content: left; }
 .sheet.uis .seg.cards .btns .btn span { display: block; left: calc(-100% - 8px); font-size: 0px; white-space : nowrap; }
 .sheet.uis.vertical .seg.cards .btns .btn span { left: auto; top: -100%; }
@@ -100,21 +143,13 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis .seg.cards .btns .btn:hover { background-color: #dae6; }
 .sheet.uis .seg.cards .btns .btn.on { background-color: #dae6; }
 
-.sheet.uis .seg.cards textarea { position: absolute; width: 240px; height: 18px; left: 158px; top: 8px; margin: 2px 0 0 4px; padding: 4px; background: #dae6; color:#666; font: 24px "Gowun Dodum", sans-serif; line-height: 18px; border-radius: 6px; border: 1px solid #dae; resize: none; pointer-events: fill; white-space: nowrap; overflow:hidden }
+.sheet.uis .seg.cards textarea { position: absolute; width: 240px; height: 18px; left: 158px; top: 8px; margin: 2px 0 0 4px; padding: 4px; background: #dae6; color:#ddd; font: 24px "Gowun Dodum", sans-serif; line-height: 18px; border-radius: 6px; border: 1px solid #dae; resize: none; pointer-events: fill; white-space: nowrap; overflow:hidden }
 .sheet.uis.vertical .seg.cards textarea { left: 0px; top: 168px; }
 .sheet.uis .seg.cards textarea:focus { outline: none; }
-/* >.seg.cards //\\ */
+/* >.seg.cards */
 
 
-
-/* <.seg.skiaorama //\\ */
-.sheet.fgs .seg.skiaorama.on { position: absolute; width: 100%; height: 100%; background: #000; }
-
-/* >.seg.skiaorama //\\ */
-
-
-
-/* <.seg.modal //\\ */
+/* <.seg.modal */
 .sheet.uis .seg.modal.on { position: absolute; width: 100%; height: 100%; }
 .sheet.uis .seg.modal.on .msgs { width: 100%; height: 100%; background: #fff; pointer-events: fill; }
 
@@ -125,12 +160,24 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis .seg.modal.on .btns .btn:hover span { color: #fff; }
 .sheet.uis .seg.modal.on .btns textarea { width: 240px; height: 18px; margin: 2px 0 0 4px; padding: 4px; background: #dae6; color:#666; font: 24px "Gowun Dodum", sans-serif; line-height: 18px; border-radius: 6px; border: 1px solid #dae; resize: none; pointer-events: fill; white-space: nowrap; overflow:hidden }
 .sheet.uis .seg.modal.on .btns textarea:focus { outline: none; }
-/* >.seg.modal //\\ */
+/* >.seg.modal */
+/* >.seg.uis ////////////////////////////////////////////////// */
+
 
 
 
 @media print {
   body {
+    @font-face {
+      font-family: "PlayTangram";
+      src: url("../wads/fonts/PlayTangram.woff");
+    }
+
+    @font-face {
+      font-family: "baby_bb33";
+      src: url("../wads/fonts/baby_bb33.woff");
+    }
+
     margin: 0;
     padding: 0;
   }

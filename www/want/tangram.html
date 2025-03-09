@@ -26,7 +26,55 @@
           <path class="tan xxvi" d="M256,0 L192,64 L192,192 L256,128 Z" fill="#e9d226" />
           <path class="tan xxvii" d="M128,128 L192,192 L192,64 Z" fill="#7caa2a" />
         </g>
+        <g class="tans txt"></g>
       </svg>
+    </div>
+    <div class="seg txtctrls">
+      <div>
+        <div class="btns">
+          <div>
+            <button class="btn add" js="'obj': 'txtctrl', 'fn': 'addu'"></button>
+            <button class="btn remove" js="'obj': 'txtctrl', 'fn': 'removeu'"></button>
+            <button class="btn edit" js="'obj': 'txtctrl', 'fn': 'editu'"></button>
+          </div>
+          <div>
+            <button class="btn fixtxt" js="'obj': 'txtctrl', 'fn': 'fixtxtu'"></button>
+            <button class="btn fixtxt" js="'obj': 'txtctrl', 'fn': 'fixtxtu'"></button>
+            <button class="btn fixtxt" js="'obj': 'txtctrl', 'fn': 'fixtxtu'"></button>
+            <button class="btn fixtxt" js="'obj': 'txtctrl', 'fn': 'fixtxtu'"></button>
+            <button class="btn fixtxt" js="'obj': 'txtctrl', 'fn': 'fixtxtu'"></button>
+            <button class="btn fixtxt" js="'obj': 'txtctrl', 'fn': 'fixtxtu'"></button>
+            <button class="btn fixtxt" js="'obj': 'txtctrl', 'fn': 'fixtxtu'"></button>
+          </div>
+        </div>
+        <div class="txt">
+          <label for="txtcontent">Text:</label>
+          <input type="text" id="txtcontent" value="" placeholder="Please enter your text.">
+        </div>
+        <div class="xys">
+          <div>
+            <label for="txtx">X:</label>
+            <input type="number" id="txtx" value="512" min="0" max="1920">
+          </div>
+          <div>
+            <label for="txty">Y:</label>
+            <input type="number" id="txty" value="256" min="0" max="1920">
+          </div>
+          <div>
+            <label for="txtsize">Size:</label>
+            <input type="number" id="txtsize" value="64" min="32" max="256">
+          </div>
+        </div>
+        <div class="font">
+          <label for="txtname">Font:</label>
+          <select id="txtname">
+            <option value="PlayTangram">PlayTangram</option>
+            <option value="baby_bb33">baby_bb33(eng)</option>
+            <option value="Black Han Sans">Black Han Sans</option>
+            <option value="Gowun Dodum">Gowun Dodum</option>
+          </select>
+        </div>
+      </div>
     </div>
     <div class="seg skiaorama"></div>
   </div>
@@ -56,6 +104,7 @@
       </svg>
     </div>
     <div class="seg btns">
+      <button class="btn text" js="'obj': 'btnstangram', 'fn': 'textu'"><span>TEXT</span></button> <!-- Text -->
       <button class="btn color on" js="'obj': 'btnstangram', 'fn': 'coloru'"><span>COLOR</span></button> <!-- Color -->
       <button class="btn pluse" js="'obj': 'btnstangram', 'fn': 'pluseu'"><span>PLUSE 1 SET</span></button> <!-- Pluse -->
       <button class="btn reset" js="'obj': 'btnstangram', 'fn': 'resetu'"><span>RESET</span></button> <!-- Reset -->

@@ -73,7 +73,134 @@ const parsexmlu = v => {
   return t ? v.e : v.d;
 }
 
+const txtedit = v => {
+  const { e, p, a, t } = v;
+
+
+}
+
+const txtctrl = {
+  addu: v => { 
+    const { e, o, w } = v;
+
+    v.v = document.querySelector('#txtcontent').value;
+    if(!v.v.length) return;
+    
+    // v.n = Array.prototype.indexOf.call(e.parentNode.children, e);
+    // v.b = e.className;
+
+    v.a = document.querySelectorAll('.btn.fixtxt');
+    v.b = true;
+    v.n = 0;
+    [].forEach.call(v.a, e => {
+      if(e.className.match(/on/)) { e.classList.remove('on'); e.classList.add('off'); }
+      if(v.b && !e.className.match(/off/)) { v.b = false; e.classList.add('on'); }
+      if(e.className.match(/off/)) ++v.n;
+      if(v.n === v.a.length) e.classList.add('on');
+    });
+    if(v.n > v.a.length - 1) return;
+
+    v.p = document.querySelector('.sheet.fgs .seg.tangram svg .tans.txt');
+    v.a = v.p.querySelectorAll('text');
+    [].forEach.call(v.a, e => e.setAttribute('stroke', 'none'));
+
+    v.e = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    v.e.textContent = v.v;
+    v.e.setAttribute('x', document.querySelector('#txtx').value);
+    v.e.setAttribute('y', document.querySelector('#txty').value);
+    v.e.setAttribute('font-size', document.querySelector('#txtsize').value);
+    v.e.setAttribute('font-family', document.querySelector('#txtname').value);
+    v.e.setAttribute('fill', '#ddd');
+    v.e.setAttribute('stroke', '#dae');
+
+    v.p.appendChild(v.e);
+    v.e.style.board = '1px solid #dae';
+  },
+  removeu: v => { 
+    const { e, o, w } = v;
+
+    v.e = document.querySelector('.btn.fixtxt.on');
+    if(!v.e) return;
+
+    v.n = Array.prototype.indexOf.call(v.e.parentNode.children, v.e);
+
+    v.a = document.querySelectorAll('.btn.fixtxt');
+    v.l = v.a.length - 1;
+    console.log(v.l);
+    v.b = true;
+    [].forEach.call(v.a, (e, i) => {
+      if(v.a[v.l - i].className.match(/on/)) { 
+        v.a[v.l - i].classList.remove('on');
+        v.a[v.l - i].classList.add('off');
+      }
+
+      if(v.b && v.a[v.l - i].className.match(/off/)) {
+        v.b = false;
+        v.a[v.l - i].classList.remove('off');
+      }
+    });
+    
+    v.a = document.querySelectorAll('.sheet.fgs .seg.tangram svg .tans.txt text');
+    v.a[v.n].remove();
+  },
+  editu: v => { 
+    const { e, o, w } = v;
+   
+    v.e = document.querySelector('.btn.fixtxt.on');
+    if(!v.e) return;
+
+    v.v = document.querySelector('#txtcontent').value;
+    if(!v.v.length) return;
+
+    v.n = Array.prototype.indexOf.call(v.e.parentNode.children, v.e);
+
+    v.p = document.querySelector('.sheet.fgs .seg.tangram svg .tans.txt');
+    v.a = v.p.querySelectorAll('text');
+    [].forEach.call(v.a, e => e.setAttribute('stroke', 'none'));
+    console.log(v.n, v.a[v.n]);
+    v.e = v.a[v.n];
+    v.e.textContent = v.v;
+    v.e.setAttribute('x', document.querySelector('#txtx').value);
+    v.e.setAttribute('y', document.querySelector('#txty').value);
+    v.e.setAttribute('font-size', document.querySelector('#txtsize').value);
+    v.e.setAttribute('font-family', document.querySelector('#txtname').value);
+    v.e.setAttribute('fill', '#ddd');
+    v.e.setAttribute('stroke', '#dae');
+    v.e.style.board = '1px solid #dae';
+  },
+  fixtxtu: v => {
+    const { e, o, w } = v;
+    
+    v.n = Array.prototype.indexOf.call(e.parentNode.children, e);
+
+    v.a = document.querySelectorAll('.btn.fixtxt');
+    v.b = e.className;
+    [].forEach.call(v.a, e => { 
+      if(e.className.match(/on/)) {
+        e.classList.remove('on'); 
+        e.classList.add('off'); 
+      }
+    });
+
+    v.a = document.querySelectorAll('.sheet.fgs .seg.tangram svg .tans.txt text');
+    [].forEach.call(v.a, e => e.setAttribute('stroke', 'none'));
+
+    if(v.b.match(/off/)) {
+      e.classList.remove('off');
+      e.classList.add('on');
+      v.a[v.n].setAttribute('stroke', '#dae');
+    }
+  }
+}
+
 const btnstangram = {
+  textu: v => {
+    const { e, o, w } = v;
+
+    v.e = document.querySelector('.sheet.fgs .seg.txtctrls');
+    v.e.classList.toggle('on');
+    e.classList.toggle('on');
+  },
   coloru: v => {
     const { e, o, w } = v;
 
@@ -184,6 +311,7 @@ const btnstangram = {
       v.s += document.querySelector('.sheet.fgs .seg.tangram svg').innerHTML;
       v.s += '</svg>';
       v.e.querySelector('.msgs').innerHTML = v.s;
+      [].forEach.call(v.e.querySelectorAll('text'), e => e.setAttribute('fill', '#444'));
     }
     e.classList.toggle('on');
   },
@@ -277,8 +405,8 @@ const cardu = v => {
       v.e.classList.add('on');
       [].forEach.call(v.a, (e, i) => {
         v.c = e.children[1];
-        v.t = ['¼','½','¾','1'].indexOf(e.children[0].innerText);
-        v.q = [15, 30, 45, 60][v.t];
+        v.n = ['¼', '½', '¾', '1', '3'].indexOf(e.children[0].innerText);
+        v.q = [15, 30, 45, 60, 180][v.n];
         if(v.c.innerText !== 'THUMB' && v.c.innerText !== 'NEW') thumbscard.thumb.push([i, v.q]);
       });
       if(!thumbscard.thumb.length) thumbscard.time = 0;
@@ -360,7 +488,7 @@ const cardu = v => {
       const { e } = v;
 
       if (e) {
-        v.a = ['¼','½','¾','1'];
+        v.a = ['¼', '½', '¾', '1', '3'];
         v.e = e.children[1];
         v.s = v.e.innerText;
 
@@ -589,7 +717,8 @@ const cardu = v => {
       if(x.btnm) {
         if(Object.keys(x.btnm.evt).length){
           if(x.btnm.evt.s) {
-            if(x.btnm.evt.o === 'btnstangram') btnstangram[x.btnm.evt.s]({ e: x.btnm.evt.e, o: o, w: w });
+            if(x.btnm.evt.o === 'txtctrl') txtctrl[x.btnm.evt.s]({ e: x.btnm.evt.e, o: o, w: w });
+            if(x.btnm.evt.o === 'btnstangram' ) btnstangram[x.btnm.evt.s]({ e: x.btnm.evt.e, o: o, w: w });
             if(x.btnm.evt.o === 'btnscard') { 
               v.t = document.querySelector('.sheet.uis .seg.cards .thumbs');
               btnscard[x.btnm.evt.s]({ e: v.t.querySelector('li.on') });
@@ -692,9 +821,6 @@ const cardu = v => {
 
     v.e = document.querySelector('.sheet.fgs .seg.tangram .tans.xi');
     v.e.style.display = 'none';
-
-    /* .seg.cards //\\ */
-    //cardu({ x: x, t: document.querySelector('.sheet.uis .seg.cards .thumbs'), b: document.querySelector('.sheet.uis .seg.cards .btns'), w: w });
   })();
 })({ x: hex, a: document.querySelectorAll('.tan'), o: {}, i: {}, w: { r: 1, wh: { w: 1280, h: 1280 }} });
 /* >.seg.tangram, .seg.gride, .seg.btns //\\ */
