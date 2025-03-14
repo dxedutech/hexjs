@@ -73,12 +73,9 @@ const parsexmlu = v => {
   return t ? v.e : v.d;
 }
 
-const txtedit = v => {
-  const { e, p, a, t } = v;
 
 
-}
-
+/* <.seg.txtctrls //\\ */
 const txtctrl = {
   addu: v => { 
     const { e, o, w } = v;
@@ -126,7 +123,7 @@ const txtctrl = {
 
     v.a = document.querySelectorAll('.btn.fixtxt');
     v.l = v.a.length - 1;
-    console.log(v.l);
+
     v.b = true;
     [].forEach.call(v.a, (e, i) => {
       if(v.a[v.l - i].className.match(/on/)) { 
@@ -157,7 +154,7 @@ const txtctrl = {
     v.p = document.querySelector('.sheet.fgs .seg.tangram svg .tans.txt');
     v.a = v.p.querySelectorAll('text');
     [].forEach.call(v.a, e => e.setAttribute('stroke', 'none'));
-    console.log(v.n, v.a[v.n]);
+
     v.e = v.a[v.n];
     v.e.textContent = v.v;
     v.e.setAttribute('x', document.querySelector('#txtx').value);
@@ -189,17 +186,36 @@ const txtctrl = {
       e.classList.remove('off');
       e.classList.add('on');
       v.a[v.n].setAttribute('stroke', '#dae');
+
+      document.querySelector('#txtcontent').value = v.a[v.n].textContent;
+      document.querySelector('#txtx').value = v.a[v.n].getAttribute('x');
+      document.querySelector('#txty').value = v.a[v.n].getAttribute('y');
+      document.querySelector('#txtsize').value = v.a[v.n].getAttribute('font-size');
+      document.querySelector('#txtname').value = v.a[v.n].getAttribute('font-family');
     }
   }
 }
+/* >.seg.txtctrls //\\ */
 
+
+
+/* <.seg.btns //\\ */
 const btnstangram = {
   textu: v => {
     const { e, o, w } = v;
 
-    v.e = document.querySelector('.sheet.fgs .seg.txtctrls');
-    v.e.classList.toggle('on');
     e.classList.toggle('on');
+    document.querySelector('.sheet.fgs .seg.txtctrls').classList.toggle('on');
+  
+    if(e.className.match(/on/)){
+      v.b = document.querySelectorAll('.sheet.fgs .seg.txtctrls .btns .btn.fixtxt');
+      [].forEach.call(v.b, e => {
+        e.classList.remove('off');
+        e.classList.remove('on');
+      });
+      v.a = document.querySelectorAll('.sheet.fgs .seg.tangram svg .tans.txt text');
+      [].forEach.call(v.a, (e, i) => v.b[i].classList.add('off'));
+    }
   },
   coloru: v => {
     const { e, o, w } = v;
@@ -281,7 +297,6 @@ const btnstangram = {
 
       if(v.a[0].length === v.l) break;
     }
-    // console.log(v.a);
   },
   gridu: v => {
     const { e, o, w } = v;
@@ -366,6 +381,7 @@ const btnstangram = {
     URL.revokeObjectURL(v.l.href);
   }
 };
+/* >.seg.btns //\\ */
 
 
 
@@ -384,10 +400,18 @@ const cardu = v => {
     v.f = t.getBoundingClientRect();
     v.r = e.getBoundingClientRect();
 
-    if (v.r.top < v.f.top) {
-      t.scrollTop -= ((v.f.top + 8) - v.r.top)/w.r; //\\ margin: 8px;
-    } else if (v.r.bottom > v.f.bottom) {
-      t.scrollTop += ((v.r.bottom + 8) - v.f.bottom)/w.r;
+    if(w.hv.h) { //\\vertical
+      if (v.r.top < v.f.top) {
+        t.scrollTop -= ((v.f.top + 8) - v.r.top)/w.r; //\\ margin: 8px;
+      } else if (v.r.bottom > v.f.bottom) {
+        t.scrollTop += ((v.r.bottom + 8) - v.f.bottom)/w.r;
+      }
+    } else {
+      if (v.r.left < v.f.left) {
+        t.scrollLeft -= ((v.f.left + 8) - v.r.left)/w.r; //\\ margin: 8px;
+      } else if (v.r.right > v.f.right) {
+        t.scrollLeft += ((v.r.right + 8) - v.f.right)/w.r;
+      }
     }
   }
   
@@ -517,6 +541,12 @@ const cardu = v => {
           document.querySelector(`.${v.s}`).setAttribute('d', v.d);
         });
       }
+
+      v.t = v.e.querySelector('.tans.txt');
+      document.querySelector('.sheet.fgs .seg.tangram .tans.txt').innerHTML = v.t ? v.t.innerHTML : '';
+
+      v.b = document.querySelector('.sheet.uis .seg.btns .btn.text.on');
+      if(v.b) btnstangram.textu({ e: v.b });
     },
     playonceu: v => skiaoramau({ e: v.e, n: 1}),
     playstopu: v => skiaoramau({ e: v.e, n: 0}),
@@ -739,7 +769,6 @@ const cardu = v => {
           
           if(thumbscard.tick < v.c[1]) {
             if(!thumbscard.tick) {
-              // console.log(thumbscard.tick, v.c); //\\0 [0, 30]
               v.a = document.querySelectorAll('.thumbs li');
               v.h = v.a[v.c[0]].querySelector('.thumb').innerHTML;
               document.querySelector('.sheet.fgs .seg.skiaorama').innerHTML = v.h;
@@ -821,6 +850,15 @@ const cardu = v => {
 
     v.e = document.querySelector('.sheet.fgs .seg.tangram .tans.xi');
     v.e.style.display = 'none';
+
+    v.e = document.querySelector('.sheet.uis .seg.cards .thumbs');
+    v.e.addEventListener('wheel', e => {
+      e.preventDefault();
+
+      if(x.envm.hv.h) v.e.scrollTop += e.deltaY;
+      else v.e.scrollLeft += e.deltaY;
+    });
+
   })();
 })({ x: hex, a: document.querySelectorAll('.tan'), o: {}, i: {}, w: { r: 1, wh: { w: 1280, h: 1280 }} });
 /* >.seg.tangram, .seg.gride, .seg.btns //\\ */

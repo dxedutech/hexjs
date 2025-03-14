@@ -23,7 +23,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 
 .sheet.fgs .seg.txtctrls .btns .add { background: no-repeat 0 0 / 100% url(../wads/ico/ico-create.svg); }
 .sheet.fgs .seg.txtctrls .btns .remove { background: no-repeat 0 0 / 100% url(../wads/ico/ico-remove.svg); }
-.sheet.fgs .seg.txtctrls .btns .edit { background: no-repeat 0 0 / 100% url(../wads/ico/ico-create.svg); }
+.sheet.fgs .seg.txtctrls .btns .edit { background: no-repeat 0 0 / 100% url(../wads/ico/ico-edit.svg); }
 .sheet.fgs .seg.txtctrls .btns .fixtxt { background: no-repeat 0 0 / 100% url(../wads/ico/ico-remove.svg); }
 .sheet.fgs .seg.txtctrls .btns>div:nth-child(2) .fixtxt { display: none; }
 .sheet.fgs .seg.txtctrls .btns>div:nth-child(2) .fixtxt.off { display: block; }
@@ -63,7 +63,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis.vertical .seg.btns .btn span { left: auto; top: calc(100% + 8px); }
 .sheet.uis .seg.btns .btn:hover span { font-size: 24px; }
 
-.sheet.uis .seg.btns .btn.text { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tancolor.svg); }
+.sheet.uis .seg.btns .btn.text { background: no-repeat 0 0 / 100% url(../wads/ico/ico-addtxt.svg); }
 .sheet.uis .seg.btns .btn.color { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tancolor.svg); }
 .sheet.uis .seg.btns .btn.pluse { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanpluse.svg); }
 .sheet.uis .seg.btns .btn.reset { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanreset.svg); }
@@ -74,7 +74,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis .seg.btns .btn.home { background: no-repeat 0 0 / 100% url(../wads/ico/ico-tanhome.svg); }
 
 .sheet.uis .seg.btns .btn:hover { background-color: #dae6; }
-.sheet.uis .seg.btns .btn.on { background-color: #dae6; }
+.sheet.uis .seg.btns .btn.on { border-color: #dae; }
 /* >.seg.btns */
 
 /* <.seg.cards */
@@ -85,14 +85,15 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis .seg.cards .thumbs {
   width: fit-content;
   height: calc((var(--thumb-nail) + var(--thumb-margin)) * 8 + (var(--thumb-margin) * 3));
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 .sheet.uis.vertical .seg.cards .thumbs {
   width: calc((var(--thumb-nail) + var(--thumb-margin)) * 8 + (var(--thumb-margin) * 3)); 
   height: fit-content;
   overflow-x: scroll;
-  overflow-y: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 .sheet.uis .seg.cards .thumbs::-webkit-scrollbar { width: 4px; height: auto; }
 .sheet.uis.vertical .seg.cards .thumbs::-webkit-scrollbar { width: auto; height: 4px; }
@@ -108,7 +109,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
   height: var(--thumb-nail);
   margin: var(--thumb-margin);
   list-style: none;
-  border: 1px solid #dae;
+  border: 1px solid #dae6;
   color: #888;
   pointer-events: fill;
 }

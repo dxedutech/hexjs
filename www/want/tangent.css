@@ -16,7 +16,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis.vertical .seg.btns .btn span { justify-content: right; }
 .sheet.uis .seg.btns .btn:hover span { font-size: 24px; }
 
-.sheet.uis .seg.btns .btn.color span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-color.svg); }
+.sheet.uis .seg.btns .btn.color span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-addtxt.svg); }
 .sheet.uis .seg.btns .btn.add span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-add.svg); }
 .sheet.uis .seg.btns .btn.reset span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-reset.svg); }
 .sheet.uis .seg.btns .btn.magnetic span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-magnetic.svg); }
