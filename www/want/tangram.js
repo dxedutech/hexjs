@@ -625,13 +625,13 @@ const cardu = v => {
   const { x, a, o, i, w } = v;
 
   (async () => { 
-    await x.loadfontu('/www/wads/fonts/baby_bb33.woff');
-    await x.loadfontu('/www/wads/fonts/playtangram.woff');
+    await x.loadfontu('../www/wads/fonts/baby_bb33.woff');
+    await x.loadfontu('../www/wads/fonts/playtangram.woff');
     
     await x.importmoduleu({ m: '/www/ware/env.js' }); //\ module, index
     x.envm.resizeu({ w: w.wh.w, h: w.wh.h });
 
-    await x.loadfetchu({ u: '/www/want/tangram.xml', p: '.sheet.bgs' });
+    await x.loadfetchu({ u: '../www/want/tangram.xml', p: '.sheet.bgs' });
 
     // w.r = x.envm.r;
     // w.hv = x.envm.hv;
