@@ -344,8 +344,8 @@ const btnstangram = {
       v.e.write('<style>');
       v.e.write(`
         @page { size: A4; margin: 0; @bottom-center { content: "Footer for first page"; } }
-        @font-face { font-family: "playtangram"; src: url("/www/wads/fonts/playtangram.woff"); }
-        @font-face { font-family: "baby_bb33"; src: url("/www/wads/fonts/baby_bb33.woff"); }
+        @font-face { font-family: "playtangram"; src: url("../wads/fonts/playtangram.woff"); }
+        @font-face { font-family: "baby_bb33"; src: url("../wads/fonts/baby_bb33.woff"); }
         body { margin: 0; padding: 0; }
         svg { display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; flex-wrap: wrap; }
       `);
