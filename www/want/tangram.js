@@ -344,8 +344,8 @@ const btnstangram = {
       v.e.write('<style>');
       v.e.write(`
         @page { size: A4; margin: 0; @bottom-center { content: "Footer for first page"; } }
-        @font-face { font-family: "playtangram"; src: url("../www/wads/fonts/playtangram.woff"); }
-        @font-face { font-family: "baby_bb33"; src: url("../www/wads/fonts/baby_bb33.woff"); }
+        @font-face { font-family: "playtangram"; src: url("/www/wads/fonts/playtangram.woff"); }
+        @font-face { font-family: "baby_bb33"; src: url("/www/wads/fonts/baby_bb33.woff"); }
         body { margin: 0; padding: 0; }
         svg { display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; flex-wrap: wrap; }
       `);
@@ -625,13 +625,13 @@ const cardu = v => {
   const { x, a, o, i, w } = v;
 
   (async () => { 
-    await x.loadfontu('../www/wads/fonts/baby_bb33.woff');
-    await x.loadfontu('../www/wads/fonts/playtangram.woff');
+    await x.loadfontu('../wads/fonts/baby_bb33.woff');
+    await x.loadfontu('../wads/fonts/playtangram.woff');
     
-    await x.importmoduleu({ m: '/www/ware/env.js' }); //\ module, index
+    await x.importmoduleu({ m: '../ware/env.js' }); //\ module, index
     x.envm.resizeu({ w: w.wh.w, h: w.wh.h });
 
-    await x.loadfetchu({ u: '../www/want/tangram.xml', p: '.sheet.bgs' });
+    await x.loadfetchu({ u: '../want/tangram.xml', p: '.sheet.bgs' });
 
     // w.r = x.envm.r;
     // w.hv = x.envm.hv;
@@ -852,7 +852,7 @@ const cardu = v => {
     document.addEventListener('mouseup', drag.endu);
     document.addEventListener('touchend', drag.endu);
 
-    await x.importmoduleu({ m: '/www/ware/btn.js' }); //\ module, index
+    await x.importmoduleu({ m: '../ware/btn.js' }); //\ module, index
 
     v.e = document.querySelector('.sheet.fgs .seg.tangram .tans.xi');
     v.e.style.display = 'none';
