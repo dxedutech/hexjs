@@ -168,7 +168,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 
  
 /* iframe body {
-  @font-face { font-family: "playtangram"; src: url("../wads/fonts/playtangram.woff"); }
+  @font-face { font-family: "PlayTangram"; src: url("../wads/fonts/PlayTangram.woff"); }
   @font-face { font-family: "baby_bb33"; src: url("../wads/fonts/baby_bb33.woff"); }
 
   display: flex;
@@ -180,7 +180,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 
 @media print {
   body {
-    @font-face { font-family: "playtangram"; src: url("../wads/fonts/playtangram.woff"); }
+    @font-face { font-family: "PlayTangram"; src: url("../wads/fonts/PlayTangram.woff"); }
     @font-face { font-family: "baby_bb33"; src: url("../wads/fonts/baby_bb33.woff"); }
     margin: 0; padding: 0;
   }

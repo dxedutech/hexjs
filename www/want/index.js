@@ -3,7 +3,7 @@
 
   (async () => { 
     await x.loadfontu('/www/wads/fonts/baby_bb33.woff');
-    await x.loadfontu('/www/wads/fonts/playtangram.woff');
+    await x.loadfontu('/www/wads/fonts/PlayTangram.woff');
     
     await x.importmoduleu({ m: '/www/ware/env.js' }); //\ module, index
     x.envm.resizeu({ w: wh.w, h: wh.h });

@@ -19,7 +19,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 /* .sheet>div, .sheet>svg { position: absolute; } */
 
 .sheet.fgs .fg.title { display: flex; left: auto; top: 24px; }
-.sheet.fgs .fg.title div { margin: 0 4px; font: 180px "playtangram", sans-serif; }
+.sheet.fgs .fg.title div { margin: 0 4px; font: 180px "PlayTangram", sans-serif; }
 
 /* .sheet.uis { width: 100%; height: 100%; } */
 /* .sheet.uis .seg.btns { right: 24px; bottom: 24px; } */
