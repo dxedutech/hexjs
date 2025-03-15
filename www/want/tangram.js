@@ -333,7 +333,32 @@ const btnstangram = {
   printu: v => {
     const { e, o, w } = v;
     
-    console.log(e);
+    const setprintu = v => {
+      const { e } = v;
+
+      const closeprintu = () => document.body.removeChild(e);
+
+      v.e = e.contentWindow.document;
+      v.e.open();
+      v.e.write('<html><head><title>ODDGRAM</title>');
+      v.e.write('<style>');
+      v.e.write(`
+        @page { size: A4; margin: 0; @bottom-center { content: "Footer for first page"; } }
+        @font-face { font-family: "playtangram"; src: url("../www/wads/fonts/playtangram.woff"); }
+        @font-face { font-family: "baby_bb33"; src: url("../www/wads/fonts/baby_bb33.woff"); }
+        body { margin: 0; padding: 0; }
+        svg { display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; flex-wrap: wrap; }
+      `);
+      v.e.write('</style>');
+      v.e.write('</head><body>');
+      v.e.write(document.querySelector('.seg.modal .msgs').innerHTML); // Copy content from the specific element
+      v.e.write('</body></html>');
+      v.e.close();
+ 
+      e.contentWindow.onbeforeunload = closeprintu;
+      e.contentWindow.onafterprint = closeprintu;
+      e.contentWindow.print();
+    }
 
     v.i = document.createElement('iframe');
     v.i.style.position = 'absolute';
@@ -342,26 +367,7 @@ const btnstangram = {
     v.i.style.border = 'none';
  
     document.body.appendChild(v.i);
- 
-    v.e = v.i.contentWindow.document;
-    v.e.open();
-    v.e.write('<html><head><title>Tangram</title>');
-    v.e.write('<style>');
-    v.e.write(`
-      @page { size: A4; margin: 0; @bottom-center { content: "Footer for first page"; } }
-      body { margin: 0; padding: 0; }
-      svg { display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; flex-wrap: wrap; }
-    `);
-    v.e.write('</style>');
-    //  v.e.write('<style>body { font-family: Arial, sans-serif; }</style>'); // Optional CSS styles
-    v.e.write('</head><body>');
-    v.e.write(document.querySelector('.seg.modal .msgs').innerHTML);  // Copy content from the specific element
-    v.e.write('</body></html>');
-    v.e.close();
- 
-    v.i.contentWindow.print();
- 
-    document.body.removeChild(v.i);
+    v.i.onload = setprintu({e : v.i});
   },
   downloadu: v => {
     const { e, o, w } = v;
@@ -620,7 +626,7 @@ const cardu = v => {
 
   (async () => { 
     await x.loadfontu('/www/wads/fonts/baby_bb33.woff');
-    await x.loadfontu('/www/wads/fonts/PlayTangram.woff');
+    await x.loadfontu('/www/wads/fonts/playtangram.woff');
     
     await x.importmoduleu({ m: '/www/ware/env.js' }); //\ module, index
     x.envm.resizeu({ w: w.wh.w, h: w.wh.h });

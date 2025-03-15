@@ -1,6 +1,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Dokdo&family=Gowun+Dodum&family=Black+Han+Sans&display=swap');
 
+@font-face {
+  font-family: "playtangram";
+  src: url("../wads/fonts/playtangram.woff") format("woff");
+}
+
+@font-face {
+  font-family: "baby_bb33";
+  src: url("../wads/fonts/baby_bb33.woff") format("woff");
+}
+
 html, body {
   position: relative; 
   display: flex;
