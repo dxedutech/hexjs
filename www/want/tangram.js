@@ -426,6 +426,10 @@ const cardu = v => {
 
     v.a = e.parentNode.children;
     v.e = document.querySelector('.sheet.fgs .seg.skiaorama');
+
+    if (!document.querySelector('.seg.btns .btn.color.on')) { v.e.classList.add('invert'); }
+    else { v.e.classList.remove('invert'); }
+
     thumbscard.time = n;
     thumbscard.tick = 0;
     thumbscard.thumb = [];

@@ -41,6 +41,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 
 /* <.seg.skiaorama */
 .sheet.fgs .seg.skiaorama.on { position: absolute; width: 100%; height: 100%; background: #000; }
+.sheet.fgs .seg.skiaorama.invert { background: #fff; }
 /* >.seg.skiaorama */
 /* >.sheet.fgs ////////////////////////////////////////////////// */
 
