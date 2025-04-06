@@ -1,0 +1,26 @@
+html, body { display: flex; width: 100%; height: 100%; margin: 0;  padding: 0; background: #222; justify-content: center; align-items: center; overflow: hidden; }
+body>div, .scene, .sheet { width: var(--w); height: var(--h); }
+
+.seg { position: absolute; }
+.seg.tangent { width: 100%; height: 100%; }
+.seg.gride { pointer-events: none; }
+
+.sheet.uis .seg.btns { left: calc(100% + 8px); top: 50%; }
+.sheet.uis.vertical .seg.btns { left: 50%; top: calc(100% + 8px); }
+.sheet.uis.vertical .seg.btns>div { display: flex; }
+
+.sheet.uis .seg.btns .btn { width: 64px; height: 64px; margin: 8px; border:1px solid #dae2; }
+.sheet.uis .seg.btns .btn:hover { background: #dae6; }
+
+.sheet.uis .seg.btns .btn span { display: flex; width: 100%; height: 100%; font-size: 0; white-space : nowrap; justify-content: left; }
+.sheet.uis.vertical .seg.btns .btn span { justify-content: right; }
+.sheet.uis .seg.btns .btn:hover span { font-size: 24px; }
+
+.sheet.uis .seg.btns .btn.color span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-addtxt.svg); }
+.sheet.uis .seg.btns .btn.add span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-add.svg); }
+.sheet.uis .seg.btns .btn.reset span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-reset.svg); }
+.sheet.uis .seg.btns .btn.magnetic span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-magnetic.svg); }
+.sheet.uis .seg.btns .btn.gride span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-gride.svg); }
+.sheet.uis .seg.btns .btn.save span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-save.svg); }
+.sheet.uis .seg.btns .btn.youtube span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-youtube.svg); }
+.sheet.uis .seg.btns .btn.home span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-home.svg); }

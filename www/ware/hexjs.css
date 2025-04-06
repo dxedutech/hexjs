@@ -39,8 +39,6 @@ body::-webkit-scrollbar {
   display: none; /* 크롬, 오페라, 사파리 */
 }
 
-
-
 /* <button */
 button {
   width: auto; height: auto;
@@ -61,18 +59,6 @@ button:hover span {
   pointer-events: none;
 }
 /* >button */
-
-
-
-footer {
-  position: absolute;
-  width: 100%; height: auto;
-  left: 0; bottom: 0;
-  color: #dae2;
-  font: 16px 'Gowun Dodum', sans-serif;
-  text-align: center;
-  pointer-events: none;
-}
 
 .scene {
   display: flex;
@@ -97,3 +83,23 @@ footer {
 .bg { color: #eda; }
 .fg { color: #dae; }
 .ui { color: #aed; }
+
+header {
+  position: absolute;
+  width: 100%; height: auto;
+  bottom: 0;
+  color: #dae2;
+  font: 16px 'Gowun Dodum', sans-serif;
+  text-align: left;
+  pointer-events: none;
+}
+
+footer {
+  position: absolute;
+  width: 100%; height: auto;
+  bottom: 0;
+  color: #dae2;
+  font: 16px 'Gowun Dodum', sans-serif;
+  text-align: right;
+  pointer-events: none;
+}

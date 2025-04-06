@@ -10,7 +10,7 @@
   })();
 
   /* .bed //\ */
-  v.bed = x.crtu({ t: 'div', c: c, e: '', p: document.querySelector('body>div:nth-child(1)') });
+  v.bed = x.crtu({ t: 'div', c: c, e: '', p: document.querySelector('body>section') });
 
   /* .sheet.bgs //\ background */
   v.bgs = x.crtu({ t: 'div', c: 'sheet bgs', e: '', p: v.bed });
@@ -37,18 +37,18 @@
   v.ei = x.crtu({ t: 'div', c: 'seg btns', e: '', p: v.uis });
   v.ei = x.crtu({ t: 'div', c: '', e: '', p: v.ei });
 
-  v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>TANGENT</span>', p: v.ei });
-  v.eii.setAttribute('js', '\'url\': \'tangent\', \'type\': \'replace\'');
+  v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>KOREAN</span>', p: v.ei });
+  v.eii.setAttribute('js', '\'url\': \'korean\', \'type\': \'replace\'');
   x(v.eii).cssu(v.css);
   v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>TANGRAM</span>', p: v.ei });
   v.eii.setAttribute('js', '\'url\': \'tangram\', \'type\': \'replace\'');
   x(v.eii).cssu(v.css);
-  v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>MYRAMYUN</span>', p: v.ei });
-  v.eii.setAttribute('js', '\'url\': \'myramyun\', \'type\': \'replace\'');
-  x(v.eii).cssu(v.css);
-  v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>TEMP</span>', p: v.ei });
-  v.eii.setAttribute('js', '\'url\': \'temp\', \'type\': \'replace\'');
-  x(v.eii).cssu(v.css);
+  // v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>MYRAMYUN</span>', p: v.ei });
+  // v.eii.setAttribute('js', '\'url\': \'myramyun\', \'type\': \'replace\'');
+  // x(v.eii).cssu(v.css);
+  // v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>TEMP</span>', p: v.ei });
+  // v.eii.setAttribute('js', '\'url\': \'temp\', \'type\': \'replace\'');
+  // x(v.eii).cssu(v.css);
 
   /* load */
   (async () => { 

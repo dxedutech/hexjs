@@ -1,0 +1,73 @@
+{{define "title"}}Tangent{{end}}
+{{define "css"}}<link rel="stylesheet" href="/www/want/korean.css">{{end}}
+
+{{define "js"}}<script src="/www/want/korean.js" defer></script>{{end}}
+{{define "section"}}
+<div class="scene">
+  <div class="sheet bgs"></div>
+  <div class="sheet fgs">
+    <div class="seg tangent">
+      <svg width="1280" height="1280" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <g class="tans xi">
+          <path class="tan xi" d="M0,0 L256,0 L128,128 Z" fill="#ee743f" /> 
+          <path class="tan xii" d="M0,256 L128,128 L0,0 Z" fill="#e62d8b" />
+          <path class="tan xiii" d="M128,256 L64,192 L0,256 Z" fill="#2d91b7" />
+          <path class="tan xiv" d="M192,192 L128,128 L64,192 L128,256 Z" fill="#45537b" />
+          <path class="tan xv" d="M256,256 L256,128 L128,256 Z" fill="#e71223" />
+          <path class="tan xvi" d="M256,0 L192,64 L192,192 L256,128 Z" fill="#e9d226" />
+          <path class="tan xvii" d="M128,128 L192,192 L192,64 Z" fill="#7caa2a" />
+        </g>
+        <g class="tans xii">
+          <path class="tan xxi" d="M0,0 L256,0 L128,128 Z" fill="#ee743f" /> 
+          <path class="tan xxii" d="M0,256 L128,128 L0,0 Z" fill="#e62d8b" />
+          <path class="tan xxiii" d="M128,256 L64,192 L0,256 Z" fill="#2d91b7" />
+          <path class="tan xxiv" d="M192,192 L128,128 L64,192 L128,256 Z" fill="#45537b" />
+          <path class="tan xxv" d="M256,256 L256,128 L128,256 Z" fill="#e71223" />
+          <path class="tan xxvi" d="M256,0 L192,64 L192,192 L256,128 Z" fill="#e9d226" />
+          <path class="tan xxvii" d="M128,128 L192,192 L192,64 Z" fill="#7caa2a" />
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="sheet uis">
+    <div class="seg gride">
+      <svg width="1280" height="1280" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <g stroke="#dae" stroke-width="1" stroke-dasharray="8 120">
+          <path d="M0,128 L1280,128 Z" />
+          <path d="M0,256 L1280,256 Z" />
+          <path d="M0,384 L1280,384 Z" />
+          <path d="M0,512 L1280,512 Z" />
+          <path d="M0,640 L1280,640 Z" />
+          <path d="M0,768 L1280,768 Z" />
+          <path d="M0,896 L1280,896 Z" />
+          <path d="M0,1024 L1280,1024 Z" />
+          <path d="M0,1152 L1280,1152 Z" />
+          <path d="M128,0 L128,1280 Z" />
+          <path d="M256,0 L256,1280 Z" />
+          <path d="M384,0 L384,1280 Z" />
+          <path d="M512,0 L512,1280 Z" />
+          <path d="M640,0 L640,1280 Z" />
+          <path d="M768,0 L768,1280 Z" />
+          <path d="M896,0 L896,1280 Z" />
+          <path d="M1024,0 L1024,1280 Z" />
+          <path d="M1152,0 L1152,1280 Z" />
+        </g>
+      </svg>
+    </div>
+    <div class="seg btns">
+      <div>
+        <button class="btn color" js="'fn': ''"><span>COLOR</span></button> <!-- color -->
+        <button class="btn add" js="'fn': ''"><span>ADD 1 SET</span></button> <!-- add -->
+        <button class="btn reset" js="'url': 'tangent'"><span>RESET</span></button> <!-- Reset -->
+        <button class="btn magnetic" js="'fn': ''"><span>MAGNETIC</span></button> <!-- Magnetic Sort -->
+        <button class="btn gride" js="'fn': ''"><span>GRIDE</span></button> <!-- Gride -->
+        <button class="btn save" js="'fn': ''"><span>SAVE</span></button> <!-- Save -->
+        <button class="btn youtube" js="'url': ''"><span>YOUTUBE</span></button> <!-- youtube -->
+        <button class="btn home" js="'url': ''"><span>HOME</span></button> <!-- home -->
+      </div>
+    </div>
+  </div>
+</div>
+{{end}}
+{{define "header"}}Korean is a modular language.{{end}}
+{{define "footer"}}Made with Hexjs{{end}}

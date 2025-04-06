@@ -10,7 +10,7 @@
   })();
 
   /* .bed //\ */
-  v.bed = x.crtu({ t: 'div', c: c, e: '', p: document.querySelector('body>div:nth-child(1)') });
+  v.bed = x.crtu({ t: 'div', c: c, e: '', p: document.querySelector('body>section') });
 
   /* .sheet.bgs //\ background */
   v.bgs = x.crtu({ t: 'div', c: 'sheet bgs', e: '', p: v.bed });
