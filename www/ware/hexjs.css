@@ -3,12 +3,12 @@
 
 @font-face {
   font-family: "PlayTangram";
-  src: url("../wads/fonts/PlayTangram.woff") format("woff");
+  src: url("../with/fonts/PlayTangram.woff") format("woff");
 }
 
 @font-face {
   font-family: "baby_bb33";
-  src: url("../wads/fonts/baby_bb33.woff") format("woff");
+  src: url("../with/fonts/baby_bb33.woff") format("woff");
 }
 
 html, body {

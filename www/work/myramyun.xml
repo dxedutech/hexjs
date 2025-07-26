@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sheet>
+  <prop i="prop" x="svg" u="" p=".sheet.fgs" e="" css=""/>
+  <prop i="bg-title" x="svg" u="www/with/prop/myramyun" p=".sheet.fgs>svg.prop" e="" css=""/>
+  <prop i="logo" x="svg" u="www/with/prop" p=".sheet.fgs>svg.prop" e="click" css="'transform': 'translate(300px, 16px)'"/>
+</sheet>

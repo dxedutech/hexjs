@@ -2,10 +2,10 @@
 <sheet>
   <prop i="" x="div" u="" p=".sheet.bgs" e="" css="'width': '100%', 'height': '100%', 'left': 0, 'top': 0"/>
   <prop i="" x="svg" u="" p=".sheet.bgs>div" e="" css="'width': '100%', 'height': '100%', 'left': 0, 'top': 0"/>
-  <!-- <prop i="index-1-1" x="svg" u="www/wads/prop/index"p=".sheet.fgs>svg.prop" e="click"/> -->
-  <prop i="index-1-2" x="svg" u="www/wads/prop/index" p=".sheet.bgs>div>svg" e="" css=""/>
-  <prop i="logo" x="svg" u="www/wads/prop" p=".sheet.bgs>div>svg" e="click" css=""/>
-  <prop i="tans" x="svg" u="www/wads/prop" p=".sheet.bgs>div>svg" e="click" css=""/>
+  <!-- <prop i="index-1-1" x="svg" u="www/with/prop/index"p=".sheet.fgs>svg.prop" e="click"/> -->
+  <prop i="index-1-2" x="svg" u="www/with/prop/index" p=".sheet.bgs>div>svg" e="" css=""/>
+  <prop i="logo" x="svg" u="www/with/prop" p=".sheet.bgs>div>svg" e="click" css=""/>
+  <prop i="tans" x="svg" u="www/with/prop" p=".sheet.bgs>div>svg" e="click" css=""/>
 </sheet>
 <!-- i(id): In HTML, "i" is the file name and adds it to the class list. -->
 <!-- x(extensions): "x" represents file extensions such as svg, html, etc. -->

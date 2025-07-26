@@ -212,7 +212,7 @@ hex.loadpageu = async v => {
   const { u } = v;
 
   try {
-    v.r = await fetch(`${u}`); //\ /want/tangram
+    v.r = await fetch(`${u}`); //\ /work/tangram
     v.d = await v.r.json();
     
     // 받은 데이터를 화면에 표시

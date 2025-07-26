@@ -1,35 +1,35 @@
 {{define "title"}}Tangram{{end}}
-{{define "css"}}<link rel="stylesheet" href="/www/want/tangram.css">{{end}}
+{{define "css"}}<link rel="stylesheet" href="/www/work/tangram.css">{{end}}
 
-{{define "js"}}<script src="/www/want/tangram.js" defer></script>{{end}}
+{{define "js"}}<script src="/www/work/tangram.js" defer></script>{{end}}
 {{define "section"}}
 <div class="scene">
   <div class="sheet bgs"></div>
   <div class="sheet fgs">
-    <div class="seg tangram">
+    <div class="so tangram">
       <svg width="1280" height="1280" xmlns="http://www.w3.org/2000/svg" version="1.1">
         <g class="tans xi">
           <path class="tan xi" d="M0,0 L128,0 L256,0 L128,128 Z" fill="#ee743f" /> 
           <path class="tan xii" d="M0,256 L128,128 L0,0 L0,128 Z" fill="#e62d8b" />
-          <path class="tan xiii" d="M128,256 L64,192 L0,256 Z" fill="#2d91b7" />
+          <path class="tan xiii" d="M128,256 L64,192 L0,256 L64,256 Z" fill="#2d91b7" />
           <path class="tan xiv" d="M192,192 L128,128 L64,192 L128,256 Z" fill="#45537b" />
           <path class="tan xv" d="M256,256 L256,128 L192,192 L128,256 Z" fill="#e71223" />
           <path class="tan xvi" d="M256,0 L192,64 L192,192 L256,128 Z" fill="#e9d226" />
-          <path class="tan xvii" d="M128,128 L192,192 L192,64 Z" fill="#7caa2a" />
+          <path class="tan xvii" d="M128,128 L192,192 L192,128 L192,64 Z" fill="#7caa2a" />
         </g>
         <g class="tans xii">
           <path class="tan xxi" d="M0,0 L128,0 L256,0 L128,128 Z" fill="#ee743f" /> 
           <path class="tan xxii" d="M0,256 L128,128 L0,0 L0,128 Z" fill="#e62d8b" />
-          <path class="tan xxiii" d="M128,256 L64,192 L0,256 Z" fill="#2d91b7" />
+          <path class="tan xxiii" d="M128,256 L64,192 L0,256 L64,256 Z" fill="#2d91b7" />
           <path class="tan xxiv" d="M192,192 L128,128 L64,192 L128,256 Z" fill="#45537b" />
           <path class="tan xxv" d="M256,256 L256,128 L192,192 L128,256 Z" fill="#e71223" />
           <path class="tan xxvi" d="M256,0 L192,64 L192,192 L256,128 Z" fill="#e9d226" />
-          <path class="tan xxvii" d="M128,128 L192,192 L192,64 Z" fill="#7caa2a" />
+          <path class="tan xxvii" d="M128,128 L192,192 L192,128 L192,64 Z" fill="#7caa2a" />
         </g>
         <g class="tans txt"></g>
       </svg>
     </div>
-    <div class="seg txtctrls">
+    <div class="so txtctrls">
       <div>
         <div class="btns">
           <div>
@@ -76,10 +76,10 @@
         </div>
       </div>
     </div>
-    <div class="seg skiaorama"></div>
+    <div class="so skiaorama"></div>
   </div>
   <div class="sheet uis">
-    <div class="seg gride">
+    <div class="so gride">
       <svg width="1280" height="1280" xmlns="http://www.w3.org/2000/svg" version="1.1">
         <g stroke="#dae" stroke-width="1" stroke-dasharray="8 120">
           <path d="M0,128 L1280,128 Z" />
@@ -103,7 +103,7 @@
         </g>
       </svg>
     </div>
-    <div class="seg btns">
+    <div class="so btns">
       <button class="btn text" js="'obj': 'btnstangram', 'fn': 'textu'"><span>TEXT</span></button> <!-- Text -->
       <button class="btn color on" js="'obj': 'btnstangram', 'fn': 'coloru'"><span>COLOR</span></button> <!-- Color -->
       <button class="btn pluse" js="'obj': 'btnstangram', 'fn': 'pluseu'"><span>PLUSE 1 SET</span></button> <!-- Pluse -->
@@ -114,7 +114,7 @@
       <button class="btn help" js="'url': ''"><span>HELP</span></button> <!-- help -->
       <button class="btn home" js="'url': ''"><span>HOME</span></button> <!-- home -->
     </div>
-    <div class="seg cards">
+    <div class="so cards">
       <div class="thumbs">
         <ul>
           <li class="on"><div class="sec">½</div><div class="thumb">THUMB</div></li>
@@ -141,7 +141,7 @@
       <textarea rows="1" maxlength="24" placeholder="A-Za-z0-9-_#@." oninput="this.value = /[^A-Za-z0-9-_#@.]/ig.test(this.value) ? '' : this.value;"></textarea>
       <input class="fileimport" type="file" style="display:none" accept=".xml">
     </div>
-    <div class="seg modal">
+    <div class="so modal">
       <div class="msgs"></div>
       <div class="btns">
         <button class="btn print" js="'obj': 'btnstangram', 'fn': 'printu'"><span>PRINT</span></button>
@@ -153,4 +153,4 @@
 </div>
 {{end}}
 {{define "header"}}{{end}}
-{{define "footer"}}Made with Hexjs{{end}}
+{{define "footer"}}ODDGRAM{{end}}

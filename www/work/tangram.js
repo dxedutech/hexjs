@@ -75,7 +75,7 @@ const parsexmlu = v => {
 
 
 
-/* <.seg.txtctrls //\\ */
+/* <.so.txtctrls //\\ */
 const txtctrl = {
   addu: v => { 
     const { e, o, w } = v;
@@ -97,7 +97,7 @@ const txtctrl = {
     });
     if(v.n > v.a.length - 1) return;
 
-    v.p = document.querySelector('.sheet.fgs .seg.tangram svg .tans.txt');
+    v.p = document.querySelector('.sheet.fgs .so.tangram svg .tans.txt');
     v.a = v.p.querySelectorAll('text');
     [].forEach.call(v.a, e => e.setAttribute('stroke', 'none'));
 
@@ -137,7 +137,7 @@ const txtctrl = {
       }
     });
     
-    v.a = document.querySelectorAll('.sheet.fgs .seg.tangram svg .tans.txt text');
+    v.a = document.querySelectorAll('.sheet.fgs .so.tangram svg .tans.txt text');
     v.a[v.n].remove();
   },
   editu: v => { 
@@ -151,7 +151,7 @@ const txtctrl = {
 
     v.n = Array.prototype.indexOf.call(v.e.parentNode.children, v.e);
 
-    v.p = document.querySelector('.sheet.fgs .seg.tangram svg .tans.txt');
+    v.p = document.querySelector('.sheet.fgs .so.tangram svg .tans.txt');
     v.a = v.p.querySelectorAll('text');
     [].forEach.call(v.a, e => e.setAttribute('stroke', 'none'));
 
@@ -179,7 +179,7 @@ const txtctrl = {
       }
     });
 
-    v.a = document.querySelectorAll('.sheet.fgs .seg.tangram svg .tans.txt text');
+    v.a = document.querySelectorAll('.sheet.fgs .so.tangram svg .tans.txt text');
     [].forEach.call(v.a, e => e.setAttribute('stroke', 'none'));
 
     if(v.b.match(/off/)) {
@@ -195,25 +195,25 @@ const txtctrl = {
     }
   }
 }
-/* >.seg.txtctrls //\\ */
+/* >.so.txtctrls //\\ */
 
 
 
-/* <.seg.btns //\\ */
+/* <.so.btns //\\ */
 const btnstangram = {
   textu: v => {
     const { e, o, w } = v;
 
     e.classList.toggle('on');
-    document.querySelector('.sheet.fgs .seg.txtctrls').classList.toggle('on');
+    document.querySelector('.sheet.fgs .so.txtctrls').classList.toggle('on');
   
     if(e.className.match(/on/)){
-      v.b = document.querySelectorAll('.sheet.fgs .seg.txtctrls .btns .btn.fixtxt');
+      v.b = document.querySelectorAll('.sheet.fgs .so.txtctrls .btns .btn.fixtxt');
       [].forEach.call(v.b, e => {
         e.classList.remove('off');
         e.classList.remove('on');
       });
-      v.a = document.querySelectorAll('.sheet.fgs .seg.tangram svg .tans.txt text');
+      v.a = document.querySelectorAll('.sheet.fgs .so.tangram svg .tans.txt text');
       [].forEach.call(v.a, (e, i) => v.b[i].classList.add('off'));
     }
   },
@@ -228,7 +228,7 @@ const btnstangram = {
     const { e, o, w } = v;
 
     v.c = e.className.match(/on/) ? 'none' : 'block';
-    v.e = document.querySelector('.sheet.fgs .seg.tangram .tans.xi');
+    v.e = document.querySelector('.sheet.fgs .so.tangram .tans.xi');
     v.e.style.display = v.c;
     e.classList.toggle('on');
   },
@@ -270,7 +270,7 @@ const btnstangram = {
       }
     });
     
-    v.l = document.querySelector('.sheet.fgs .seg.tangram .tans.xi').style.display === 'none' ? 7 : 14;
+    v.l = document.querySelector('.sheet.fgs .so.tangram .tans.xi').style.display === 'none' ? 7 : 14;
     for (let i = 0; i < v.l; i++) {
       v.a.push([]);
       [].forEach.call(v.a[i + 1], k => {
@@ -302,7 +302,7 @@ const btnstangram = {
     const { e, o, w } = v;
 
     v.c = e.className.match(/on/) ? 'none' : 'block';
-    v.e = document.querySelector('.sheet.uis .seg.gride');
+    v.e = document.querySelector('.sheet.uis .so.gride');
     v.e.style.display = v.c;
     v.e = document.querySelector('.sheet.bgs .bg-title');
     v.e.style.display = v.c;
@@ -312,7 +312,7 @@ const btnstangram = {
   printdownloadu: v => {
     const { e, o, w } = v;
 
-    v.e = document.querySelector('.sheet.uis .seg.modal');
+    v.e = document.querySelector('.sheet.uis .so.modal');
     if(v.e.className.match(/on/)) {
       v.e.classList.remove('on');
       v.e.querySelector('.msgs').innerHTML = '';
@@ -323,7 +323,7 @@ const btnstangram = {
       // [].forEach.call(Object.keys(o), e => {
       //   if(o[e].e.parentNode.style.display !== 'none') v.s += o[e].e.outerHTML;
       // });
-      v.s += document.querySelector('.sheet.fgs .seg.tangram svg').innerHTML;
+      v.s += document.querySelector('.sheet.fgs .so.tangram svg').innerHTML;
       v.s += '</svg>';
       v.e.querySelector('.msgs').innerHTML = v.s;
       [].forEach.call(v.e.querySelectorAll('text'), e => e.setAttribute('fill', '#444'));
@@ -344,14 +344,14 @@ const btnstangram = {
       v.e.write('<style>');
       v.e.write(`
         @page { size: A4; margin: 0; @bottom-center { content: "Footer for first page"; } }
-        @font-face { font-family: "PlayTangram"; src: url("/www/wads/fonts/PlayTangram.woff"); }
-        @font-face { font-family: "baby_bb33"; src: url("/www/wads/fonts/baby_bb33.woff"); }
+        @font-face { font-family: "PlayTangram"; src: url("/www/with/fonts/PlayTangram.woff"); }
+        @font-face { font-family: "baby_bb33"; src: url("/www/with/fonts/baby_bb33.woff"); }
         body { margin: 0; padding: 0; }
         svg { display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; flex-wrap: wrap; }
       `);
       v.e.write('</style>');
       v.e.write('</head><body>');
-      v.e.write(document.querySelector('.seg.modal .msgs').innerHTML); // Copy content from the specific element
+      v.e.write(document.querySelector('.so.modal .msgs').innerHTML); // Copy content from the specific element
       v.e.write('</body></html>');
       v.e.close();
  
@@ -387,11 +387,11 @@ const btnstangram = {
     URL.revokeObjectURL(v.l.href);
   }
 };
-/* >.seg.btns //\\ */
+/* >.so.btns //\\ */
 
 
 
-/* <.seg.cards //\\ */
+/* <.so.cards //\\ */
 const thumbscard = { time: 0, thumb: [] };
 
 const cardu = v => {
@@ -425,9 +425,9 @@ const cardu = v => {
     const { e, n } = v;
 
     v.a = e.parentNode.children;
-    v.e = document.querySelector('.sheet.fgs .seg.skiaorama');
+    v.e = document.querySelector('.sheet.fgs .so.skiaorama');
 
-    if (!document.querySelector('.seg.btns .btn.color.on')) { v.e.classList.add('invert'); }
+    if (!document.querySelector('.so.btns .btn.color.on')) { v.e.classList.add('invert'); }
     else { v.e.classList.remove('invert'); }
 
     thumbscard.time = n;
@@ -527,7 +527,7 @@ const cardu = v => {
         v.s = v.e.innerText;
 
         if(v.s === 'THUMB' || v.s === 'NEW') {
-          v.h = document.querySelector('.sheet.fgs .seg.tangram').innerHTML;
+          v.h = document.querySelector('.sheet.fgs .so.tangram').innerHTML;
           v.e.innerHTML = v.h;
           v.e.querySelector('svg').setAttribute('viewBox', '0 0 1280 1280');
 
@@ -553,9 +553,9 @@ const cardu = v => {
       }
 
       v.t = v.e.querySelector('.tans.txt');
-      document.querySelector('.sheet.fgs .seg.tangram .tans.txt').innerHTML = v.t ? v.t.innerHTML : '';
+      document.querySelector('.sheet.fgs .so.tangram .tans.txt').innerHTML = v.t ? v.t.innerHTML : '';
 
-      v.b = document.querySelector('.sheet.uis .seg.btns .btn.text.on');
+      v.b = document.querySelector('.sheet.uis .so.btns .btn.text.on');
       if(v.b) btnstangram.textu({ e: v.b });
     },
     playonceu: v => skiaoramau({ e: v.e, n: 1}),
@@ -564,7 +564,7 @@ const cardu = v => {
     importu: v => {
       const { e } = v;
 
-      document.querySelector('.seg.cards .fileimport').click();
+      document.querySelector('.so.cards .fileimport').click();
     },
     exportu: v => {
       const { e } = v;
@@ -573,7 +573,7 @@ const cardu = v => {
       v.n = v.p.querySelector('textarea').value;
       v.n = v.n.length ? `${v.n}.xml` : '';
     
-      v.s = document.querySelector('.seg.cards .thumbs');
+      v.s = document.querySelector('.so.cards .thumbs');
       v.d = new XMLSerializer().serializeToString(v.s);
       v.b = new Blob([v.d], { type: 'application/xml' });
   
@@ -593,7 +593,7 @@ const cardu = v => {
     });
   });
 
-  document.querySelector('.seg.cards .fileimport').addEventListener('change', e => {
+  document.querySelector('.so.cards .fileimport').addEventListener('change', e => {
     v.f = e.target.files[0];
     if (v.f) {
       v.r = new FileReader();
@@ -605,8 +605,8 @@ const cardu = v => {
         [].forEach.call(v.t, e => {
           v.h = e.querySelector('.thumb').innerHTML;
           if(v.h.match(/<svg/)) {
-            btnscard.addnextu({ e: document.querySelector('.seg.cards .thumbs .on') });
-            v.e = document.querySelector('.seg.cards .thumbs .on');
+            btnscard.addnextu({ e: document.querySelector('.so.cards .thumbs .on') });
+            v.e = document.querySelector('.so.cards .thumbs .on');
             v.h = e.querySelector('.thumb').innerHTML;
             v.e.querySelector('.thumb').innerHTML = e.querySelector('.thumb').innerHTML;
           }
@@ -620,22 +620,22 @@ const cardu = v => {
   
   return btnscard;
 }
-/* >.seg.cards //\\ */
+/* >.so.cards //\\ */
 
 
 
-/* <.seg.tangram, .seg.gride, .seg.btns //\\ */
+/* <.so.tangram, .so.gride, .so.btns //\\ */
 (v => {
   const { x, a, o, i, w } = v;
 
   (async () => { 
-    await x.loadfontu('/www/wads/fonts/baby_bb33.woff');
-    await x.loadfontu('/www/wads/fonts/PlayTangram.woff');
+    await x.loadfontu('/www/with/fonts/baby_bb33.woff');
+    await x.loadfontu('/www/with/fonts/PlayTangram.woff');
     
     await x.importmoduleu({ m: '/www/ware/env.js' }); //\ module, index
     x.envm.resizeu({ w: w.wh.w, h: w.wh.h });
 
-    await x.loadfetchu({ u: '/www/want/tangram.xml', p: '.sheet.bgs' });
+    await x.loadfetchu({ u: '/www/work/tangram.xml', p: '.sheet.bgs' });
 
     // w.r = x.envm.r;
     // w.hv = x.envm.hv;
@@ -716,8 +716,8 @@ const cardu = v => {
       }
     };
 
-    /* .seg.cards //\\ */
-    const btnscard = cardu({ x: x, t: document.querySelector('.sheet.uis .seg.cards .thumbs'), b: document.querySelector('.sheet.uis .seg.cards .btns'), w: w });
+    /* .so.cards //\\ */
+    const btnscard = cardu({ x: x, t: document.querySelector('.sheet.uis .so.cards .thumbs'), b: document.querySelector('.sheet.uis .so.cards .btns'), w: w });
 
     const frameu = v => {
       const {} = v;
@@ -760,7 +760,7 @@ const cardu = v => {
             if(x.btnm.evt.o === 'txtctrl') txtctrl[x.btnm.evt.s]({ e: x.btnm.evt.e, o: o, w: w });
             if(x.btnm.evt.o === 'btnstangram' ) btnstangram[x.btnm.evt.s]({ e: x.btnm.evt.e, o: o, w: w });
             if(x.btnm.evt.o === 'btnscard') { 
-              v.t = document.querySelector('.sheet.uis .seg.cards .thumbs');
+              v.t = document.querySelector('.sheet.uis .so.cards .thumbs');
               btnscard[x.btnm.evt.s]({ e: v.t.querySelector('li.on') });
             }
 
@@ -781,7 +781,7 @@ const cardu = v => {
             if(!thumbscard.tick) {
               v.a = document.querySelectorAll('.thumbs li');
               v.h = v.a[v.c[0]].querySelector('.thumb').innerHTML;
-              document.querySelector('.sheet.fgs .seg.skiaorama').innerHTML = v.h;
+              document.querySelector('.sheet.fgs .so.skiaorama').innerHTML = v.h;
             }
             ++thumbscard.tick;
 
@@ -858,10 +858,10 @@ const cardu = v => {
 
     await x.importmoduleu({ m: '/www/ware/btn.js' }); //\ module, index
 
-    v.e = document.querySelector('.sheet.fgs .seg.tangram .tans.xi');
+    v.e = document.querySelector('.sheet.fgs .so.tangram .tans.xi');
     v.e.style.display = 'none';
 
-    v.e = document.querySelector('.sheet.uis .seg.cards .thumbs');
+    v.e = document.querySelector('.sheet.uis .so.cards .thumbs');
     v.e.addEventListener('wheel', e => {
       e.preventDefault();
 
@@ -871,6 +871,6 @@ const cardu = v => {
 
   })();
 })({ x: hex, a: document.querySelectorAll('.tan'), o: {}, i: {}, w: { r: 1, wh: { w: 1280, h: 1280 }} });
-/* >.seg.tangram, .seg.gride, .seg.btns //\\ */
+/* >.so.tangram, .so.gride, .so.btns //\\ */
 
 

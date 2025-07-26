@@ -2,8 +2,8 @@
   const { x, c, wh } = v;
 
   (async () => { 
-    await x.loadfontu('/www/wads/fonts/baby_bb33.woff');
-    await x.loadfontu('/www/wads/fonts/PlayTangram.woff');
+    await x.loadfontu('/www/with/fonts/baby_bb33.woff');
+    await x.loadfontu('/www/with/fonts/PlayTangram.woff');
     
     await x.importmoduleu({ m: '/www/ware/env.js' }); //\ module, index
     x.envm.resizeu({ w: wh.w, h: wh.h });
@@ -22,9 +22,9 @@
   /* .sheet.fgs //\ foreground */
   v.fgs = x.crtu({ t: 'div', c: 'sheet fgs', e:'', p: v.bed });
 
-  v.ei = x.crtu({ t: 'div', c: 'fg title', e: '', p: v.fgs });
-  x.crtu({ t: 'div', c: '', e: '무궁화꽃이', p: v.ei });
-  x.crtu({ t: 'div', c: '', e: '피었습니다', p: v.ei });
+  // v.ei = x.crtu({ t: 'div', c: 'fg title', e: '', p: v.fgs });
+  // x.crtu({ t: 'div', c: '', e: '무궁화꽃이', p: v.ei });
+  // x.crtu({ t: 'div', c: '', e: '피었습니다', p: v.ei });
 
   v.ei = x.crtu({ t: 'svg', c: 'fg prop', e: '', p: v.fgs });
   v.ei.setAttribute('width', `${wh.w}`);
@@ -47,20 +47,20 @@
 
   /* load */
   (async () => { 
-    // await x.loadxmlu('/www/want/temp.xml');
-    await x.loadfetchu({ u: '/www/want/temp.xml', p: '.sheet.fgs' });
+    // await x.loadxmlu('/www/work/myramyun.xml');
+    await x.loadfetchu({ u: '/www/work/myramyun.xml', p: '.sheet.fgs' });
 
-    v.ei = x.crtu({ t: 'g', c: 'prop tangram', e: '', p: '.sheet.fgs>svg.prop' });
-    await x.loadfetchu({ u: '/www/wads/prop/tans.svg', p: v.ei });
-    // await x.loadsvgu('/www/wads/prop/tangram.svg');
+    // v.ei = x.crtu({ t: 'g', c: 'prop tangram', e: '', p: '.sheet.fgs>svg.prop' });
+    // await x.loadfetchu({ u: '/www/with/prop/tans.svg', p: v.ei });
+    // await x.loadsvgu('/www/with/prop/tangram.svg');
     // x.attu({ t: 'g', c: 'tangram', e: x.svga.tangram, p: '.fgs>svg.prop' }); //\ need to append a path element to a g (group) element in SVG
     
-    v.ei = x.crtu({ t: 'div', c: 'prop menu', e: '', p: '.sheet.uis' });
-    await x.loadcssu('/www/wads/prop/index/menu.css');
-    await x.loadfetchu({ u: '/www/wads/prop/index/menu.html', p: v.ei });
+    // v.ei = x.crtu({ t: 'div', c: 'prop menu', e: '', p: '.sheet.uis' });
+    // await x.loadcssu('/www/with/prop/index/menu.css');
+    // await x.loadfetchu({ u: '/www/with/prop/index/menu.html', p: v.ei });
     
-    v.ei = x.crtu({ t: 'g', c: 'prop index-3-3', e: '', p: '.sheet.fgs>svg.prop' });
-    await x.loadfetchu({ u: '/www/wads/prop/index/index-3-3.svg', p: v.ei });
+    // v.ei = x.crtu({ t: 'g', c: 'prop index-3-3', e: '', p: '.sheet.fgs>svg.prop' });
+    // await x.loadfetchu({ u: '/www/with/prop/index/index-3-3.svg', p: v.ei });
 
     await x.importmoduleu({ m: '/www/ware/btn.js' }); //\ module, index
   })();

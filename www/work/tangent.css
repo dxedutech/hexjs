@@ -16,11 +16,11 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis.vertical .seg.btns .btn span { justify-content: right; }
 .sheet.uis .seg.btns .btn:hover span { font-size: 24px; }
 
-.sheet.uis .seg.btns .btn.color span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-addtxt.svg); }
-.sheet.uis .seg.btns .btn.add span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-add.svg); }
-.sheet.uis .seg.btns .btn.reset span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-reset.svg); }
-.sheet.uis .seg.btns .btn.magnetic span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-magnetic.svg); }
-.sheet.uis .seg.btns .btn.gride span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-gride.svg); }
-.sheet.uis .seg.btns .btn.save span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-save.svg); }
-.sheet.uis .seg.btns .btn.youtube span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-youtube.svg); }
-.sheet.uis .seg.btns .btn.home span { background: no-repeat 0 0 / 100% url(../wads/ico/ico-home.svg); }
+.sheet.uis .seg.btns .btn.color span { background: no-repeat 0 0 / 100% url(../with/ico/ico-addtxt.svg); }
+.sheet.uis .seg.btns .btn.add span { background: no-repeat 0 0 / 100% url(../with/ico/ico-add.svg); }
+.sheet.uis .seg.btns .btn.reset span { background: no-repeat 0 0 / 100% url(../with/ico/ico-reset.svg); }
+.sheet.uis .seg.btns .btn.magnetic span { background: no-repeat 0 0 / 100% url(../with/ico/ico-magnetic.svg); }
+.sheet.uis .seg.btns .btn.gride span { background: no-repeat 0 0 / 100% url(../with/ico/ico-gride.svg); }
+.sheet.uis .seg.btns .btn.save span { background: no-repeat 0 0 / 100% url(../with/ico/ico-save.svg); }
+.sheet.uis .seg.btns .btn.youtube span { background: no-repeat 0 0 / 100% url(../with/ico/ico-youtube.svg); }
+.sheet.uis .seg.btns .btn.home span { background: no-repeat 0 0 / 100% url(../with/ico/ico-home.svg); }

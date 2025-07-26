@@ -6,7 +6,7 @@ export default (v => {
   const clicku = v => {
     const { e } = v;
 
-    // x.loadpageu({ u: '/want/tangent' }); 
+    // x.loadpageu({ u: '/work/tangent' }); 
     v.j = x.parseattu({ e: e.target }); /* to json */
 
     if (v.j.hasOwnProperty('url')) {

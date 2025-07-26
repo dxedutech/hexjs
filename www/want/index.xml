@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<sheet>
-  <prop i="prop" x="svg" u="" p=".sheet.fgs" e="" css=""/>
-  <prop i="index-1-1" x="svg" u="www/wads/prop/index" p=".sheet.fgs>svg.prop" e="click" css=""/>
-  <prop i="index-1-2" x="svg" u="www/wads/prop/index" p=".sheet.fgs>svg.prop" e="" css=""/>
-  <prop i="tans" x="svg" u="www/wads/prop" p=".sheet.fgs>svg.prop" e="click" css=""/>
-  <prop i="logo" x="svg" u="www/wads/prop" p=".sheet.fgs>svg.prop" e="click" css=""/>
-</sheet>

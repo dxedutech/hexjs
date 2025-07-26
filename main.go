@@ -23,7 +23,7 @@ func ternaryu[T any](i int, req, res T) T {
 func serveTemplateu(w http.ResponseWriter, r *http.Request) {
 	lp := filepath.Join("www/ware", "layout.html")
 	u := ternaryu(s.Compare(r.URL.Path, "/"), r.URL.Path, "index")
-	fp := filepath.Join("www/want", filepath.Clean(u))
+	fp := filepath.Join("www/work", filepath.Clean(u))
 	fp += ".html"
 	// log.Print(u, fp)
 	/* Return a 404 if the template doesn't exist /// */
@@ -64,8 +64,8 @@ type Response struct {
 func contentTemplateu(w http.ResponseWriter, r *http.Request) {
 	u := r.URL.Path
 	responseMessages := map[string]string{
-		"/want/tangent": "Hello from Go Server!",
-		"/want/tangram": "Hi there, welcome to the Go Server!",
+		"/work/tangent": "Hello from Go Server!",
+		"/work/tangram": "Hi there, welcome to the Go Server!",
 	}
 
 	message, exists := responseMessages[u]
@@ -89,7 +89,7 @@ func main() {
 		origin.ServeHTTP(writer, req)
 	})
 	http.Handle("/www/", wrapped)
-	http.HandleFunc("/want/", contentTemplateu) // Register a single handler to handle all routes
+	http.HandleFunc("/work/", contentTemplateu) // Register a single handler to handle all routes
 	http.HandleFunc("/", serveTemplateu)
 
 	printu("Listening on :8080...")
