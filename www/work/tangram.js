@@ -71,11 +71,11 @@ const parsexmlu = v => {
   v.e = v.d.getElementsByTagName(`${t}`); // 실제 XML 태그명 ul, li ...
 
   return t ? v.e : v.d;
-};
+}
 
 
 
-/* <.so.txtctrls */
+/* <.so.txtctrls //\\ */
 const txtctrl = {
   addu: v => { 
     const { e, o, w } = v;
@@ -194,12 +194,12 @@ const txtctrl = {
       document.querySelector('#txtname').value = v.a[v.n].getAttribute('font-family');
     }
   }
-};
-/* >.so.txtctrls */
+}
+/* >.so.txtctrls //\\ */
 
 
 
-/* <.so.btns */
+/* <.so.btns //\\ */
 const btnstangram = {
   textu: v => {
     const { e, o, w } = v;
@@ -387,11 +387,11 @@ const btnstangram = {
     URL.revokeObjectURL(v.l.href);
   }
 };
-/* >.so.btns */
+/* >.so.btns //\\ */
 
 
 
-/* <.so.cards */
+/* <.so.cards //\\ */
 const thumbscard = { time: 0, thumb: [] };
 
 const cardu = v => {
@@ -619,12 +619,12 @@ const cardu = v => {
   });
   
   return btnscard;
-};
-/* >.so.cards */
+}
+/* >.so.cards //\\ */
 
 
 
-/* <.so.tangram, .so.gride */
+/* <.so.tangram, .so.gride, .so.btns //\\ */
 (v => {
   const { x, a, o, i, w } = v;
 
@@ -871,6 +871,6 @@ const cardu = v => {
 
   })();
 })({ x: hex, a: document.querySelectorAll('.tan'), o: {}, i: {}, w: { r: 1, wh: { w: 1280, h: 1280 }} });
-/* >.so.tangram, .so.gride */
+/* >.so.tangram, .so.gride, .so.btns //\\ */
 
 

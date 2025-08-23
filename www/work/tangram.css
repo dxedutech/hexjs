@@ -3,7 +3,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .so { position: absolute; }
 
 
-/* <.sheet.fgs  */
+/* <.sheet.fgs ////////////////////////////////////////////////// */
 /* <.so.tangram */
 .sheet.fgs .so.tangram { width: 100%; height: 100%; }
 .sheet.fgs .so.tangram svg g text { user-select: none; }
@@ -43,12 +43,12 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.fgs .so.skiaorama.on { position: absolute; width: 100%; height: 100%; background: #000; }
 .sheet.fgs .so.skiaorama.invert { background: #fff; }
 /* >.so.skiaorama */
-/* >.sheet.fgs */
+/* >.sheet.fgs ////////////////////////////////////////////////// */
 
 
 
 
-/* <.so.uis */
+/* <.so.uis ////////////////////////////////////////////////// */
 /* <.so.gride */
 .sheet.uis .so.gride { pointer-events: none; }
 /* >.so.gride */
@@ -163,7 +163,7 @@ body>div, .scene, .sheet { width: var(--w); height: var(--h); }
 .sheet.uis .so.modal.on .btns textarea { width: 240px; height: 18px; margin: 2px 0 0 4px; padding: 4px; background: #dae6; color:#666; font: 24px "Gowun Dodum", sans-serif; line-height: 18px; border-radius: 6px; border: 1px solid #dae; resize: none; pointer-events: fill; white-space: nowrap; overflow:hidden }
 .sheet.uis .so.modal.on .btns textarea:focus { outline: none; }
 /* >.so.modal */
-/* >.so.uis */
+/* >.so.uis ////////////////////////////////////////////////// */
 
 
 
