@@ -15,4 +15,5 @@ COPY . .
 RUN go build -o main .
 
 # 실행 명령
+EXPOSE 8080
 CMD ["./main"]
