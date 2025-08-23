@@ -79,3 +79,4 @@ GqMZRnQ23a0kpJy7
 ## mongo local
 & "C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe" --version
 // uri := "mongodb+srv://myramyun:GqMZRnQ23a0kpJy7@myramyun.gszgkaq.mongodb.net/?retryWrites=true&w=majority&appName=myramyun"
+$env:MONGO_URI="mongodb+srv://myramyun:GqMZRnQ23a0kpJy7@myramyun.gszgkaq.mongodb.net/?retryWrites=true&w=majority&appName=myramyun"
