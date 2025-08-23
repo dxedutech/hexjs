@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"html/template"
@@ -11,10 +10,9 @@ import (
 	"os"
 	"path/filepath"
 	s "strings"
-	"time"
-
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
+	// "time"
+	// "go.mongodb.org/mongo-driver/mongo"
+	// "go.mongodb.org/mongo-driver/mongo/options"
 )
 
 var printu = fmt.Println
@@ -87,29 +85,29 @@ func contentTemplateu(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
+	// ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	// defer cancel()
 
-	// Use the SetServerAPIOptions() method to set the version of the Stable API on the client
-  serverAPI := options.ServerAPI(options.ServerAPIVersion1)
+	// // Use the SetServerAPIOptions() method to set the version of the Stable API on the client
+  // serverAPI := options.ServerAPI(options.ServerAPIVersion1)
   
-	uri := os.Getenv("MONGO_URI")
-	if uri == "" {
-    log.Fatal("MONGO_URI not set")
-	}
-	opts := options.Client().ApplyURI(uri).SetServerAPIOptions(serverAPI)
+	// uri := os.Getenv("MONGO_URI")
+	// if uri == "" {
+  //   log.Fatal("MONGO_URI not set")
+	// }
+	// opts := options.Client().ApplyURI(uri).SetServerAPIOptions(serverAPI)
 
-	// Create a new client and connect to the server
-	client, err := mongo.Connect(ctx, opts)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer client.Disconnect(ctx)
+	// // Create a new client and connect to the server
+	// client, err := mongo.Connect(ctx, opts)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer client.Disconnect(ctx)
 
-	if err := client.Ping(ctx, nil); err != nil {
-		log.Fatal("Could not connect to Atlas:", err)
-	}
-	fmt.Println("Connected to MongoDB Atlas")
+	// if err := client.Ping(ctx, nil); err != nil {
+	// 	log.Fatal("Could not connect to Atlas:", err)
+	// }
+	// fmt.Println("Connected to MongoDB Atlas")
 
 
 	
