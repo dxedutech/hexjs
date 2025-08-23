@@ -87,7 +87,6 @@ func contentTemplateu(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
