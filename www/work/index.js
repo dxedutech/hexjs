@@ -15,7 +15,7 @@
   /* .sheet.bgs //\ background */
   v.bgs = x.crtu({ t: 'div', c: 'sheet bgs', e: '', p: v.bed });
 
-  v.ei = x.crtu({ t: 'svg', c: 'bg proc', e: `<g class="box"><path d="M0 0 H${wh.w} V${wh.h} H0 L0 0" stroke="#fff4" fill="transparent"/></g>`, p: v.bgs });
+  v.ei = x.crtu({ t: 'svg', c: 'bg frame', e: `<g class="box"><path d="M0 0 H${wh.w} V${wh.h} H0 L0 0" stroke="#fff4" fill="transparent"/></g>`, p: v.bgs });
   v.ei.setAttribute('width', `${wh.w}`);
   v.ei.setAttribute('height', `${wh.h}`);
 
