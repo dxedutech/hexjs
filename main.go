@@ -125,8 +125,13 @@ func main() {
 	http.HandleFunc("/work/", contentTemplateu) // Register a single handler to handle all routes
 	http.HandleFunc("/", serveTemplateu)
 
-	printu("Listening on :8080...")
-	err = http.ListenAndServe(":8080", nil)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	printu("Listening on :"+port)
+	err = http.ListenAndServe(":"+port, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
