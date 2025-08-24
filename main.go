@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"html/template"
@@ -9,6 +10,11 @@ import (
 	"os"
 	"path/filepath"
 	s "strings"
+
+	"time"
+
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 var printu = fmt.Println
@@ -81,6 +87,32 @@ func contentTemplateu(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	// Use the SetServerAPIOptions() method to set the version of the Stable API on the client
+  serverAPI := options.ServerAPI(options.ServerAPIVersion1)
+  
+	uri := os.Getenv("MONGO_URI")
+	if uri == "" {
+    log.Fatal("MONGO_URI not set")
+	}
+	opts := options.Client().ApplyURI(uri).SetServerAPIOptions(serverAPI)
+
+	// Create a new client and connect to the server
+	client, err := mongo.Connect(ctx, opts)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer client.Disconnect(ctx)
+
+	if err = client.Ping(ctx, nil); err != nil {
+		log.Fatal("Could not connect to Atlas:", err)
+	}
+	fmt.Println("Connected to MongoDB Atlas")
+
+
+
 	origin := http.StripPrefix("/www/", http.FileServer(http.Dir("./www")))
 	wrapped := http.HandlerFunc(func(writer http.ResponseWriter, req *http.Request) {
 		writer.Header().Set("Access-Control-Allow-Origin", "*")
@@ -93,7 +125,7 @@ func main() {
 	http.HandleFunc("/", serveTemplateu)
 
 	printu("Listening on :8080...")
-	err := http.ListenAndServe(":8080", nil)
+	err = http.ListenAndServe(":8080", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
