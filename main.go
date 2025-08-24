@@ -114,32 +114,9 @@ func initMongoDB() *mongo.Client {
 
 func main() {
 
-	client = initMongoDB()
-
-	// ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cancel()
-
-	// // Use the SetServerAPIOptions() method to set the version of the Stable API on the client
-  // serverAPI := options.ServerAPI(options.ServerAPIVersion1)
-  
-	// uri := os.Getenv("MONGO_URI")
-	// if uri == "" {
-  //   log.Fatal("MONGO_URI not set")
-	// }
-	// opts := options.Client().ApplyURI(uri).SetServerAPIOptions(serverAPI)
-
-	// // Create a new client and connect to the server
-	// client, err := mongo.Connect(ctx, opts)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// defer client.Disconnect(ctx)
-
-	// if err = client.Ping(ctx, nil); err != nil {
-	// 	log.Fatal("Could not connect to Atlas:", err)
-	// }
-	// fmt.Println("Connected to MongoDB Atlas")
-
+	go func() {
+		client = initMongoDB()
+	}()
 
 	origin := http.StripPrefix("/www/", http.FileServer(http.Dir("./www")))
 	wrapped := http.HandlerFunc(func(writer http.ResponseWriter, req *http.Request) {
