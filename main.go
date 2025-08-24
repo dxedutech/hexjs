@@ -86,31 +86,59 @@ func contentTemplateu(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-func main() {
+var client *mongo.Client
+
+// DB 연결 초기화
+func initMongoDB() *mongo.Client {
+	uri := os.Getenv("MONGO_URI")
+	if uri == "" {
+		log.Fatal("MONGO_URI is not set")
+	}
+
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	// Use the SetServerAPIOptions() method to set the version of the Stable API on the client
-  serverAPI := options.ServerAPI(options.ServerAPIVersion1)
-  
-	uri := os.Getenv("MONGO_URI")
-	if uri == "" {
-    log.Fatal("MONGO_URI not set")
-	}
-	opts := options.Client().ApplyURI(uri).SetServerAPIOptions(serverAPI)
-
-	// Create a new client and connect to the server
-	client, err := mongo.Connect(ctx, opts)
+	client, err := mongo.Connect(ctx, options.Client().ApplyURI(uri))
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("MongoDB connection error:", err)
 	}
-	defer client.Disconnect(ctx)
 
-	if err = client.Ping(ctx, nil); err != nil {
-		log.Fatal("Could not connect to Atlas:", err)
+	// 연결 확인
+	if err := client.Ping(ctx, nil); err != nil {
+		log.Fatal("MongoDB ping error:", err)
 	}
-	fmt.Println("Connected to MongoDB Atlas")
 
+	printu("Connected to MongoDB Atlas")
+	return client
+}
+
+func main() {
+
+	client = initMongoDB()
+
+	// ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	// defer cancel()
+
+	// // Use the SetServerAPIOptions() method to set the version of the Stable API on the client
+  // serverAPI := options.ServerAPI(options.ServerAPIVersion1)
+  
+	// uri := os.Getenv("MONGO_URI")
+	// if uri == "" {
+  //   log.Fatal("MONGO_URI not set")
+	// }
+	// opts := options.Client().ApplyURI(uri).SetServerAPIOptions(serverAPI)
+
+	// // Create a new client and connect to the server
+	// client, err := mongo.Connect(ctx, opts)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer client.Disconnect(ctx)
+
+	// if err = client.Ping(ctx, nil); err != nil {
+	// 	log.Fatal("Could not connect to Atlas:", err)
+	// }
+	// fmt.Println("Connected to MongoDB Atlas")
 
 
 	origin := http.StripPrefix("/www/", http.FileServer(http.Dir("./www")))
@@ -124,8 +152,13 @@ func main() {
 	http.HandleFunc("/work/", contentTemplateu) // Register a single handler to handle all routes
 	http.HandleFunc("/", serveTemplateu)
 
-	printu("Listening on :8080...")
-	err = http.ListenAndServe(":8080", nil)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	printu("Listening on :"+port)
+	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
