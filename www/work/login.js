@@ -9,54 +9,57 @@
     x.envm.resizeu({ w: wh.w, h: wh.h });
   })();
 
-  /* .bed //\ */
-  v.bed = x.crtu({ t: 'div', c: c, e: '', p: document.querySelector('body>section') });
+  /* .scene */
+  v.scene = x.crtu({ t: 'div', c: c, e: '', p: document.querySelector('body>section') });
 
-  /* .sheet.bgs //\ background */
-  v.bgs = x.crtu({ t: 'div', c: 'sheet bgs', e: '', p: v.bed });
+  /* .sheet.bgs */
+  v.bgs = x.crtu({ t: 'div', c: 'sheet bgs', e: '', p: v.scene });
 
   v.ei = x.crtu({ t: 'svg', c: 'bg proc', e: `<g class="box"><path d="M0 0 H${wh.w} V${wh.h} H0 L0 0" stroke="#fff4" fill="transparent"/></g>`, p: v.bgs });
   v.ei.setAttribute('width', `${wh.w}`);
   v.ei.setAttribute('height', `${wh.h}`);
 
-  /* .sheet.fgs //\ foreground */
-  v.fgs = x.crtu({ t: 'div', c: 'sheet fgs', e:'', p: v.bed });
+  /* .sheet.fgs */
+  v.fgs = x.crtu({ t: 'div', c: 'sheet fgs', e: '', p: v.scene });
 
   v.ei = x.crtu({ t: 'div', c: 'fg title', e: '', p: v.fgs });
-  x.crtu({ t: 'div', c: '', e: '무궁화꽃이', p: v.ei });
-  x.crtu({ t: 'div', c: '', e: '피었습니다', p: v.ei });
+  x.crtu({ t: 'div', c: '', e: '<div>LOGIN</div>', p: v.ei });
 
-  // v.ei = x.crtu({ t: 'svg', c: 'fg prop', e: '', p: v.fgs });
+  v.d = `
+  <form action="/login" method="POST" class="login-form">
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+    </div>
+    <div>
+      <button type="submit">LOGIN</button>
+    </div>
+  </form>
+  `;
+  v.ei = x.crtu({ t: 'div', c: 'fg forms', e: '', p: v.fgs });
+  v.ei.innerHTML = v.d;
+
   // v.ei.setAttribute('width', `${wh.w}`);
   // v.ei.setAttribute('height', `${wh.h}`);
 
-  /* .sheet.uis //\ user-interface */
-  v.uis = x.crtu({ t: 'div', c: 'sheet uis', e:'', p: v.bed });
+  /* .sheet.uis */
+  v.uis = x.crtu({ t: 'div', c: 'sheet uis', e:'', p: v.scene });
 
   v.css = { backgroundColor: x(v.b).g, cursor: 'none' }
   v.ei = x.crtu({ t: 'div', c: 'seg btns', e: '', p: v.uis });
   v.ei = x.crtu({ t: 'div', c: '', e: '', p: v.ei });
 
-  v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>KOREAN</span>', p: v.ei });
-  v.eii.setAttribute('js', '\'url\': \'korean\', \'type\': \'replace\'');
+  v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>HOME</span>', p: v.ei });
+  v.eii.setAttribute('js', '\'url\': \'index\', \'type\': \'replace\'');
   x(v.eii).cssu(v.css);
-  v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>TANGRAM</span>', p: v.ei });
-  v.eii.setAttribute('js', '\'url\': \'tangram\', \'type\': \'replace\'');
-  x(v.eii).cssu(v.css);
-  v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>LOGIN</span>', p: v.ei });
-  v.eii.setAttribute('js', '\'url\': \'login\', \'type\': \'replace\'');
-  x(v.eii).cssu(v.css);
-  // v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>MYRAMYUN</span>', p: v.ei });
-  // v.eii.setAttribute('js', '\'url\': \'myramyun\', \'type\': \'replace\'');
-  // x(v.eii).cssu(v.css);
-  // v.eii = x.crtu({ t: 'button', c: 'btn nav', e: '<span>TEMP</span>', p: v.ei });
-  // v.eii.setAttribute('js', '\'url\': \'temp\', \'type\': \'replace\'');
-  // x(v.eii).cssu(v.css);
 
   /* load */
   (async () => { 
-    // await x.loadxmlu('/www/work/index.xml');
-    // await x.loadfetchu({ u: '/www/work/index.xml', p: '.sheet.fgs' });
+    await x.loadfetchu({ u: '/www/work/login.xml', p: '.sheet.fgs' });
 
     // v.ei = x.crtu({ t: 'g', c: 'prop tangram', e: '', p: '.sheet.fgs>svg.prop' });
     // await x.loadfetchu({ u: '/www/with/prop/tans.svg', p: v.ei });

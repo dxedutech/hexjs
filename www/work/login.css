@@ -1,0 +1,80 @@
+html, body { display: flex; width: 100%; height: 100%; margin: 0;  padding: 0; background: #222; justify-content: center; align-items: center; overflow: hidden; }
+body>div, .scene, .sheet { width: var(--w); height: var(--h); }
+
+.seg { position: absolute; }
+.seg.index { width: 100%; height: 100%; }
+.seg.gride { pointer-events: none; }
+
+.sheet.uis .seg.btns { left: calc(100% + 8px); top: 50%; }
+.sheet.uis.vertical .seg.btns { left: 50%; top: calc(100% + 8px); }
+.sheet.uis.vertical .seg.btns>div { display: flex; }
+
+.sheet.uis .seg.btns button { display: flex; width: 64px; height: 64px; justify-content: left; align-items: center; }
+/* .sheet.uis.vertical .seg.btns button { margin: 8px; } */
+.sheet.uis .seg.btns button span { left: 100%; margin: 8px; font-size: 0; }
+.sheet.uis.vertical .seg.btns button span { left: auto; top: 100%; margin: 8px; }
+.sheet.uis .seg.btns button:hover span { font-size: 24px; }
+
+
+/* .sheet>div, .sheet>svg { position: absolute; } */
+
+.sheet.fgs .fg.title { position: relative; display: flex; left: auto; top: 124px; }
+.sheet.fgs .fg.title div { margin: 0 4px; font: 64px "PlayTangram", sans-serif; }
+
+.sheet.fgs .fg.forms { position: relative; left: auto; top: 424px; width: 800px; height: auto; background-color: #333; justify-content: center; }
+
+.sheet.fgs .fg.forms form { position: relative; margin: 40px 0; }
+.sheet.fgs .fg.forms form div { position: relative; display: flex; margin: 24px 80px; justify-content: space-between; }
+.sheet.fgs .fg.forms form label { font: 40px "PlayTangram", sans-serif; }
+.sheet.fgs .fg.forms form input { width: 360px; font: 40px "PlayTangram", sans-serif; }
+.sheet.fgs .fg.forms form div:last-child { position: relative; display: flex; margin: 80px 0 0 0; justify-content: center; }
+.sheet.fgs .fg.forms form button { border: none; font: 32px "PlayTangram", sans-serif; color: #fff; }
+.sheet.fgs .fg.forms form button:focus { color: #dae; }
+
+
+
+/* .sheet.uis { width: 100%; height: 100%; } */
+/* .sheet.uis .seg.btns { right: 24px; bottom: 24px; } */
+
+
+/* .sheet.fgs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+/* 
+.sheet.fgs .so {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: #aed;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sheet.fgs .so .co.xi {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.sheet.fgs .so .co.xi label {
+  margin: 12px 0 4px;
+  font-weight: bold;
+}
+
+.sheet.fgs .so .co.xi input {
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.sheet.fgs .so .co.xi button { padding: 12px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; }
+.sheet.fgs .so .co.xi button:hover { background-color: #0056b3; }
+
+.sheet.fgs .so .co.xii { margin-top: 20px; font-size: 14px; }
+.sheet.fgs .so .co.xii a { color: #007bff; text-decoration: none; }
+.sheet.fgs .so .co.xii a:hover { text-decoration: underline; } */
