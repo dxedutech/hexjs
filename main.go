@@ -18,6 +18,7 @@ func main() {
 	// 반드시 동기로 초기화
 	client = initMongoDB()
 
+
 	// origin := http.StripPrefix("/www/", http.FileServer(http.Dir("./www")))
 	// wrapped := http.HandlerFunc(func(writer http.ResponseWriter, req *http.Request) {
 	// 	writer.Header().Set("Access-Control-Allow-Origin", "*")

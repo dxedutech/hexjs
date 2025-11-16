@@ -19,7 +19,7 @@ func initMongoDB() *mongo.Client {
 		log.Fatal("MONGO_URI is not set")
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 
 	var err error
