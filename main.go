@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 type Response struct {
@@ -16,7 +17,18 @@ func main() {
 	// 	client = initMongoDB()
 	// }()
 	// 반드시 동기로 초기화
-	client = initMongoDB()
+	// client = initMongoDB()
+
+	go func() {
+    for {
+			client = initMongoDB()
+			if client != nil {
+				break
+			}
+			log.Println("Retrying MongoDB connection in 5s...")
+			time.Sleep(5 * time.Second)
+    }
+	}()
 
 
 	// origin := http.StripPrefix("/www/", http.FileServer(http.Dir("./www")))
